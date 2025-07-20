@@ -1,5 +1,8 @@
 package com.joelle.backend.staff;
 
 public enum Role {
-    MAKEUP, HAIR, NAIL, BROWS, HELPER
+    MAKEUP,
+    HAIR,
+    MANAGER,
+    ADMIN
 }

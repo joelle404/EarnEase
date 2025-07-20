@@ -1,0 +1,26 @@
+type Query {
+  allStaff: [Staff!]!
+  getStaffById(id: ID!): Staff
+}
+
+type Mutation {
+  createStaff(name: String!, role: Role!, email: String!, password: String!): Staff
+}
+
+type Staff {
+  id: ID!
+  name: String!
+  role: Role!
+  email: String!
+  password: String!
+}
+
+enum Role {
+  MAKEUP
+  HAIR
+  MANAGER
+  ADMIN
+}
+
+
+
