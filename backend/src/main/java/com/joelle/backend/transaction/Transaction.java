@@ -2,7 +2,7 @@ package com.joelle.backend.transaction;
 
 import jakarta.persistence.*;
 
-import java.security.Provider.Service;
+import com.joelle.backend.service.Service;
 import java.time.LocalDateTime;
 
 import com.joelle.backend.clients.Clients;
