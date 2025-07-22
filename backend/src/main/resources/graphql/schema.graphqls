@@ -1,11 +1,13 @@
-type Query {
-  allStaff: [Staff!]!
-  getStaffById(id: ID!): Staff
+# === ENUMS ===
+
+enum Role {
+  MAKEUP
+  HAIR
+  MANAGER
+  ADMIN
 }
 
-type Mutation {
-  createStaff(name: String!, role: Role!, email: String!, password: String!): Staff
-}
+# === TYPES ===
 
 type Staff {
   id: ID!
@@ -15,12 +17,109 @@ type Staff {
   password: String!
 }
 
-enum Role {
-  MAKEUP
-  HAIR
-  MANAGER
-  ADMIN
+type Clients {
+  id: ID!
+  name: String!
+  phone: String!
 }
 
+type Service {
+  id: ID!
+  name: String!
+  basePrice: Float!
+}
 
+type Rent {
+  id: ID!
+  staff: Staff!
+  month: String!
+  amount: Float!
+  paidDate: String!
+}
 
+type ProductPurchase {
+  id: ID!
+  staff: Staff!
+  productName: String!
+  amountSpent: Float!
+  date: String!
+}
+
+type Transaction {
+  id: ID!
+  client: Clients!
+  staff: Staff!
+  service: Service!
+  amountPaid: Float!
+  percentageGiven: Float!
+  percentageRecipient: Staff!
+  date: String!
+}
+
+# === QUERY ===
+
+type Query {
+  # Staff
+  allStaff: [Staff!]!
+  getStaffById(id: ID!): Staff
+
+  # Clients
+  allClients: [Clients!]!
+  getClientById(id: ID!): Clients
+
+  # Services
+  allServices: [Service!]!
+  getServiceById(id: ID!): Service
+
+  # Rent
+  allRents: [Rent!]!
+  getRentById(id: ID!): Rent
+
+  # Product Purchases
+  allProductPurchases: [ProductPurchase!]!
+  getProductPurchaseById(id: ID!): ProductPurchase
+
+  # Transactions
+  allTransactions: [Transaction!]!
+  getTransactionById(id: ID!): Transaction
+}
+
+# === MUTATION ===
+
+type Mutation {
+  # Staff
+  createStaff(name: String!, role: Role!, email: String!, password: String!): Staff
+
+  # Clients
+  createClient(name: String!, phone: String!): Clients
+
+  # Services
+  createService(name: String!, basePrice: Float!): Service
+
+  # Rent
+  createRent(
+    staffId: ID!
+    month: String!
+    amount: Float!
+    paidDate: String!
+  ): Rent
+
+  # Product Purchases
+  createProductPurchase(
+    staffId: ID!
+    productName: String!
+    amountSpent: Float!
+    date: String!
+  ): ProductPurchase
+
+  # Transactions
+  createTransaction(
+    clientId: ID!
+    staffId: ID!
+    serviceId: ID!
+    amountPaid: Float!
+    percentageGiven: Float!
+    percentageRecipientId: ID!
+    date: String!
+  ): Transaction
+}
