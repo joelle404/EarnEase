@@ -1,0 +1,17 @@
+<nav class="navbar">
+  <a mat-button routerLink="/dashboard" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+    {{ getTranslation('navbar.dashboard') }}
+  </a>
+  <a mat-button routerLink="/clients" routerLinkActive="active-link">
+    {{ getTranslation('navbar.clients') }}
+  </a>
+  <a mat-button routerLink="/expensses" routerLinkActive="active-link">
+    {{ getTranslation('navbar.expenses') }}
+  </a>
+  <a mat-button routerLink="/reports" routerLinkActive="active-link">
+    {{ getTranslation('navbar.reports') }}
+  </a>
+  <a mat-button routerLink="/settings" routerLinkActive="active-link">
+    {{ getTranslation('navbar.settings') }}
+  </a>
+</nav>

@@ -1,0 +1,46 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background-color: #3f51b5;
+  display: flex;
+  align-items: center;       /* vertically center items */
+  justify-content: center;   /* horizontally center all links */
+  gap: 24px;                 /* space between links */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.navbar a {
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;       /* vertical center text inside link */
+  justify-content: center;   /* horizontal center text inside link */
+  transition: background-color 0.3s ease;
+}
+
+.navbar a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar a.active-link {
+  background-color: rgba(255, 255, 255, 0.2);
+  font-weight: 700;
+}
+
+/* Padding for page content */
+:host ::ng-deep .page-content {
+  padding-top: 56px;
+}
+
+div{
+    padding-bottom: 50px;
+}

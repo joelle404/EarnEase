@@ -1,1 +1,12 @@
-<p>settings works!</p>
+<app-navbar></app-navbar>
+
+<div class="settings-container">
+  <button class="btn btn-logout" (click)="logout()">Logout</button>
+
+  <div class="lang-select-container">
+<select id="language-select" class="lang-select" #langSelect (change)="changeLanguage(langSelect.value)">
+      <option value="en">English</option>
+      <option value="ar">العربية</option>
+    </select>
+  </div>
+</div>

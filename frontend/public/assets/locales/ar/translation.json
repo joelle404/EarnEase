@@ -1,0 +1,14 @@
+{
+  "navbar": {
+    "dashboard": "لوحة التحكم",
+    "clients": "العملاء",
+    "expenses": "المصروفات",
+    "reports": "التقارير",
+    "settings": "الإعدادات"
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "language": "اللغة",
+    "logout": "تسجيل الخروج"
+  }
+}

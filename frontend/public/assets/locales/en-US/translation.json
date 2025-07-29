@@ -1,0 +1,14 @@
+{
+  "navbar": {
+    "dashboard": "Dashboard",
+    "clients": "Clients",
+    "expenses": "Expenses",
+    "reports": "Reports",
+    "settings": "Settings"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "logout": "Logout"
+  }
+}

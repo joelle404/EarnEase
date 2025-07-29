@@ -1,0 +1,231 @@
+2025-07-29T02:42:12.507-07:00  INFO 19160 --- [backend] [restartedMain] com.joelle.backend.BackendApplication    : Starting BackendApplication using Java 21.0.7 with PID 19160 (C:\Users\joell\OneDrive\Desktop\EarnEase\backend\target\classes started by joell in C:\Users\joell\OneDrive\Desktop\EarnEase\backend)
+2025-07-29T02:42:12.520-07:00  INFO 19160 --- [backend] [restartedMain] com.joelle.backend.BackendApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-07-29T02:42:12.609-07:00  INFO 19160 --- [backend] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-07-29T02:42:12.610-07:00  INFO 19160 --- [backend] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-07-29T02:42:13.966-07:00  INFO 19160 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-29T02:42:14.186-07:00  INFO 19160 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 207 ms. Found 6 JPA repository interfaces.
+2025-07-29T02:42:15.228-07:00  INFO 19160 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-29T02:42:15.246-07:00  INFO 19160 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-29T02:42:15.247-07:00  INFO 19160 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-29T02:42:15.301-07:00  INFO 19160 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-07-29T02:42:15.302-07:00  INFO 19160 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2691 ms
+2025-07-29T02:42:15.450-07:00  INFO 19160 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-07-29T02:42:15.822-07:00  INFO 19160 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7cff4d71
+2025-07-29T02:42:15.824-07:00  INFO 19160 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-07-29T02:42:15.931-07:00  INFO 19160 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-29T02:42:16.044-07:00  INFO 19160 --- [backend] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.18.Final
+2025-07-29T02:42:16.122-07:00  INFO 19160 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-29T02:42:16.638-07:00  INFO 19160 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-29T02:42:16.785-07:00  INFO 19160 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 15.13
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-29T02:42:17.828-07:00  INFO 19160 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-29T02:42:17.832-07:00  INFO 19160 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-29T02:42:18.104-07:00 DEBUG 19160 --- [backend] [restartedMain] o.s.d.jpa.repository.query.NamedQuery    : Looking up named query 'Staff.findByEmail'
+2025-07-29T02:42:18.108-07:00 DEBUG 19160 --- [backend] [restartedMain] o.s.d.jpa.repository.query.NamedQuery    : Did not find named query Staff.findByEmail
+2025-07-29T02:42:18.217-07:00 DEBUG 19160 --- [backend] [restartedMain] o.s.d.jpa.repository.query.NamedQuery    : Looking up named query 'Staff.existsByEmail'
+2025-07-29T02:42:18.218-07:00 DEBUG 19160 --- [backend] [restartedMain] o.s.d.jpa.repository.query.NamedQuery    : Did not find named query Staff.existsByEmail
+2025-07-29T02:42:18.301-07:00 DEBUG 19160 --- [backend] [restartedMain] o.springframework.web.filter.CorsFilter  : Filter 'corsFilter' configured for use
+2025-07-29T02:42:18.403-07:00  WARN 19160 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-29T02:42:18.478-07:00  INFO 19160 --- [backend] [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-07-29T02:42:18.479-07:00  WARN 19160 --- [backend] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-07-29T02:42:18.702-07:00 DEBUG 19160 --- [backend] [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 2 mappings in 'requestMappingHandlerMapping'
+2025-07-29T02:42:19.259-07:00  INFO 19160 --- [backend] [restartedMain] efaultSchemaResourceGraphQlSourceBuilder : Loaded 1 resource(s) in the GraphQL schema.
+2025-07-29T02:42:19.547-07:00  INFO 19160 --- [backend] [restartedMain] o.s.b.a.g.GraphQlAutoConfiguration       : GraphQL schema inspection:
+	Unmapped fields: {}
+	Unmapped registrations: {}
+	Unmapped arguments: {}
+	Skipped types: []
+2025-07-29T02:42:19.575-07:00  INFO 19160 --- [backend] [restartedMain] s.b.a.g.s.GraphQlWebMvcAutoConfiguration : GraphQL endpoint HTTP POST /graphql
+2025-07-29T02:42:19.587-07:00 DEBUG 19160 --- [backend] [restartedMain] o.s.w.s.f.support.RouterFunctionMapping  : 1 RouterFunction(s) in 'routerFunctionMapping'
+2025-07-29T02:42:19.608-07:00 DEBUG 19160 --- [backend] [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-07-29T02:42:19.669-07:00 DEBUG 19160 --- [backend] [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, JwtFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-07-29T02:42:19.756-07:00 DEBUG 19160 --- [backend] [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-07-29T02:42:19.828-07:00 DEBUG 19160 --- [backend] [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-07-29T02:42:19.989-07:00  INFO 19160 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-29T02:42:20.041-07:00  INFO 19160 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-29T02:42:20.055-07:00  INFO 19160 --- [backend] [restartedMain] com.joelle.backend.BackendApplication    : Started BackendApplication in 8.09 seconds (process running for 9.045)
+2025-07-29T02:43:51.509-07:00  INFO 19160 --- [backend] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-29T02:43:51.510-07:00  INFO 19160 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-07-29T02:43:51.510-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2025-07-29T02:43:51.511-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2025-07-29T02:43:51.511-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2025-07-29T02:43:51.512-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@628a8dff
+2025-07-29T02:43:51.513-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@1245e81b
+2025-07-29T02:43:51.514-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2025-07-29T02:43:51.514-07:00  INFO 19160 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2025-07-29T02:43:51.543-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-07-29T02:43:51.552-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-07-29T02:43:51.570-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-07-29T02:43:51.571-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-07-29T02:43:51.575-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-07-29T02:43:51.577-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-2] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x0000021b55a13da0@5b2ee481
+2025-07-29T02:43:51.627-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-07-29T02:43:51.882-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0 where s1_0.email=?
+2025-07-29T02:43:51.987-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-2] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
+2025-07-29T02:43:51.989-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0 where s1_0.email=?
+2025-07-29T02:43:52.018-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0 where s1_0.email=?
+2025-07-29T02:43:52.050-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-29T02:52:40.072-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-07-29T02:52:40.073-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-07-29T02:52:40.076-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-07-29T02:52:40.076-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-07-29T02:52:40.077-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-07-29T02:52:40.078-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-5] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x0000021b55a13da0@5b2ee481
+2025-07-29T02:52:40.079-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-07-29T02:52:40.083-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0 where s1_0.email=?
+2025-07-29T02:52:40.149-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-5] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
+2025-07-29T02:52:40.151-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0 where s1_0.email=?
+2025-07-29T02:52:40.155-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0 where s1_0.email=?
+2025-07-29T02:52:40.159-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-29T02:58:48.494-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-07-29T02:58:48.494-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-07-29T02:58:48.497-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-07-29T02:58:48.498-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-07-29T02:58:48.498-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-07-29T02:58:48.499-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-8] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x0000021b55a13da0@5b2ee481
+2025-07-29T02:58:48.500-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-07-29T02:58:48.504-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0 where s1_0.email=?
+2025-07-29T02:58:48.568-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-8] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
+2025-07-29T02:58:48.570-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0 where s1_0.email=?
+2025-07-29T02:58:48.573-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0 where s1_0.email=?
+2025-07-29T02:58:48.575-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-29T03:01:53.079-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-07-29T03:01:53.080-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-07-29T03:01:53.083-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-07-29T03:01:53.084-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-07-29T03:01:53.085-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-07-29T03:01:53.086-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-1] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x0000021b55a13da0@5b2ee481
+2025-07-29T03:01:53.087-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-07-29T03:01:53.090-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0 where s1_0.email=?
+2025-07-29T03:01:53.155-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-1] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
+2025-07-29T03:01:53.157-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0 where s1_0.email=?
+2025-07-29T03:01:53.159-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0 where s1_0.email=?
+2025-07-29T03:01:53.162-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-29T03:02:57.664-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-07-29T03:02:57.664-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-07-29T03:02:57.668-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-07-29T03:02:57.669-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-07-29T03:02:57.670-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-07-29T03:02:57.671-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-4] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x0000021b55a13da0@5b2ee481
+2025-07-29T03:02:57.673-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-07-29T03:02:57.678-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0 where s1_0.email=?
+2025-07-29T03:02:57.788-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-4] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
+2025-07-29T03:02:57.790-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0 where s1_0.email=?
+2025-07-29T03:02:57.792-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0 where s1_0.email=?
+2025-07-29T03:02:57.794-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-29T03:04:52.799-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-07-29T03:04:52.799-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-07-29T03:04:52.802-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-07-29T03:04:52.803-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-07-29T03:04:52.803-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-07-29T03:04:52.804-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-7] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x0000021b55a13da0@5b2ee481
+2025-07-29T03:04:52.804-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-07-29T03:04:52.809-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0 where s1_0.email=?
+2025-07-29T03:04:52.875-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-7] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
+2025-07-29T03:04:52.877-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0 where s1_0.email=?
+2025-07-29T03:04:52.880-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0 where s1_0.email=?
+2025-07-29T03:04:52.881-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-29T03:06:44.034-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-07-29T03:06:44.035-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-07-29T03:06:44.037-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-07-29T03:06:44.042-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-07-29T03:06:44.050-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-07-29T03:06:44.051-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-10] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x0000021b55a13da0@5b2ee481
+2025-07-29T03:06:44.052-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-07-29T03:06:44.055-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0 where s1_0.email=?
+2025-07-29T03:06:44.117-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-10] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
+2025-07-29T03:06:44.119-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0 where s1_0.email=?
+2025-07-29T03:06:44.121-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0 where s1_0.email=?
+2025-07-29T03:06:44.123-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-29T03:07:11.109-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-07-29T03:07:11.110-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-07-29T03:07:11.113-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-07-29T03:07:11.114-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-07-29T03:07:11.115-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-07-29T03:07:11.116-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-2] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x0000021b55a13da0@5b2ee481
+2025-07-29T03:07:11.117-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-07-29T03:07:11.121-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0 where s1_0.email=?
+2025-07-29T03:07:11.187-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-2] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
+2025-07-29T03:07:11.189-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0 where s1_0.email=?
+2025-07-29T03:07:11.192-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0 where s1_0.email=?
+2025-07-29T03:07:11.194-07:00 DEBUG 19160 --- [backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-29T03:29:17.315-07:00  INFO 20632 --- [backend] [restartedMain] com.joelle.backend.BackendApplication    : Starting BackendApplication using Java 21.0.7 with PID 20632 (C:\Users\joell\OneDrive\Desktop\EarnEase\backend\target\classes started by joell in C:\Users\joell\OneDrive\Desktop\EarnEase\backend)
+2025-07-29T03:29:17.319-07:00  INFO 20632 --- [backend] [restartedMain] com.joelle.backend.BackendApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-07-29T03:29:17.389-07:00  INFO 20632 --- [backend] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-07-29T03:29:17.391-07:00  INFO 20632 --- [backend] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-07-29T03:29:18.601-07:00  INFO 20632 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-29T03:29:18.806-07:00  INFO 20632 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 192 ms. Found 6 JPA repository interfaces.
+2025-07-29T03:29:19.646-07:00  INFO 20632 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-29T03:29:19.672-07:00  INFO 20632 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-29T03:29:19.674-07:00  INFO 20632 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-29T03:29:19.761-07:00  INFO 20632 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-07-29T03:29:19.762-07:00  INFO 20632 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2370 ms
+2025-07-29T03:29:19.927-07:00  INFO 20632 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-07-29T03:29:20.196-07:00  INFO 20632 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@33831b35
+2025-07-29T03:29:20.198-07:00  INFO 20632 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-07-29T03:29:20.258-07:00  INFO 20632 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-29T03:29:20.309-07:00  INFO 20632 --- [backend] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.18.Final
+2025-07-29T03:29:20.360-07:00  INFO 20632 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-29T03:29:20.697-07:00  INFO 20632 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-29T03:29:20.811-07:00  INFO 20632 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 15.13
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-29T03:29:21.799-07:00  INFO 20632 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-29T03:29:21.803-07:00  INFO 20632 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-29T03:29:22.077-07:00 DEBUG 20632 --- [backend] [restartedMain] o.s.d.jpa.repository.query.NamedQuery    : Looking up named query 'Staff.findByEmail'
+2025-07-29T03:29:22.082-07:00 DEBUG 20632 --- [backend] [restartedMain] o.s.d.jpa.repository.query.NamedQuery    : Did not find named query Staff.findByEmail
+2025-07-29T03:29:22.180-07:00 DEBUG 20632 --- [backend] [restartedMain] o.s.d.jpa.repository.query.NamedQuery    : Looking up named query 'Staff.existsByEmail'
+2025-07-29T03:29:22.181-07:00 DEBUG 20632 --- [backend] [restartedMain] o.s.d.jpa.repository.query.NamedQuery    : Did not find named query Staff.existsByEmail
+2025-07-29T03:29:22.265-07:00 DEBUG 20632 --- [backend] [restartedMain] o.springframework.web.filter.CorsFilter  : Filter 'corsFilter' configured for use
+2025-07-29T03:29:22.366-07:00  WARN 20632 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-29T03:29:22.424-07:00  INFO 20632 --- [backend] [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-07-29T03:29:22.425-07:00  WARN 20632 --- [backend] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-07-29T03:29:22.650-07:00 DEBUG 20632 --- [backend] [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 2 mappings in 'requestMappingHandlerMapping'
+2025-07-29T03:29:23.060-07:00  INFO 20632 --- [backend] [restartedMain] efaultSchemaResourceGraphQlSourceBuilder : Loaded 1 resource(s) in the GraphQL schema.
+2025-07-29T03:29:23.291-07:00  INFO 20632 --- [backend] [restartedMain] o.s.b.a.g.GraphQlAutoConfiguration       : GraphQL schema inspection:
+	Unmapped fields: {}
+	Unmapped registrations: {}
+	Unmapped arguments: {}
+	Skipped types: []
+2025-07-29T03:29:23.322-07:00  INFO 20632 --- [backend] [restartedMain] s.b.a.g.s.GraphQlWebMvcAutoConfiguration : GraphQL endpoint HTTP POST /graphql
+2025-07-29T03:29:23.330-07:00 DEBUG 20632 --- [backend] [restartedMain] o.s.w.s.f.support.RouterFunctionMapping  : 1 RouterFunction(s) in 'routerFunctionMapping'
+2025-07-29T03:29:23.349-07:00 DEBUG 20632 --- [backend] [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-07-29T03:29:23.410-07:00 DEBUG 20632 --- [backend] [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, JwtFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-07-29T03:29:23.477-07:00 DEBUG 20632 --- [backend] [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-07-29T03:29:23.531-07:00 DEBUG 20632 --- [backend] [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-07-29T03:29:23.663-07:00  INFO 20632 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-29T03:29:23.709-07:00  INFO 20632 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-29T03:29:23.719-07:00  INFO 20632 --- [backend] [restartedMain] com.joelle.backend.BackendApplication    : Started BackendApplication in 6.939 seconds (process running for 7.688)
+2025-07-29T04:32:35.163-07:00  INFO 20632 --- [backend] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-29T04:32:35.163-07:00  INFO 20632 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-07-29T04:32:35.164-07:00 DEBUG 20632 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2025-07-29T04:32:35.165-07:00 DEBUG 20632 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2025-07-29T04:32:35.165-07:00 DEBUG 20632 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2025-07-29T04:32:35.168-07:00 DEBUG 20632 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@2c9f2840
+2025-07-29T04:32:35.170-07:00 DEBUG 20632 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@3dce28a0
+2025-07-29T04:32:35.171-07:00 DEBUG 20632 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2025-07-29T04:32:35.171-07:00  INFO 20632 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2025-07-29T04:32:35.197-07:00 DEBUG 20632 --- [backend] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-07-29T04:32:35.206-07:00 DEBUG 20632 --- [backend] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-07-29T04:32:35.233-07:00 DEBUG 20632 --- [backend] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-07-29T04:32:35.234-07:00 DEBUG 20632 --- [backend] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-07-29T04:32:35.239-07:00 DEBUG 20632 --- [backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-07-29T04:32:35.242-07:00 DEBUG 20632 --- [backend] [http-nio-8080-exec-2] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000001c314a12f20@7f1e6275
+2025-07-29T04:32:35.314-07:00 DEBUG 20632 --- [backend] [http-nio-8080-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-07-29T04:32:35.540-07:00 DEBUG 20632 --- [backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0 where s1_0.email=?
+2025-07-29T04:32:35.633-07:00 DEBUG 20632 --- [backend] [http-nio-8080-exec-2] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
+2025-07-29T04:32:35.636-07:00 DEBUG 20632 --- [backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0 where s1_0.email=?
+2025-07-29T04:32:35.663-07:00 DEBUG 20632 --- [backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0 where s1_0.email=?
+2025-07-29T04:32:35.693-07:00 DEBUG 20632 --- [backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-29T05:44:21.799-07:00  WARN 20632 --- [backend] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=15m59s739ms818µs200ns).

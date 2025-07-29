@@ -1,0 +1,40 @@
+div{
+    padding-top: 50px;
+}
+.table-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff2e6; /* golden investments light */
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: left;
+}
+
+.styled-table thead tr {
+  background-color: #007a33; /* wealthy greens medium */
+  color: white;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e0f7f1;
+}
+
+.styled-table tbody tr:nth-child(even) {
+  background-color: #f0f2f5;
+}
+
+.styled-table tbody tr:hover {
+  background-color: #b2e0d4; /* wealthy greens light */
+  transition: background-color 0.3s ease;
+}

@@ -1,13 +1,9 @@
-# === ENUMS ===
-
 enum Role {
   MAKEUP
   HAIR
   MANAGER
   ADMIN
 }
-
-# === TYPES ===
 
 type Staff {
   id: ID!
@@ -17,7 +13,7 @@ type Staff {
   password: String!
 }
 
-type Clients {
+type Client {
   id: ID!
   name: String!
   phone: String!
@@ -34,7 +30,7 @@ type Rent {
   staff: Staff!
   month: String!
   amount: Float!
-  paidDate: String!
+  paidDate: String! # consider custom scalar Date
 }
 
 type ProductPurchase {
@@ -42,61 +38,50 @@ type ProductPurchase {
   staff: Staff!
   productName: String!
   amountSpent: Float!
-  date: String!
+  date: String! # consider custom scalar Date
 }
 
 type Transaction {
   id: ID!
-  client: Clients!
+  client: Client!
   staff: Staff!
   service: Service!
   amountPaid: Float!
   percentageGiven: Float!
   percentageRecipient: Staff!
-  date: String!
+  date: String! # consider custom scalar Date
 }
 
-# === QUERY ===
-
 type Query {
-  # Staff
   allStaff: [Staff!]!
   getStaffById(id: ID!): Staff
 
-  # Clients
-  allClients: [Clients!]!
-  getClientById(id: ID!): Clients
+  allClients: [Client!]!
+  getClientById(id: ID!): Client
 
-  # Services
   allServices: [Service!]!
   getServiceById(id: ID!): Service
 
-  # Rent
   allRents: [Rent!]!
   getRentById(id: ID!): Rent
 
-  # Product Purchases
   allProductPurchases: [ProductPurchase!]!
   getProductPurchaseById(id: ID!): ProductPurchase
 
-  # Transactions
   allTransactions: [Transaction!]!
   getTransactionById(id: ID!): Transaction
 }
 
-# === MUTATION ===
-
 type Mutation {
-  # Staff
+  deleteStaff(id: ID!): Boolean!
+  login(email: String!, password: String!): LoginResponse!
+
   createStaff(name: String!, role: Role!, email: String!, password: String!): Staff
 
-  # Clients
-  createClient(name: String!, phone: String!): Clients
+  createClient(name: String!, phone: String!): Client
 
-  # Services
   createService(name: String!, basePrice: Float!): Service
 
-  # Rent
   createRent(
     staffId: ID!
     month: String!
@@ -104,7 +89,6 @@ type Mutation {
     paidDate: String!
   ): Rent
 
-  # Product Purchases
   createProductPurchase(
     staffId: ID!
     productName: String!
@@ -112,7 +96,6 @@ type Mutation {
     date: String!
   ): ProductPurchase
 
-  # Transactions
   createTransaction(
     clientId: ID!
     staffId: ID!
@@ -122,4 +105,9 @@ type Mutation {
     percentageRecipientId: ID!
     date: String!
   ): Transaction
+}
+
+type LoginResponse {
+  token: String!
+  staff: Staff!
 }

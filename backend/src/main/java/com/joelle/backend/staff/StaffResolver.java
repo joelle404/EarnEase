@@ -4,13 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
 @Controller
 public class StaffResolver {
-
+@Autowired
+private PasswordEncoder passwordEncoder;
     private final StaffRepository staffRepository;
 
     @Autowired
@@ -22,25 +24,28 @@ public class StaffResolver {
     public List<Staff> allStaff() {
         return staffRepository.findAll();
     }
+@MutationMapping
+public Boolean deleteStaff(@Argument Long id) {
+    if (staffRepository.existsById(id)) {
+        staffRepository.deleteById(id);
+        return true;
+    }
+    return false;
+}
 
     @QueryMapping
     public Staff getStaffById(@Argument Long id) {
         return staffRepository.findById(id).orElse(null);
     }
 
-    @MutationMapping
-    public Staff createStaff(@Argument String name, 
-                             @Argument Role role, 
-                             @Argument String email, 
-                             @Argument String password) {
-        System.out.println("Received createStaff: " + name + ", " + role + ", " + email);
-        Staff staff = new Staff(name, role, email, password);
-        try {
-            return staffRepository.save(staff);
-        } catch (Exception e) {
-            System.out.println("Error saving staff: " + e.getMessage());
-            e.printStackTrace();
-            return null;
-        }
-    }
+@MutationMapping
+public Staff createStaff(@Argument String name,
+                         @Argument Role role,
+                         @Argument String email,
+                         @Argument String password) {
+    String encodedPassword = passwordEncoder.encode(password);
+    Staff staff = new Staff(name, role, email, encodedPassword);
+    return staffRepository.save(staff);
 }
+}
+
