@@ -12,7 +12,7 @@ export function initI18next() {
       ns: ['translation'],
       defaultNS: 'translation',
       backend: {
-        loadPath: '/assets/locales/{{lng}}/{{ns}}.json'
+        loadPath: '/assets/locales/{{lng}}/translation.json'
       }
     });
 }

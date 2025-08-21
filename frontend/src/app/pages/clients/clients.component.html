@@ -1,7 +1,8 @@
+<!-- transactions.component.html -->
 <app-navbar></app-navbar>
-<div>
-<div class="table-container">
-  <table class="styled-table">
+
+<div class="transactions-container">
+  <table>
     <thead>
       <tr>
         <th>Name</th>
@@ -14,108 +15,26 @@
       </tr>
     </thead>
     <tbody>
+      <tr *ngFor="let transaction of transactions">
+        <td>{{ transaction.client.name }}</td>
+        <td>{{ transaction.date | date:'yyyy-MM-dd' }}</td>
+        <td>{{ transaction.date | date:'shortTime' }}</td>
+        <td>{{ transaction.service.name }}</td>
+        <td>{{ transaction.amountPaid }}</td>
+        <td>{{ transaction.percentageRecipient.name }}</td>
+        <td>{{ transaction.percentageGiven }}%</td>
+      </tr>
+      <!-- Input Row -->
       <tr>
-        <td>Sally salah</td>
-        <td>2025-07-29</td>
-        <td>10:00 AM</td>
-        <td>Makeup</td>
-        <td>$120</td>
-        <td>Tamer</td>
-        <td>30%</td>
+        <td><input [(ngModel)]="newTransaction.clientId"></td>
+        <td><input type="date" [(ngModel)]="newTransaction.date"></td>
+        <td><input type="time" [(ngModel)]="newTransaction.time"></td>
+        <td><input [(ngModel)]="newTransaction.serviceId"></td>
+        <td><input type="number" [(ngModel)]="newTransaction.amountPaid"></td>
+        <td><input [(ngModel)]="newTransaction.percentageRecipientId"></td>
+        <td><input type="number" [(ngModel)]="newTransaction.percentageGiven"></td>
       </tr>
-            <tr>
-        <td>Sally salah</td>
-        <td>2025-07-29</td>
-        <td>10:00 AM</td>
-        <td>Makeup</td>
-        <td>$120</td>
-        <td>Tamer</td>
-        <td>30%</td>
-      </tr>
-            <tr>
-        <td>Sally salah</td>
-        <td>2025-07-29</td>
-        <td>10:00 AM</td>
-        <td>Makeup</td>
-        <td>$120</td>
-        <td>Tamer</td>
-        <td>30%</td>
-      </tr>
-            <tr>
-        <td>Sally salah</td>
-        <td>2025-07-29</td>
-        <td>10:00 AM</td>
-        <td>Makeup</td>
-        <td>$120</td>
-        <td>Tamer</td>
-        <td>30%</td>
-      </tr>
-            <tr>
-        <td>Sally salah</td>
-        <td>2025-07-29</td>
-        <td>10:00 AM</td>
-        <td>Makeup</td>
-        <td>$120</td>
-        <td>Tamer</td>
-        <td>30%</td>
-      </tr>
-            <tr>
-        <td>Sally salah</td>
-        <td>2025-07-29</td>
-        <td>10:00 AM</td>
-        <td>Makeup</td>
-        <td>$120</td>
-        <td>Tamer</td>
-        <td>30%</td>
-      </tr>
-            <tr>
-        <td>Sally salah</td>
-        <td>2025-07-29</td>
-        <td>10:00 AM</td>
-        <td>Makeup</td>
-        <td>$120</td>
-        <td>Tamer</td>
-        <td>30%</td>
-      </tr>
-            <tr>
-        <td>Sally salah</td>
-        <td>2025-07-29</td>
-        <td>10:00 AM</td>
-        <td>Makeup</td>
-        <td>$120</td>
-        <td>Tamer</td>
-        <td>30%</td>
-      </tr>
-            <tr>
-        <td>Sally salah</td>
-        <td>2025-07-29</td>
-        <td>10:00 AM</td>
-        <td>Makeup</td>
-        <td>$120</td>
-        <td>Tamer</td>
-        <td>30%</td>
-      </tr>
-            <tr>
-        <td>Sally salah</td>
-        <td>2025-07-29</td>
-        <td>10:00 AM</td>
-        <td>Makeup</td>
-        <td>$120</td>
-        <td>Tamer</td>
-        <td>30%</td>
-      </tr>
-            <tr>
-        <td>Sally salah</td>
-        <td>2025-07-29</td>
-        <td>10:00 AM</td>
-        <td>Makeup</td>
-        <td>$120</td>
-        <td>Tamer</td>
-        <td>30%</td>
-      </tr>
-      <!-- Add more rows here -->
     </tbody>
   </table>
+  <button (click)="addTransaction()">Add Transaction</button>
 </div>
-</div>
-

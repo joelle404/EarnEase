@@ -97,9 +97,9 @@ type Mutation {
   ): ProductPurchase
 
   createTransaction(
-    clientId: ID!
+    clientName: String!
     staffId: ID!
-    serviceId: ID!
+    serviceName: String!
     amountPaid: Float!
     percentageGiven: Float!
     percentageRecipientId: ID!
@@ -111,3 +111,5 @@ type LoginResponse {
   token: String!
   staff: Staff!
 }
+
+

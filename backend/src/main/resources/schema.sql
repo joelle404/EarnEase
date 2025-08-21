@@ -13,6 +13,13 @@ CREATE TABLE IF NOT EXISTS services (
     base_price NUMERIC(10,2) NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS staff_services (
+    staff_id INT NOT NULL REFERENCES staff(id) ON DELETE CASCADE,
+    service_id INT NOT NULL REFERENCES services(id) ON DELETE CASCADE,
+    custom_price NUMERIC(10,2),  -- optional, override base price
+    PRIMARY KEY (staff_id, service_id)
+);
+
 CREATE TABLE IF NOT EXISTS clients (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100),
