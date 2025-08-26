@@ -1,11 +1,11 @@
 .transactions-container {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 40px auto;
   padding: 20px;
+  background-color: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgb(0 0 0 / 0.1);
-  background: #e0f7f1;
-  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 table {
@@ -14,33 +14,48 @@ table {
   margin-bottom: 20px;
 }
 
-th {
-  background-color: #007a33;
-  color: white;
-  padding: 10px;
+thead th {
+  background-color: #3f526d;
+  color: #fff;
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
 }
 
-td {
+tbody td {
   padding: 10px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-input {
+tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+input, select {
   width: 100%;
-  padding: 6px;
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
   box-sizing: border-box;
 }
 
-button {
-  background-color: #004d00;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+input:focus, select:focus {
+  border-color: #3f526d;
+  outline: none;
 }
 
-button:hover {
-  background-color: #007a33;
+button.add-btn {
+  padding: 10px 20px;
+  background-color: #3f526d;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button.add-btn:hover {
+  background-color: #5a6792;
 }

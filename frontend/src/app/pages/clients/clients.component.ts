@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
@@ -7,21 +7,22 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-clients',
-  standalone: true, // ✅ Needed for standalone component
+  standalone: true,
   imports: [
     NavbarComponent,
     CommonModule,
     FormsModule,
   ],
   templateUrl: './clients.component.html',
-  styleUrls: ['./clients.component.css'] // ✅ Must be plural
+  styleUrls: ['./clients.component.css']
 })
-export class ClientsComponent {
+export class ClientsComponent implements OnInit {
   transactions: any[] = [];
+  services: any[] = []; // ✅ services for the logged-in staff
 
   newTransaction = {
     clientId: '',
-    staffId: '',
+    staffId: '',   // will be set from localStorage
     serviceId: '',
     amountPaid: 0,
     percentageGiven: 0,
@@ -34,6 +35,16 @@ export class ClientsComponent {
 
   ngOnInit() {
     this.loadTransactions();
+    this.loadStaffServices();
+  }
+
+  private getLoggedInStaffId(): string | null {
+    const staffStr = localStorage.getItem('staff');
+    if (staffStr) {
+      const staff = JSON.parse(staffStr);
+      return staff.id;
+    }
+    return null;
   }
 
   private formatDateTime(): string {
@@ -72,6 +83,9 @@ export class ClientsComponent {
       }
     `;
 
+    // ✅ Attach staffId automatically
+    this.newTransaction.staffId = this.getLoggedInStaffId() || '';
+
     this.apollo.mutate({
       mutation: CREATE_TRANSACTION,
       variables: {
@@ -89,6 +103,7 @@ export class ClientsComponent {
         allTransactions {
           id
           client { name }
+          staff { name }
           service { name }
           amountPaid
           percentageGiven
@@ -100,6 +115,28 @@ export class ClientsComponent {
 
     this.apollo.watchQuery({ query: GET_ALL }).valueChanges.subscribe((res: any) => {
       this.transactions = res.data.allTransactions;
+    });
+  }
+
+  loadStaffServices() {
+    const staffId = this.getLoggedInStaffId();
+    if (!staffId) return;
+
+    const GET_SERVICES_BY_STAFF = gql`
+      query GetServicesByStaffId($staffId: ID!) {
+        getServicesByStaffId(staffId: $staffId) {
+          id
+          name
+          basePrice
+        }
+      }
+    `;
+
+    this.apollo.watchQuery({
+      query: GET_SERVICES_BY_STAFF,
+      variables: { staffId }
+    }).valueChanges.subscribe((res: any) => {
+      this.services = res.data.getServicesByStaffId;
     });
   }
 }

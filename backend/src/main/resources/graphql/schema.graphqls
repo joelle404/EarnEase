@@ -32,7 +32,11 @@ type Rent {
   amount: Float!
   paidDate: String! # consider custom scalar Date
 }
-
+type StaffService {
+    staffId: ID!
+    serviceId: ID!
+    customPrice: Float
+}
 type ProductPurchase {
   id: ID!
   staff: Staff!
@@ -70,6 +74,12 @@ type Query {
 
   allTransactions: [Transaction!]!
   getTransactionById(id: ID!): Transaction
+
+  getServicesByStaffId(staffId: ID!): [Service!]!
+
+
+  # getStaffServices: [StaffService!]!
+  # getStaffService(staffId: ID!, serviceId: ID!): StaffService
 }
 
 type Mutation {
@@ -81,6 +91,8 @@ type Mutation {
   createClient(name: String!, phone: String!): Client
 
   createService(name: String!, basePrice: Float!): Service
+
+  createStaffService(staffId: ID!, serviceId: ID!, customPrice: Float): StaffService!
 
   createRent(
     staffId: ID!
@@ -111,5 +123,4 @@ type LoginResponse {
   token: String!
   staff: Staff!
 }
-
 

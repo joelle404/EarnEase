@@ -14,11 +14,13 @@ CREATE TABLE IF NOT EXISTS services (
 );
 
 CREATE TABLE IF NOT EXISTS staff_services (
+    id BIGSERIAL PRIMARY KEY,         -- surrogate key
     staff_id INT NOT NULL REFERENCES staff(id) ON DELETE CASCADE,
     service_id INT NOT NULL REFERENCES services(id) ON DELETE CASCADE,
-    custom_price NUMERIC(10,2),  -- optional, override base price
-    PRIMARY KEY (staff_id, service_id)
+    custom_price NUMERIC(10,2)
 );
+
+-- DROP TABLE IF EXISTS staff_services;
 
 CREATE TABLE IF NOT EXISTS clients (
     id SERIAL PRIMARY KEY,
