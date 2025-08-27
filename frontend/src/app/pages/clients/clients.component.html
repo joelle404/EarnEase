@@ -16,19 +16,19 @@
     <tbody>
       <!-- Existing Transactions -->
       <tr *ngFor="let transaction of transactions">
-        <td>{{ transaction.client.name }}</td>
+        <td>{{ transaction.clientName }}</td>
         <td>{{ transaction.date | date:'yyyy-MM-dd' }}</td>
-        <td>{{ transaction.date | date:'shortTime' }}</td>
-        <td>{{ transaction.service.name }}</td>
+        <td>{{ transaction.time }}</td>
+        <td>{{ getServiceNameById(transaction.serviceId) }}</td>
         <td>{{ transaction.amountPaid | currency }}</td>
-        <td>{{ transaction.percentageRecipient?.name || '-' }}</td>
+        <td>{{ getStaffNameById(transaction.percentageRecipientId) || '-' }}</td>
         <td>{{ transaction.percentageGiven }}%</td>
       </tr>
 
       <!-- Input Row -->
       <tr>
         <td>
-          <input placeholder="Client ID" >
+          <input placeholder="Client name" [(ngModel)]="newTransaction.clientName">
         </td>
         <td>
           <input type="date" [(ngModel)]="newTransaction.date">
@@ -37,23 +37,32 @@
           <input type="time" [(ngModel)]="newTransaction.time">
         </td>
         <td>
-          <select [(ngModel)]="newTransaction.serviceId">
+          <select [(ngModel)]="newTransaction.serviceId" (change)="onServiceChange()">
             <option value="" disabled selected>Select service</option>
             <option *ngFor="let service of services" [value]="service.id">
-              {{ service.name }} - {{ service.basePrice | currency }}
+              {{ service.name }}
             </option>
           </select>
         </td>
         <td>
-          <input type="number" placeholder="Amount Paid" [(ngModel)]="newTransaction.amountPaid">
+          <input 
+            type="number" 
+            placeholder="Amount Paid"  
+            [(ngModel)]="newTransaction.amountPaid">
         </td>
         <td>
-          <input placeholder="Recipient ID" [(ngModel)]="newTransaction.percentageRecipientId">
+          <select [(ngModel)]="newTransaction.percentageRecipientId">
+            <option value="" disabled selected>Select staff</option>
+            <option *ngFor="let staffMember of staff" [value]="staffMember.id">
+              {{ staffMember.name }}
+            </option>
+          </select>
         </td>
         <td>
           <input type="number" placeholder="%" [(ngModel)]="newTransaction.percentageGiven">
         </td>
       </tr>
+
     </tbody>
   </table>
 

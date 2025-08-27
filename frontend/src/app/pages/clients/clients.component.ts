@@ -18,11 +18,11 @@ import { CommonModule } from '@angular/common';
 })
 export class ClientsComponent implements OnInit {
   transactions: any[] = [];
-  services: any[] = []; // ✅ services for the logged-in staff
-
+  services: any[] = []; // services for the logged-in staff
+  staff: any[] = [];
   newTransaction = {
-    clientId: '',
-    staffId: '',   // will be set from localStorage
+    clientName: '',
+    staffId: '',   // auto-filled from localStorage
     serviceId: '',
     amountPaid: 0,
     percentageGiven: 0,
@@ -36,6 +36,7 @@ export class ClientsComponent implements OnInit {
   ngOnInit() {
     this.loadTransactions();
     this.loadStaffServices();
+    this.loadStaff();
   }
 
   private getLoggedInStaffId(): string | null {
@@ -54,47 +55,70 @@ export class ClientsComponent implements OnInit {
   addTransaction() {
     const CREATE_TRANSACTION = gql`
       mutation CreateTransaction(
-        $clientId: ID!,
+        $clientName: String!,
         $staffId: ID!,
         $serviceId: ID!,
         $amountPaid: Float!,
         $percentageGiven: Float!,
-        $percentageRecipientId: ID!,
-        $date: String!
+        $percentageRecipientId: ID,
+        $date: String!,
+        $time: String!
       ) {
         createTransaction(
-          clientId: $clientId,
+          clientName: $clientName,
           staffId: $staffId,
           serviceId: $serviceId,
           amountPaid: $amountPaid,
           percentageGiven: $percentageGiven,
           percentageRecipientId: $percentageRecipientId,
-          date: $date
+          date: $date,
+          time: $time
         ) {
           id
-          client { name }
-          staff { name }
-          service { name }
+          clientName
+          staffId
+          serviceId
           amountPaid
           percentageGiven
-          percentageRecipient { name }
+          percentageRecipientId
           date
+          time
         }
       }
     `;
 
-    // ✅ Attach staffId automatically
+    // Attach staffId automatically
     this.newTransaction.staffId = this.getLoggedInStaffId() || '';
+const recipientId = this.newTransaction.percentageRecipientId || null;
 
-    this.apollo.mutate({
-      mutation: CREATE_TRANSACTION,
-      variables: {
-        ...this.newTransaction,
-        date: this.formatDateTime()
-      }
-    }).subscribe((result: any) => {
-      this.transactions.push(result.data.createTransaction);
-    });
+this.apollo.mutate({
+  mutation: CREATE_TRANSACTION,
+  variables: {
+    clientName: this.newTransaction.clientName,
+    staffId: this.newTransaction.staffId,
+    serviceId: this.newTransaction.serviceId,
+    amountPaid: this.newTransaction.amountPaid,
+    percentageGiven: this.newTransaction.percentageGiven,
+    percentageRecipientId: recipientId,
+    date: this.formatDateTime(),
+    time: this.newTransaction.time
+  }
+}).subscribe((result: any) => {
+  // Make a **copy** before pushing, because Apollo objects are sometimes frozen
+  this.transactions = [...this.transactions, { ...result.data.createTransaction }];
+});
+
+    this.newTransaction = {
+      clientName: '',
+      staffId: this.getLoggedInStaffId() || '', // keep logged-in staff
+      serviceId: '',
+      amountPaid: 0,
+      percentageGiven: 0,
+      percentageRecipientId: '',
+      date: '',
+      time: ''
+    };
+
   }
 
   loadTransactions() {
@@ -102,13 +126,14 @@ export class ClientsComponent implements OnInit {
       {
         allTransactions {
           id
-          client { name }
-          staff { name }
-          service { name }
+          clientName
+          staffId
+          serviceId
           amountPaid
           percentageGiven
-          percentageRecipient { name }
+          percentageRecipientId
           date
+          time
         }
       }
     `;
@@ -138,5 +163,40 @@ export class ClientsComponent implements OnInit {
     }).valueChanges.subscribe((res: any) => {
       this.services = res.data.getServicesByStaffId;
     });
+  }
+
+  loadStaff() {
+    const GET_STAFF = gql`
+      query {
+        allStaff {
+          id
+          name
+        }
+      }
+    `;
+
+    this.apollo.watchQuery({ query: GET_STAFF }).valueChanges.subscribe((res: any) => {
+      this.staff = res.data.allStaff;
+    });
+  }
+
+  onServiceChange() {
+    const selectedService = this.services.find(
+      s => s.id === this.newTransaction.serviceId
+    );
+    if (selectedService) {
+      this.newTransaction.amountPaid = selectedService.basePrice;
+    }
+  }
+
+  // Optional: helper to display names instead of IDs
+  getStaffNameById(id: string) {
+    const staff = this.staff.find(s => s.id === id);
+    return staff ? staff.name : id;
+  }
+
+  getServiceNameById(id: string) {
+    const service = this.services.find(s => s.id === id);
+    return service ? service.name : id;
   }
 }

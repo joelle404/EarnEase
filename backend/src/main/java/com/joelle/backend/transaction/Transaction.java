@@ -3,11 +3,9 @@ package com.joelle.backend.transaction;
 import jakarta.persistence.*;
 
 import com.joelle.backend.service.Service;
-import java.time.LocalDateTime;
-
-import com.joelle.backend.clients.Clients;
 import com.joelle.backend.staff.Staff;
-
+import java.time.LocalDate;
+import java.time.LocalTime;
 @Entity
 @Table(name = "transactions")
 public class Transaction {
@@ -16,113 +14,91 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "client_id")
-    private Clients client;
+    @Column(name = "client_name", nullable = false)
+    private String clientName;
 
-    @ManyToOne
-    @JoinColumn(name = "staff_id")
-    private Staff staff;
+    @Column(name = "staff_id", nullable = false)
+    private Long staffId;
 
-    @ManyToOne
-    @JoinColumn(name = "service_id")
-    private Service service;
+    @Column(name = "service_id", nullable = false)
+    private Long serviceId;
 
-    @Column(name = "amount_paid")
+    @Column(name = "amount_paid", nullable = false)
     private Double amountPaid;
 
-    @Column(name = "percentage_given")
+    @Column(name = "percentage_given", nullable = true)
     private Double percentageGiven;
 
-    @ManyToOne
-    @JoinColumn(name = "percentage_recipient_id")
-    private Staff percentageRecipient;
+    @Column(name = "percentage_recipient_id", nullable = true)
+    private Long percentageRecipientId;
 
-    private LocalDateTime date = LocalDateTime.now();
+    @Column(name = "date", nullable = false)
+    private String date; // "2025-08-27"
 
+    @Column(name = "time", nullable = false)
+    private String time; // "14:30"
 
-    
+    public Transaction() {}
 
-    public Transaction() {
-    }
-
-    public Transaction(Clients client, Staff staff, Service service, Double amountPaid, Double percentageGiven,
-            Staff percentageRecipient, LocalDateTime date) {
-        this.client = client;
-        this.staff = staff;
-        this.service = service;
+    public Transaction(String clientName, Long staffId, Long serviceId, Double amountPaid,
+                       Double percentageGiven, Long percentageRecipientId,
+                       String date, String time) {
+        this.clientName = clientName;
+        this.staffId = staffId;
+        this.serviceId = serviceId;
         this.amountPaid = amountPaid;
         this.percentageGiven = percentageGiven;
-        this.percentageRecipient = percentageRecipient;
+        this.percentageRecipientId = percentageRecipientId;
         this.date = date;
+        this.time = time;
     }
 
-    public Long getId() {
-        return id;
+    // getters and setters
+
+
+
+    // === Getters & Setters ===
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public String getClientName() { return clientName; }
+    public void setClientName(String clientName) { this.clientName = clientName; }
+
+
+
+    public Long getStaffId() {
+        return staffId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setStaffId(Long staffId) {
+        this.staffId = staffId;
     }
 
-    public Clients getClient() {
-        return client;
+    public Long getServiceId() {
+        return serviceId;
     }
 
-    public void setClient(Clients client) {
-        this.client = client;
+    public void setServiceId(Long serviceId) {
+        this.serviceId = serviceId;
     }
 
-    public Staff getStaff() {
-        return staff;
+    public Long getPercentageRecipientId() {
+        return percentageRecipientId;
     }
 
-    public void setStaff(Staff staff) {
-        this.staff = staff;
+    public void setPercentageRecipientId(Long percentageRecipientId) {
+        this.percentageRecipientId = percentageRecipientId;
     }
 
-    public Service getService() {
-        return service;
-    }
+    public Double getAmountPaid() { return amountPaid; }
+    public void setAmountPaid(Double amountPaid) { this.amountPaid = amountPaid; }
 
-    public void setService(Service service) {
-        this.service = service;
-    }
+    public Double getPercentageGiven() { return percentageGiven; }
+    public void setPercentageGiven(Double percentageGiven) { this.percentageGiven = percentageGiven; }
 
-    public Double getAmountPaid() {
-        return amountPaid;
-    }
+    public String getDate() { return date; }
+    public void setDate(String date) { this.date = date; }
 
-    public void setAmountPaid(Double amountPaid) {
-        this.amountPaid = amountPaid;
-    }
-
-    public Double getPercentageGiven() {
-        return percentageGiven;
-    }
-
-    public void setPercentageGiven(Double percentageGiven) {
-        this.percentageGiven = percentageGiven;
-    }
-
-    public Staff getPercentageRecipient() {
-        return percentageRecipient;
-    }
-
-    public void setPercentageRecipient(Staff percentageRecipient) {
-        this.percentageRecipient = percentageRecipient;
-    }
-
-    public LocalDateTime getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDateTime date) {
-        this.date = date;
-    }
-
-
-
-    
-    // Getters & setters
+    public String getTime() { return time; }
+    public void setTime(String time) { this.time = time; }
 }

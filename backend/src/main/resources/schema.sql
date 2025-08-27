@@ -27,17 +27,21 @@ CREATE TABLE IF NOT EXISTS clients (
     name VARCHAR(100),
     phone VARCHAR(20)
 );
+-- DROP TABLE IF EXISTS transactions;
 
 CREATE TABLE IF NOT EXISTS transactions (
     id SERIAL PRIMARY KEY,
-    client_id INT REFERENCES clients(id),
-    staff_id INT REFERENCES staff(id),
-    service_id INT REFERENCES services(id),
-    amount_paid NUMERIC(10,2),
+    client_name VARCHAR(100) NOT NULL,
+    staff_id INT NOT NULL,
+    service_id INT NOT NULL,
+    amount_paid NUMERIC(10,2) NOT NULL,
     percentage_given NUMERIC(5,2),
-    percentage_recipient_id INT REFERENCES staff(id),
-    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    percentage_recipient_id INT ,
+    date VARCHAR(100) NOT NULL,
+    time VARCHAR(100) NOT NULL
 );
+
+
 CREATE TABLE IF NOT EXISTS rents (
     id SERIAL PRIMARY KEY,
     staff_id INT REFERENCES staff(id),

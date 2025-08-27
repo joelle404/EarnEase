@@ -47,13 +47,14 @@ type ProductPurchase {
 
 type Transaction {
   id: ID!
-  client: Client!
-  staff: Staff!
-  service: Service!
+  clientName: String!
+  staffId: ID!
+  serviceId: ID!
   amountPaid: Float!
-  percentageGiven: Float!
-  percentageRecipient: Staff!
-  date: String! # consider custom scalar Date
+  percentageGiven: Float
+  percentageRecipientId: ID
+  date: String!
+  time: String!
 }
 
 type Query {
@@ -108,15 +109,18 @@ type Mutation {
     date: String!
   ): ProductPurchase
 
-  createTransaction(
-    clientName: String!
-    staffId: ID!
-    serviceName: String!
-    amountPaid: Float!
-    percentageGiven: Float!
-    percentageRecipientId: ID!
-    date: String!
-  ): Transaction
+createTransaction(
+  clientName: String!
+  staffId: ID!
+  serviceId: ID!
+  amountPaid: Float!
+  percentageGiven: Float
+  percentageRecipientId: ID
+  date: String!
+  time: String!
+): Transaction
+
+
 }
 
 type LoginResponse {

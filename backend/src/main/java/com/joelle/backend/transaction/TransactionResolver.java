@@ -44,33 +44,36 @@ public class TransactionResolver {
     public Transaction getTransactionById(@Argument Long id) {
         return transactionRepository.findById(id).orElse(null);
     }
+@MutationMapping
+public Transaction createTransaction(
+        @Argument String clientName,
+        @Argument Long staffId,
+        @Argument Long serviceId,
+        @Argument Double amountPaid,
+        @Argument Double percentageGiven,
+        @Argument Long percentageRecipientId,
+        @Argument String date,
+        @Argument String time
+) {
+    Transaction transaction = new Transaction(
+        clientName,
+        staffId,
+        serviceId,
+        amountPaid,
+        percentageGiven,
+        percentageRecipientId,
+        date,
+        time
+    );
 
-    @MutationMapping
-    public Transaction createTransaction(@Argument Long clientId,
-                                         @Argument Long staffId,
-                                         @Argument Long serviceId,
-                                         @Argument Double amountPaid,
-                                         @Argument Double percentageGiven,
-                                         @Argument Long percentageRecipientId,
-                                         @Argument LocalDateTime date) {
-        Clients client = clientsRepository.findById(clientId).orElse(null);
-        Staff staff = staffRepository.findById(staffId).orElse(null);
-        Service service = serviceRepository.findById(serviceId).orElse(null);
-        Staff recipient = staffRepository.findById(percentageRecipientId).orElse(null);
-
-        if (client == null || staff == null || service == null || recipient == null) {
-            System.out.println("Invalid reference ID(s): "
-                    + "client=" + clientId + ", staff=" + staffId
-                    + ", service=" + serviceId + ", recipient=" + percentageRecipientId);
-            return null;
-        }
-        Transaction transaction = new Transaction(client, staff, null, amountPaid, percentageGiven, recipient, date);
-        try {
-            return transactionRepository.save(transaction);
-        } catch (Exception e) {
-            System.out.println("Error saving transaction: " + e.getMessage());
-            e.printStackTrace();
-            return null;
-        }
+    try {
+        return transactionRepository.save(transaction);
+    } catch (Exception e) {
+        System.out.println("Error saving transaction: " + e.getMessage());
+        e.printStackTrace();
+        return null;
     }
+}
+
+
 }
