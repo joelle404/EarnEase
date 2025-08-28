@@ -3351,3 +3351,320 @@ Caused by: org.postgresql.util.PSQLException: ERROR: relation "transactions" alr
 	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:261) ~[spring-jdbc-6.2.8.jar:6.2.8]
 	... 115 common frames omitted
 
+2025-08-28T06:40:17.860+03:00  INFO 15780 --- [backend] [restartedMain] com.joelle.backend.BackendApplication    : Starting BackendApplication using Java 21.0.2 with PID 15780 (C:\Users\HP-G9\Desktop\APROJECT\EarnEase\backend\target\classes started by HP-G9 in C:\Users\HP-G9\Desktop\APROJECT\EarnEase)
+2025-08-28T06:40:17.871+03:00  INFO 15780 --- [backend] [restartedMain] com.joelle.backend.BackendApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-08-28T06:40:18.075+03:00  INFO 15780 --- [backend] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-08-28T06:40:18.076+03:00  INFO 15780 --- [backend] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-08-28T06:40:21.591+03:00  INFO 15780 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-28T06:40:22.284+03:00  INFO 15780 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 649 ms. Found 7 JPA repository interfaces.
+2025-08-28T06:40:24.195+03:00  INFO 15780 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-08-28T06:40:24.244+03:00  INFO 15780 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-08-28T06:40:24.245+03:00  INFO 15780 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-08-28T06:40:24.333+03:00  INFO 15780 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-08-28T06:40:24.336+03:00  INFO 15780 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6257 ms
+2025-08-28T06:40:24.581+03:00  INFO 15780 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-08-28T06:40:25.117+03:00  INFO 15780 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5b05b7a6
+2025-08-28T06:40:25.121+03:00  INFO 15780 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-08-28T06:40:25.590+03:00  INFO 15780 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-28T06:40:25.816+03:00  INFO 15780 --- [backend] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.18.Final
+2025-08-28T06:40:25.976+03:00  INFO 15780 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-08-28T06:40:26.978+03:00  INFO 15780 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-28T06:40:27.216+03:00  INFO 15780 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 15.14
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-28T06:40:29.178+03:00  INFO 15780 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-28T06:40:29.186+03:00  INFO 15780 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-28T06:40:30.025+03:00 DEBUG 15780 --- [backend] [restartedMain] o.s.d.jpa.repository.query.NamedQuery    : Looking up named query 'Staff.findByEmail'
+2025-08-28T06:40:30.053+03:00 DEBUG 15780 --- [backend] [restartedMain] o.s.d.jpa.repository.query.NamedQuery    : Did not find named query Staff.findByEmail
+2025-08-28T06:40:30.323+03:00 DEBUG 15780 --- [backend] [restartedMain] o.s.d.jpa.repository.query.NamedQuery    : Looking up named query 'Staff.existsByEmail'
+2025-08-28T06:40:30.325+03:00 DEBUG 15780 --- [backend] [restartedMain] o.s.d.jpa.repository.query.NamedQuery    : Did not find named query Staff.existsByEmail
+2025-08-28T06:40:30.531+03:00 DEBUG 15780 --- [backend] [restartedMain] o.springframework.web.filter.CorsFilter  : Filter 'corsFilter' configured for use
+2025-08-28T06:40:30.785+03:00  WARN 15780 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-28T06:40:30.937+03:00  INFO 15780 --- [backend] [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-08-28T06:40:30.938+03:00  WARN 15780 --- [backend] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-08-28T06:40:31.110+03:00 DEBUG 15780 --- [backend] [restartedMain] o.s.d.jpa.repository.query.NamedQuery    : Looking up named query 'StaffService.findAllByStaffId'
+2025-08-28T06:40:31.112+03:00 DEBUG 15780 --- [backend] [restartedMain] o.s.d.jpa.repository.query.NamedQuery    : Did not find named query StaffService.findAllByStaffId
+2025-08-28T06:40:31.446+03:00 DEBUG 15780 --- [backend] [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 2 mappings in 'requestMappingHandlerMapping'
+2025-08-28T06:40:32.679+03:00  INFO 15780 --- [backend] [restartedMain] efaultSchemaResourceGraphQlSourceBuilder : Loaded 1 resource(s) in the GraphQL schema.
+2025-08-28T06:40:33.268+03:00  INFO 15780 --- [backend] [restartedMain] o.s.b.a.g.GraphQlAutoConfiguration       : GraphQL schema inspection:
+	Unmapped fields: {}
+	Unmapped registrations: {}
+	Unmapped arguments: {}
+	Skipped types: []
+2025-08-28T06:40:33.372+03:00  INFO 15780 --- [backend] [restartedMain] s.b.a.g.s.GraphQlWebMvcAutoConfiguration : GraphQL endpoint HTTP POST /graphql
+2025-08-28T06:40:33.388+03:00 DEBUG 15780 --- [backend] [restartedMain] o.s.w.s.f.support.RouterFunctionMapping  : 1 RouterFunction(s) in 'routerFunctionMapping'
+2025-08-28T06:40:33.416+03:00 DEBUG 15780 --- [backend] [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-08-28T06:40:33.536+03:00 DEBUG 15780 --- [backend] [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, JwtFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-08-28T06:40:33.796+03:00 DEBUG 15780 --- [backend] [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-08-28T06:40:33.936+03:00 DEBUG 15780 --- [backend] [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-08-28T06:40:34.150+03:00  INFO 15780 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-08-28T06:40:34.219+03:00  INFO 15780 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-08-28T06:40:34.244+03:00  INFO 15780 --- [backend] [restartedMain] com.joelle.backend.BackendApplication    : Started BackendApplication in 17.977 seconds (process running for 18.953)
+2025-08-28T06:40:44.516+03:00  INFO 15780 --- [backend] [http-nio-8080-exec-6] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-28T06:40:44.517+03:00  INFO 15780 --- [backend] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-08-28T06:40:44.518+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2025-08-28T06:40:44.519+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2025-08-28T06:40:44.519+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2025-08-28T06:40:44.521+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@3a12234c
+2025-08-28T06:40:44.522+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@68adc573
+2025-08-28T06:40:44.523+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2025-08-28T06:40:44.527+03:00  INFO 15780 --- [backend] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2025-08-28T06:40:44.608+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-08-28T06:40:44.608+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-08-28T06:40:44.608+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-08-28T06:40:44.643+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-08-28T06:40:44.643+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-08-28T06:40:44.643+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-08-28T06:40:44.698+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:40:44.698+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:40:44.698+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:40:44.700+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:40:44.700+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:40:44.700+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:40:44.733+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:40:44.733+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:40:44.733+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:40:44.749+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-4] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:40:44.749+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:40:44.749+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-8] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:40:44.968+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:40:44.968+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:40:44.968+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:40:45.500+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : select t1_0.id,t1_0.amount_paid,t1_0.client_name,t1_0.date,t1_0.percentage_given,t1_0.percentage_recipient_id,t1_0.service_id,t1_0.staff_id,t1_0.time from transactions t1_0 order by t1_0.date desc,t1_0.time desc
+2025-08-28T06:40:45.500+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0
+2025-08-28T06:40:45.500+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : select ss1_0.id,ss1_0.custom_price,ss1_0.service_id,ss1_0.staff_id from staff_services ss1_0 where ss1_0.staff_id=?
+2025-08-28T06:40:45.581+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : select s1_0.id,s1_0.base_price,s1_0.name from services s1_0 where s1_0.id=?
+2025-08-28T06:40:45.669+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-08-28T06:40:45.672+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-08-28T06:40:45.672+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-08-28T06:41:03.247+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-08-28T06:41:03.249+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-08-28T06:41:03.255+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:41:03.259+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:41:03.260+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:41:03.263+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:41:03.268+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:41:03.327+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : insert into transactions (amount_paid,client_name,date,percentage_given,percentage_recipient_id,service_id,staff_id,time) values (?,?,?,?,?,?,?,?)
+2025-08-28T06:41:03.397+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-08-28T06:41:08.921+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-08-28T06:41:08.922+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-08-28T06:41:08.923+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-08-28T06:41:08.924+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-08-28T06:41:08.928+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-08-28T06:41:08.930+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:41:08.930+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-08-28T06:41:08.933+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:41:08.935+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:41:08.936+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:41:08.937+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:41:08.938+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-1] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:41:08.940+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:41:08.942+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:41:08.942+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:41:08.942+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:41:08.943+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:41:08.946+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:41:08.946+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:41:08.951+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:41:08.954+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:41:08.958+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : select t1_0.id,t1_0.amount_paid,t1_0.client_name,t1_0.date,t1_0.percentage_given,t1_0.percentage_recipient_id,t1_0.service_id,t1_0.staff_id,t1_0.time from transactions t1_0 order by t1_0.date desc,t1_0.time desc
+2025-08-28T06:41:08.958+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : select ss1_0.id,ss1_0.custom_price,ss1_0.service_id,ss1_0.staff_id from staff_services ss1_0 where ss1_0.staff_id=?
+2025-08-28T06:41:08.970+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : select s1_0.id,s1_0.base_price,s1_0.name from services s1_0 where s1_0.id=?
+2025-08-28T06:41:08.970+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0
+2025-08-28T06:41:08.991+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-08-28T06:41:08.991+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-08-28T06:41:08.995+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-08-28T06:45:14.769+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-08-28T06:45:14.770+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-08-28T06:45:14.770+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-08-28T06:45:14.772+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-08-28T06:45:14.774+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-08-28T06:45:14.775+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-08-28T06:45:14.782+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:45:14.784+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:45:14.784+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:45:14.786+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:45:14.786+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:45:14.788+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:45:14.789+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:45:14.791+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:45:14.791+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:45:14.793+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:45:14.792+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-2] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:45:14.794+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:45:14.796+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:45:14.797+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:45:14.799+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:45:14.811+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0
+2025-08-28T06:45:14.813+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : select ss1_0.id,ss1_0.custom_price,ss1_0.service_id,ss1_0.staff_id from staff_services ss1_0 where ss1_0.staff_id=?
+2025-08-28T06:45:14.814+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : select t1_0.id,t1_0.amount_paid,t1_0.client_name,t1_0.date,t1_0.percentage_given,t1_0.percentage_recipient_id,t1_0.service_id,t1_0.staff_id,t1_0.time from transactions t1_0 order by t1_0.date desc,t1_0.time desc
+2025-08-28T06:45:14.821+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : select s1_0.id,s1_0.base_price,s1_0.name from services s1_0 where s1_0.id=?
+2025-08-28T06:45:14.822+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-08-28T06:45:14.837+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-08-28T06:45:14.845+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-08-28T06:45:40.816+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-08-28T06:45:40.817+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-08-28T06:45:40.822+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:45:40.826+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:45:40.828+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:45:40.829+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-8] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:45:40.832+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:45:40.841+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : insert into transactions (amount_paid,client_name,date,percentage_given,percentage_recipient_id,service_id,staff_id,time) values (?,?,?,?,?,?,?,?)
+2025-08-28T06:45:40.874+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-08-28T06:45:59.047+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-08-28T06:45:59.048+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-08-28T06:45:59.052+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:45:59.052+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:45:59.053+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:45:59.054+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-5] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:45:59.055+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:45:59.067+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : insert into transactions (amount_paid,client_name,date,percentage_given,percentage_recipient_id,service_id,staff_id,time) values (?,?,?,?,?,?,?,?)
+2025-08-28T06:45:59.094+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-08-28T06:46:01.535+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:46:01.535+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:46:01.536+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:46:01.537+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:46:01.539+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:46:01.613+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-08-28T06:46:24.032+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-08-28T06:46:24.035+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-08-28T06:46:24.041+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:46:24.042+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:46:24.043+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:46:24.047+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:46:24.050+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:46:24.058+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : insert into transactions (amount_paid,client_name,date,percentage_given,percentage_recipient_id,service_id,staff_id,time) values (?,?,?,?,?,?,?,?)
+2025-08-28T06:46:24.086+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-08-28T06:46:29.898+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-08-28T06:46:29.899+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-08-28T06:46:29.901+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-08-28T06:46:29.906+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-08-28T06:46:29.909+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:46:29.910+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-08-28T06:46:29.911+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-08-28T06:46:29.913+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:46:29.914+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:46:29.917+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:46:29.918+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:46:29.924+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-8] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:46:29.925+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:46:29.926+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:46:29.927+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:46:29.928+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-5] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:46:29.928+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:46:29.932+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:46:29.932+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:46:29.933+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:46:29.936+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:46:29.941+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : select t1_0.id,t1_0.amount_paid,t1_0.client_name,t1_0.date,t1_0.percentage_given,t1_0.percentage_recipient_id,t1_0.service_id,t1_0.staff_id,t1_0.time from transactions t1_0 order by t1_0.date desc,t1_0.time desc
+2025-08-28T06:46:29.945+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : select ss1_0.id,ss1_0.custom_price,ss1_0.service_id,ss1_0.staff_id from staff_services ss1_0 where ss1_0.staff_id=?
+2025-08-28T06:46:29.952+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0
+2025-08-28T06:46:29.956+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : select s1_0.id,s1_0.base_price,s1_0.name from services s1_0 where s1_0.id=?
+2025-08-28T06:46:29.962+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-08-28T06:46:29.964+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-08-28T06:46:29.975+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-08-28T06:47:47.393+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-08-28T06:47:47.394+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-08-28T06:47:47.398+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:47:47.399+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:47:47.400+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:47:47.403+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-2] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:47:47.407+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:47:47.417+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:47:47.418+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : select t1_0.id,t1_0.amount_paid,t1_0.client_name,t1_0.date,t1_0.percentage_given,t1_0.percentage_recipient_id,t1_0.service_id,t1_0.staff_id,t1_0.time from transactions t1_0 order by t1_0.date desc,t1_0.time desc
+2025-08-28T06:47:47.418+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:47:47.420+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:47:47.423+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-1] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:47:47.424+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:47:47.427+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:47:47.427+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:47:47.431+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:47:47.432+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-4] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:47:47.436+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:47:47.437+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : select ss1_0.id,ss1_0.custom_price,ss1_0.service_id,ss1_0.staff_id from staff_services ss1_0 where ss1_0.staff_id=?
+2025-08-28T06:47:47.443+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : select s1_0.id,s1_0.base_price,s1_0.name from services s1_0 where s1_0.id=?
+2025-08-28T06:47:47.444+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0
+2025-08-28T06:47:47.444+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-08-28T06:47:47.452+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-08-28T06:47:47.452+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-08-28T06:51:47.856+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-08-28T06:51:47.857+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-08-28T06:51:47.863+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:51:47.863+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-08-28T06:51:47.864+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:51:47.864+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-08-28T06:51:47.866+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:51:47.867+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-7] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:51:47.869+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:51:47.869+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:51:47.870+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:51:47.872+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:51:47.873+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:51:47.875+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:51:47.878+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:51:47.879+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:51:47.879+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : select t1_0.id,t1_0.amount_paid,t1_0.client_name,t1_0.date,t1_0.percentage_given,t1_0.percentage_recipient_id,t1_0.service_id,t1_0.staff_id,t1_0.time from transactions t1_0 order by t1_0.date desc,t1_0.time desc
+2025-08-28T06:51:47.881+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:51:47.882+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-2] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:51:47.883+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : select ss1_0.id,ss1_0.custom_price,ss1_0.service_id,ss1_0.staff_id from staff_services ss1_0 where ss1_0.staff_id=?
+2025-08-28T06:51:47.886+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:51:47.889+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : select s1_0.id,s1_0.base_price,s1_0.name from services s1_0 where s1_0.id=?
+2025-08-28T06:51:47.894+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0
+2025-08-28T06:51:47.896+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-08-28T06:51:47.898+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-08-28T06:51:47.900+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-08-28T06:51:50.264+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:51:50.265+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:51:50.266+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:51:50.267+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-1] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:51:50.268+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:51:50.273+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : select t1_0.id,t1_0.amount_paid,t1_0.client_name,t1_0.date,t1_0.percentage_given,t1_0.percentage_recipient_id,t1_0.service_id,t1_0.staff_id,t1_0.time from transactions t1_0 order by t1_0.date desc,t1_0.time desc
+2025-08-28T06:51:50.278+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:51:50.279+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:51:50.281+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:51:50.281+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-4] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:51:50.284+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:51:50.284+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:51:50.285+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:51:50.287+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:51:50.289+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:51:50.289+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-08-28T06:51:50.291+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:51:50.292+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : select ss1_0.id,ss1_0.custom_price,ss1_0.service_id,ss1_0.staff_id from staff_services ss1_0 where ss1_0.staff_id=?
+2025-08-28T06:51:50.294+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0
+2025-08-28T06:51:50.295+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : select s1_0.id,s1_0.base_price,s1_0.name from services s1_0 where s1_0.id=?
+2025-08-28T06:51:50.299+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-08-28T06:51:50.299+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-08-28T06:52:04.725+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-08-28T06:52:04.728+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-08-28T06:52:04.729+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-08-28T06:52:04.731+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-08-28T06:52:04.734+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /graphql
+2025-08-28T06:52:04.735+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:52:04.735+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured OPTIONS /graphql
+2025-08-28T06:52:04.735+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:52:04.736+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:52:04.737+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:52:04.737+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:52:04.739+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:52:04.739+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:52:04.741+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:52:04.741+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing POST /graphql
+2025-08-28T06:52:04.741+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:52:04.742+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured POST /graphql
+2025-08-28T06:52:04.743+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:52:04.744+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : POST "/graphql", parameters={}
+2025-08-28T06:52:04.747+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-7] o.s.w.s.f.support.RouterFunctionMapping  : Mapped to org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration$$Lambda/0x000002419d9dc000@297559db
+2025-08-28T06:52:04.750+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28T06:52:04.752+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : select t1_0.id,t1_0.amount_paid,t1_0.client_name,t1_0.date,t1_0.percentage_given,t1_0.percentage_recipient_id,t1_0.service_id,t1_0.staff_id,t1_0.time from transactions t1_0 order by t1_0.date desc,t1_0.time desc
+2025-08-28T06:52:04.752+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : select ss1_0.id,ss1_0.custom_price,ss1_0.service_id,ss1_0.staff_id from staff_services ss1_0 where ss1_0.staff_id=?
+2025-08-28T06:52:04.757+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : select s1_0.id,s1_0.email,s1_0.name,s1_0.password,s1_0.role from staff s1_0
+2025-08-28T06:52:04.763+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : select s1_0.id,s1_0.base_price,s1_0.name from services s1_0 where s1_0.id=?
+2025-08-28T06:52:04.767+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-08-28T06:52:04.769+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-08-28T06:52:04.775+03:00 DEBUG 15780 --- [backend] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK

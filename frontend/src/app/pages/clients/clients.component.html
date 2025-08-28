@@ -15,7 +15,7 @@
     </thead>
     <tbody>
       <!-- Existing Transactions -->
-      <tr *ngFor="let transaction of transactions">
+<tr *ngFor="let transaction of transactions | slice:(page-1)*pageSize:(page*pageSize)">
         <td>{{ transaction.clientName }}</td>
         <td>{{ transaction.date | date:'yyyy-MM-dd' }}</td>
         <td>{{ transaction.time }}</td>
@@ -65,6 +65,12 @@
 
     </tbody>
   </table>
+<div class="pagination">
+  <button (click)="page = page - 1" [disabled]="page === 1">Prev</button>
+  <span>Page {{ page }} of {{ Math.ceil(transactions.length / pageSize) }}</span>
+  <button (click)="page = page + 1" 
+          [disabled]="page >= Math.ceil(transactions.length / pageSize)">Next</button>
+</div>
 
   <button class="add-btn" (click)="addTransaction()">Add Transaction</button>
 </div>

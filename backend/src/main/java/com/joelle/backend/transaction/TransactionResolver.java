@@ -8,6 +8,7 @@ import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
+import org.springframework.data.domain.Sort;
 
 import com.joelle.backend.clients.Clients;
 import com.joelle.backend.clients.ClientsRepository;
@@ -34,11 +35,13 @@ public class TransactionResolver {
         this.staffRepository = staffRepository;
         this.serviceRepository = serviceRepository;
     }
+@QueryMapping
+public List<Transaction> allTransactions() {
+    return transactionRepository.findAll(
+        Sort.by(Sort.Direction.DESC, "date", "time")
+    );
+}
 
-    @QueryMapping
-    public List<Transaction> allTransactions() {
-        return transactionRepository.findAll();
-    }
 
     @QueryMapping
     public Transaction getTransactionById(@Argument Long id) {

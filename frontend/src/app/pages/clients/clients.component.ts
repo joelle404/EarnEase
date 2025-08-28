@@ -17,6 +17,9 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./clients.component.css']
 })
 export class ClientsComponent implements OnInit {
+  page = 1;
+pageSize = 10; // rows per page
+  Math = Math;
   transactions: any[] = [];
   services: any[] = []; // services for the logged-in staff
   staff: any[] = [];
