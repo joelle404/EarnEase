@@ -24,17 +24,22 @@ public class TransactionResolver {
     private final ClientsRepository clientsRepository;
     private final StaffRepository staffRepository;
     private final ServiceRepository serviceRepository;
+    private final TransactionService transactionService;
+
 
     @Autowired
     public TransactionResolver(TransactionRepository transactionRepository,
                                ClientsRepository clientsRepository,
                                StaffRepository staffRepository,
-                               ServiceRepository serviceRepository) {
+                               ServiceRepository serviceRepository,
+                               TransactionService transactionService) {
         this.transactionRepository = transactionRepository;
         this.clientsRepository = clientsRepository;
         this.staffRepository = staffRepository;
         this.serviceRepository = serviceRepository;
+        this.transactionService = transactionService;
     }
+
 @QueryMapping
 public List<Transaction> allTransactions() {
     return transactionRepository.findAll(
@@ -77,6 +82,9 @@ public Transaction createTransaction(
         return null;
     }
 }
-
+    @QueryMapping
+    public Double getTotalTransactionsAmount() {
+        return transactionService.getTotalAmount();
+    }
 
 }

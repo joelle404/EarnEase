@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./clients.component.css']
 })
 export class ClientsComponent implements OnInit {
+  searchTerm: string = '';
   page = 1;
 pageSize = 10; // rows per page
   Math = Math;
@@ -50,7 +51,14 @@ pageSize = 10; // rows per page
     }
     return null;
   }
-
+get filteredTransactions() {
+  if (!this.searchTerm) {
+    return this.transactions;
+  }
+  return this.transactions.filter(tx =>
+    tx.clientName?.toLowerCase().includes(this.searchTerm.toLowerCase())
+  );
+}
   private formatDateTime(): string {
     return `${this.newTransaction.date}T${this.newTransaction.time}:00`;
   }

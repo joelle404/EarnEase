@@ -1,6 +1,12 @@
 <app-navbar></app-navbar>
 
 <div class="transactions-container">
+<input
+  type="text"
+  placeholder="Search by client name"
+  [(ngModel)]="searchTerm"
+  class="form-control mb-3"
+/>
   <table>
     <thead>
       <tr>
@@ -15,7 +21,7 @@
     </thead>
     <tbody>
       <!-- Existing Transactions -->
-<tr *ngFor="let transaction of transactions | slice:(page-1)*pageSize:(page*pageSize)">
+<tr *ngFor="let transaction of filteredTransactions  | slice:(page-1)*pageSize:(page*pageSize)">
         <td>{{ transaction.clientName }}</td>
         <td>{{ transaction.date | date:'yyyy-MM-dd' }}</td>
         <td>{{ transaction.time }}</td>
