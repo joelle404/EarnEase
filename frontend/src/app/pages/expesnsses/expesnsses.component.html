@@ -1,3 +1,51 @@
 <app-navbar></app-navbar>
 
-<p>expesnsses works!</p>
+<div class="purchases-container">
+  <input
+    type="text"
+    placeholder="Search by product name"
+    [(ngModel)]="searchTerm"
+    class="form-control mb-3"
+  />
+
+  <table>
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Amount Spent</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Existing Purchases -->
+      <tr *ngFor="let purchase of filteredPurchases | slice:(page-1)*pageSize:(page*pageSize)">
+        <td>{{ purchase.productName }}</td>
+        <td>{{ purchase.amountSpent | currency }}</td>
+        <td>{{ purchase.date | date:'yyyy-MM-dd HH:mm' }}</td>
+      </tr>
+
+      <!-- Input Row -->
+      <tr>
+        <td>
+          <input placeholder="Product Name" [(ngModel)]="newPurchase.productName">
+        </td>
+        <td>
+          <input type="number" placeholder="Amount" [(ngModel)]="newPurchase.amountSpent">
+        </td>
+        <td>
+          <input type="datetime-local" [(ngModel)]="newPurchase.date">
+        </td>
+       
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Pagination -->
+  <div class="pagination">
+    <button (click)="page = page - 1" [disabled]="page === 1">Prev</button>
+    <span>Page {{ page }} of {{ Math.ceil(filteredPurchases.length / pageSize) }}</span>
+    <button (click)="page = page + 1" [disabled]="page >= Math.ceil(filteredPurchases.length / pageSize)">Next</button>
+  </div>
+
+  <button class="add-btn" (click)="addPurchase()">Add Purchase</button>
+</div>

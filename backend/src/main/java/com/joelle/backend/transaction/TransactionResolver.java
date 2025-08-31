@@ -41,17 +41,15 @@ public class TransactionResolver {
     }
 
 @QueryMapping
-public List<Transaction> allTransactions() {
-    return transactionRepository.findAll(
-        Sort.by(Sort.Direction.DESC, "date", "time")
-    );
+public List<Transaction> allTransactions(@Argument Long staffId) {
+    return transactionRepository.findByStaffId(staffId,Sort.by(Sort.Direction.DESC, "date", "time"));
 }
 
 
-    @QueryMapping
-    public Transaction getTransactionById(@Argument Long id) {
-        return transactionRepository.findById(id).orElse(null);
-    }
+    // @QueryMapping
+    // public Transaction getTransactionById(@Argument Long id) {
+    //     return transactionRepository.findById(id).orElse(null);
+    // }
 @MutationMapping
 public Transaction createTransaction(
         @Argument String clientName,

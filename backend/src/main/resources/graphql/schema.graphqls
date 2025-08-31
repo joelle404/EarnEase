@@ -70,11 +70,9 @@ type Query {
   allRents: [Rent!]!
   getRentById(id: ID!): Rent
 
-  allProductPurchases: [ProductPurchase!]!
-  getProductPurchaseById(id: ID!): ProductPurchase
+  allProductPurchases(staffId: ID): [ProductPurchase]!
 
-  allTransactions: [Transaction!]!
-  getTransactionById(id: ID!): Transaction
+  allTransactions(staffId:ID): [Transaction!]!
   getTotalTransactionsAmount: Float!
   
   getServicesByStaffId(staffId: ID!): [Service!]!

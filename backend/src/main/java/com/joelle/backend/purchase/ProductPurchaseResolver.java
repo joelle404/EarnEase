@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
@@ -25,14 +26,14 @@ public class ProductPurchaseResolver {
         this.staffRepository = staffRepository;
     }
 
-    @QueryMapping
-    public List<ProductPurchase> allProductPurchases() {
-        return purchaseRepository.findAll();
-    }
+    // @QueryMapping
+    // public List<ProductPurchase> allProductPurchases() {
+    //     return purchaseRepository.findAll();
+    // }
 
     @QueryMapping
-    public ProductPurchase getProductPurchaseById(@Argument Long id) {
-        return purchaseRepository.findById(id).orElse(null);
+    public ProductPurchase allProductPurchases(@Argument Long staffId) {
+        return purchaseRepository.findByStaffId(staffId,Sort.by(Sort.Direction.DESC, "date", "time"));
     }
 
     @MutationMapping

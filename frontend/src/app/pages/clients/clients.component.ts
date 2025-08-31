@@ -132,27 +132,35 @@ this.apollo.mutate({
 
   }
 
-  loadTransactions() {
-    const GET_ALL = gql`
-      {
-        allTransactions {
-          id
-          clientName
-          staffId
-          serviceId
-          amountPaid
-          percentageGiven
-          percentageRecipientId
-          date
-          time
-        }
-      }
-    `;
+loadTransactions() {
+  const staffId = this.getLoggedInStaffId();
+  console.log(staffId);
+  if (!staffId) return;
 
-    this.apollo.watchQuery({ query: GET_ALL }).valueChanges.subscribe((res: any) => {
-      this.transactions = res.data.allTransactions;
-    });
-  }
+  const GET_ALL = gql`
+    query AllTransactions($staffId: ID!) {
+      allTransactions(staffId: $staffId) {
+        id
+        clientName
+        staffId
+        serviceId
+        amountPaid
+        percentageGiven
+        percentageRecipientId
+        date
+        time
+      }
+    }
+  `;
+
+  this.apollo.watchQuery({
+    query: GET_ALL,
+    variables: { staffId }
+  }).valueChanges.subscribe((res: any) => {
+    this.transactions = res.data.allTransactions;
+  });
+}
+
 
   loadStaffServices() {
     const staffId = this.getLoggedInStaffId();
