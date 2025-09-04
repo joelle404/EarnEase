@@ -1,0 +1,61 @@
+<div class="katia-work-container">
+
+  <h2>Katia's Work</h2>
+
+  <!-- Input Form -->
+  <form (ngSubmit)="addWork()" class="work-form">
+
+    <div class="form-group">
+      <label for="clientName">Client Name</label>
+      <input [(ngModel)]="newWork.clientName" name="clientName" id="clientName" 
+             placeholder="Enter client full name" required />
+    </div>
+
+    <div class="form-group">
+      <label for="serviceDate">Service Date</label>
+      <input [(ngModel)]="newWork.serviceDate" name="serviceDate" id="serviceDate" 
+             type="date" required />
+    </div>
+
+    <div class="form-group">
+      <label for="grossAmount">Gross Amount</label>
+      <input [(ngModel)]="newWork.grossAmount" name="grossAmount" id="grossAmount" 
+             type="number" placeholder="Total amount charged" required />
+    </div>
+
+    <div class="form-group">
+      <label for="tamerPercent">Tamer %</label>
+      <input [(ngModel)]="newWork.tamerPercent" name="tamerPercent" id="tamerPercent" 
+             type="number" placeholder="Percentage for Tamer" required />
+    </div>
+
+    <button type="submit">Add Work</button>
+  </form>
+
+  <!-- Work Table -->
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Client</th>
+        <th>Gross</th>
+        <th>Dima 20%</th>
+        <th>Tamer %</th>
+        <th>Tamer Cut</th>
+        <th>Katia Net</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let w of works">
+        <td>{{ w.serviceDate }}</td>
+        <td>{{ w.clientName }}</td>
+        <td>{{ w.grossAmount }}</td>
+        <td>{{ w.dimaCut }}</td>
+        <td>{{ w.tamerPercent }}%</td>
+        <td>{{ w.tamerCut }}</td>
+        <td class="font-bold">{{ w.katiaNet }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

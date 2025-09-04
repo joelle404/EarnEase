@@ -68,3 +68,13 @@ CREATE TABLE IF NOT EXISTS staff_payments (
     reason TEXT,                              -- e.g., 'Hair assist', 'Cleanup help'
     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+CREATE TABLE IF NOT EXISTS katia_work (
+    id SERIAL PRIMARY KEY,
+    client_name VARCHAR(255) NOT NULL,
+    service_date DATE NOT NULL,
+    gross_amount NUMERIC(10,2) NOT NULL,
+    dima_cut NUMERIC(10,2) NOT NULL,
+    tamer_percent NUMERIC(5,2) NOT NULL,
+    tamer_cut NUMERIC(10,2) NOT NULL,
+    katia_net NUMERIC(10,2) NOT NULL
+);

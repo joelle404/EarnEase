@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
+import { KatiaWorkComponent } from '../katia-work/katia-work.component';
 @Component({
   selector: 'app-clients',
   standalone: true,
@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
     NavbarComponent,
     CommonModule,
     FormsModule,
+    KatiaWorkComponent,
   ],
   templateUrl: './clients.component.html',
   styleUrls: ['./clients.component.css']
@@ -46,6 +47,7 @@ pageSize = 10; // rows per page
     this.loadStaffServices();
     this.loadStaff();
     this.loadTransactionSums();
+
   }
 
   private getLoggedInStaffId(): string | null {
@@ -188,6 +190,14 @@ loadTransactions() {
   });
 }
 
+getLoggedInStaffName(): string | null {
+  const staffStr = localStorage.getItem('staff');
+  if (staffStr) {
+    const staff = JSON.parse(staffStr);
+    return staff.name;
+  }
+  return null;
+}
 
   loadStaffServices() {
     const staffId = this.getLoggedInStaffId();

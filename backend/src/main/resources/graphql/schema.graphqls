@@ -84,7 +84,8 @@ getSumLastYear(staffId: ID!): Float!
 
   getServicesByStaffId(staffId: ID!): [Service!]!
 
-
+    getAllKatiaWork: [KatiaWork!]!
+    getKatiaWorkById(id: ID!): KatiaWork
   # getStaffServices: [StaffService!]!
   # getStaffService(staffId: ID!, serviceId: ID!): StaffService
 }
@@ -101,6 +102,8 @@ type Mutation {
 
   createStaffService(staffId: ID!, serviceId: ID!, customPrice: Float): StaffService!
 
+  createKatiaWork(input: KatiaWorkInput!): KatiaWork!
+  
   createRent(
     staffId: ID!
     month: String!
@@ -134,3 +137,20 @@ type LoginResponse {
   staff: Staff!
 }
 
+type KatiaWork {
+    id: ID!
+    clientName: String!
+    serviceDate: String!
+    grossAmount: Float!
+    dimaCut: Float!
+    tamerPercent: Float!
+    tamerCut: Float!
+    katiaNet: Float!
+}
+
+input KatiaWorkInput {
+    clientName: String!
+    serviceDate: String!
+    grossAmount: Float!
+    tamerPercent: Float!
+}
