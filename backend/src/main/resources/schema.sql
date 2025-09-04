@@ -50,6 +50,9 @@ CREATE TABLE IF NOT EXISTS rents (
     paid_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE (staff_id, month) -- prevents duplicate rent for same staff & month
 );
+
+-- DROP TABLE IF EXISTS product_purchases;
+
 CREATE TABLE IF NOT EXISTS product_purchases (
     id SERIAL PRIMARY KEY,
     staff_id INT REFERENCES staff(id),

@@ -88,7 +88,7 @@ export class ExpesnssesComponent implements OnInit {
         staffId: this.newPurchase.staffId,
         productName: this.newPurchase.productName,
         amountSpent: this.newPurchase.amountSpent,
-        date: this.newPurchase.date
+        date: this.formatDateTime()
       }
     }).subscribe((result: any) => {
       this.purchases = [...this.purchases, { ...result.data.createProductPurchase }];
@@ -101,7 +101,10 @@ export class ExpesnssesComponent implements OnInit {
       date: ''
     };
   }
-
+private formatDateTime(): string {
+  const date = new Date(this.newPurchase.date);
+  return date.toISOString().split("T")[0];
+}
   loadPurchases() {
       const staffId = this.getLoggedInStaffId();
   if (!staffId) return;

@@ -84,5 +84,20 @@ public Transaction createTransaction(
     public Double getTotalTransactionsAmount() {
         return transactionService.getTotalAmount();
     }
+@QueryMapping
+public Double getSumLastWeek(@Argument Long staffId) {
+    return transactionService.getSumLastWeek(staffId);
+}
+
+@QueryMapping
+public Double getSumLastMonth(@Argument Long staffId) {
+    return transactionService.getSumLastMonth(staffId);
+}
+
+@QueryMapping
+public Double getSumLastYear(@Argument Long staffId) {
+    return transactionService.getSumLastYear(staffId);
+}
+
 
 }

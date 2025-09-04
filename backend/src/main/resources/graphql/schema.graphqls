@@ -74,7 +74,10 @@ type Query {
 
   allTransactions(staffId:ID): [Transaction!]!
   getTotalTransactionsAmount: Float!
-  
+getSumLastWeek(staffId: ID!): Float!
+getSumLastMonth(staffId: ID!): Float!
+getSumLastYear(staffId: ID!): Float!
+
   getServicesByStaffId(staffId: ID!): [Service!]!
 
 

@@ -11,4 +11,6 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     Double sumAllTransactions();
 
     List<Transaction> findByStaffId(Long id, Sort by);
+
+    List<Transaction> findByStaffId(Long staffId);
 }

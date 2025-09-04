@@ -2,6 +2,7 @@ package com.joelle.backend.transaction;
 
 import jakarta.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.joelle.backend.service.Service;
 import com.joelle.backend.staff.Staff;
 import java.time.LocalDate;
@@ -98,6 +99,11 @@ public class Transaction {
 
     public String getDate() { return date; }
     public void setDate(String date) { this.date = date; }
+    @JsonIgnore
+public LocalDate getDateAsLocalDate() {
+    return LocalDate.parse(this.date); // works if "YYYY-MM-DD"
+}
+
 
     public String getTime() { return time; }
     public void setTime(String time) { this.time = time; }

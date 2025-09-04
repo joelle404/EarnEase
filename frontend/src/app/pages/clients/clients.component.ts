@@ -17,6 +17,10 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./clients.component.css']
 })
 export class ClientsComponent implements OnInit {
+  lastWeekTotal: number = 0;
+lastMonthTotal: number = 0;
+lastYearTotal: number = 0;
+
   searchTerm: string = '';
   page = 1;
 pageSize = 10; // rows per page
@@ -41,6 +45,7 @@ pageSize = 10; // rows per page
     this.loadTransactions();
     this.loadStaffServices();
     this.loadStaff();
+    this.loadTransactionSums();
   }
 
   private getLoggedInStaffId(): string | null {
@@ -59,9 +64,10 @@ get filteredTransactions() {
     tx.clientName?.toLowerCase().includes(this.searchTerm.toLowerCase())
   );
 }
-  private formatDateTime(): string {
-    return `${this.newTransaction.date}T${this.newTransaction.time}:00`;
-  }
+private formatDateTime(): string {
+  const date = new Date(this.newTransaction.date);
+  return date.toISOString().split("T")[0];
+}
 
   addTransaction() {
     const CREATE_TRANSACTION = gql`
@@ -131,6 +137,27 @@ this.apollo.mutate({
     };
 
   }
+loadTransactionSums() {
+  const staffId = this.getLoggedInStaffId();
+  if (!staffId) return;
+
+  const GET_SUMS = gql`
+    query GetTransactionSums($staffId: ID!) {
+      getSumLastWeek(staffId: $staffId)
+      getSumLastMonth(staffId: $staffId)
+      getSumLastYear(staffId: $staffId)
+    }
+  `;
+
+  this.apollo.watchQuery({
+    query: GET_SUMS,
+    variables: { staffId }
+  }).valueChanges.subscribe((res: any) => {
+    this.lastWeekTotal = res.data.getSumLastWeek;
+    this.lastMonthTotal = res.data.getSumLastMonth;
+    this.lastYearTotal = res.data.getSumLastYear;
+  });
+}
 
 loadTransactions() {
   const staffId = this.getLoggedInStaffId();
