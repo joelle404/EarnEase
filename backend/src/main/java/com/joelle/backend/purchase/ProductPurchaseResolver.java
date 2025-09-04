@@ -18,12 +18,14 @@ public class ProductPurchaseResolver {
     
     private final ProductPurchaseRepository purchaseRepository;
     private final StaffRepository staffRepository;
+    private final ProductPurchaseService purchaseService;
 
     @Autowired
     public ProductPurchaseResolver(ProductPurchaseRepository purchaseRepository,
-                                   StaffRepository staffRepository) {
+                                   StaffRepository staffRepository, ProductPurchaseService purchaseService) {
         this.purchaseRepository = purchaseRepository;
         this.staffRepository = staffRepository;
+        this.purchaseService = purchaseService;
     }
 
     // @QueryMapping
@@ -31,16 +33,19 @@ public class ProductPurchaseResolver {
     //     return purchaseRepository.findAll();
     // }
 
-    @QueryMapping
-    public ProductPurchase allProductPurchases(@Argument Long staffId) {
-        return purchaseRepository.findByStaffId(staffId,Sort.by(Sort.Direction.DESC, "date", "time"));
-    }
+@QueryMapping
+public List<ProductPurchase> allProductPurchases(@Argument Long staffId) {
+    List<ProductPurchase> purchases = purchaseRepository.findByStaffId(staffId, Sort.by(Sort.Direction.DESC, "date"));
+    return purchases != null ? purchases : List.of(); // return empty list if null
+}
+
+
 
     @MutationMapping
     public ProductPurchase createProductPurchase(@Argument Long staffId,
                                                  @Argument String productName,
                                                  @Argument Double amountSpent,
-                                                 @Argument LocalDateTime date) {
+                                                 @Argument String date) {
         Staff staff = staffRepository.findById(staffId).orElse(null);
         if (staff == null) {
             System.out.println("Invalid staff ID: " + staffId);
@@ -56,4 +61,24 @@ public class ProductPurchaseResolver {
             return null;
         }
     }
+  @QueryMapping
+    public Double getTotalPurchasesAmount(@Argument Long staffId) {
+        return purchaseService.getTotalAmount(staffId);
+    }
+
+    @QueryMapping
+    public Double getSumPurchasesLastWeek(@Argument Long staffId) {
+        return purchaseService.getSumLastWeek(staffId);
+    }
+
+    @QueryMapping
+    public Double getSumPurchasesLastMonth(@Argument Long staffId) {
+        return purchaseService.getSumLastMonth(staffId);
+    }
+
+    @QueryMapping
+    public Double getSumPurchasesLastYear(@Argument Long staffId) {
+        return purchaseService.getSumLastYear(staffId);
+    }
+    
 }

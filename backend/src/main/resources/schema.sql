@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS product_purchases (
     staff_id INT REFERENCES staff(id),
     product_name VARCHAR,
     amount_spent NUMERIC(10,2),
-    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    date VARCHAR(100) NOT NULL
 );
 CREATE TABLE IF NOT EXISTS staff_payments (
     id SERIAL PRIMARY KEY,

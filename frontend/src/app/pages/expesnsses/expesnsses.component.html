@@ -21,7 +21,7 @@
       <tr *ngFor="let purchase of filteredPurchases | slice:(page-1)*pageSize:(page*pageSize)">
         <td>{{ purchase.productName }}</td>
         <td>{{ purchase.amountSpent | currency }}</td>
-        <td>{{ purchase.date | date:'yyyy-MM-dd HH:mm' }}</td>
+        <td>{{ purchase.date | date:'yyyy-MM-dd' }}</td>
       </tr>
 
       <!-- Input Row -->
@@ -33,7 +33,7 @@
           <input type="number" placeholder="Amount" [(ngModel)]="newPurchase.amountSpent">
         </td>
         <td>
-          <input type="datetime-local" [(ngModel)]="newPurchase.date">
+          <input type="date" [(ngModel)]="newPurchase.date">
         </td>
        
       </tr>
@@ -48,4 +48,13 @@
   </div>
 
   <button class="add-btn" (click)="addPurchase()">Add Purchase</button>
+    <div class="totals mb-4">
+    <h4>Total Spent</h4>
+    <ul>
+      <li>Last Week: {{ totalLastWeek | number:'1.2-2' }} $</li>
+      <li>Last Month: {{ totalLastMonth | number:'1.2-2' }} $</li>
+      <li>Last Year: {{ totalLastYear | number:'1.2-2' }} $</li>
+    </ul>
+  </div>
+
 </div>

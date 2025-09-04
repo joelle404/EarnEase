@@ -1,8 +1,11 @@
 package com.joelle.backend.purchase;
 
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.joelle.backend.staff.Staff;
 
 @Entity
@@ -23,15 +26,15 @@ public class ProductPurchase {
     @Column(name = "amount_spent")
     private Double amountSpent;
 
-    private LocalDateTime date = LocalDateTime.now();
-
+    @Column(name = "date", nullable = false)
+    private String date; // "2025-08-27"
 
 
 
     public ProductPurchase() {
     }
 
-    public ProductPurchase(Staff staff, String productName, Double amountSpent, LocalDateTime date) {
+    public ProductPurchase(Staff staff, String productName, Double amountSpent, String date) {
         this.staff = staff;
         this.productName = productName;
         this.amountSpent = amountSpent;
@@ -70,12 +73,11 @@ public class ProductPurchase {
         this.amountSpent = amountSpent;
     }
 
-    public LocalDateTime getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDateTime date) {
-        this.date = date;
-    }
+    public String getDate() { return date; }
+    public void setDate(String date) { this.date = date; }
+    @JsonIgnore
+public LocalDate getDateAsLocalDate() {
+    return LocalDate.parse(this.date); // works if "YYYY-MM-DD"
+}
 }
     

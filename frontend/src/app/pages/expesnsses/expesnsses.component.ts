@@ -21,6 +21,10 @@ export class ExpesnssesComponent implements OnInit {
   purchases: any[] = [];
   staff: any[] = [];
 
+  totalLastWeek: number = 0;
+  totalLastMonth: number = 0;
+  totalLastYear: number = 0;
+
   newPurchase = {
     staffId: '',
     productName: '',
@@ -33,6 +37,7 @@ export class ExpesnssesComponent implements OnInit {
   ngOnInit() {
     this.loadPurchases();
     this.loadStaff();
+    this.loadTotals();
     this.newPurchase.staffId = this.getLoggedInStaffId() || '';
   }
 
@@ -90,8 +95,15 @@ export class ExpesnssesComponent implements OnInit {
         amountSpent: this.newPurchase.amountSpent,
         date: this.formatDateTime()
       }
-    }).subscribe((result: any) => {
-      this.purchases = [...this.purchases, { ...result.data.createProductPurchase }];
+    }).subscribe({
+      next: (result: any) => {
+        const newPurchase = result.data?.createProductPurchase;
+        if (newPurchase) {
+          this.purchases = [...this.purchases, newPurchase];
+          this.loadTotals(); // refresh totals after adding
+        }
+      },
+      error: err => console.error('Failed to add purchase', err)
     });
 
     this.newPurchase = {
@@ -101,16 +113,18 @@ export class ExpesnssesComponent implements OnInit {
       date: ''
     };
   }
-private formatDateTime(): string {
-  const date = new Date(this.newPurchase.date);
-  return date.toISOString().split("T")[0];
-}
+
+  private formatDateTime(): string {
+    const date = new Date(this.newPurchase.date);
+    return date.toISOString().split("T")[0];
+  }
+
   loadPurchases() {
-      const staffId = this.getLoggedInStaffId();
-  if (!staffId) return;
-  
+    const staffId = this.getLoggedInStaffId();
+    if (!staffId) return;
+
     const GET_PURCHASES = gql`
-      query ALLProductPurchases($staffId: ID){
+      query ALLProductPurchases($staffId: ID) {
         allProductPurchases(staffId: $staffId) {
           id
           productName
@@ -124,8 +138,17 @@ private formatDateTime(): string {
       }
     `;
 
-    this.apollo.watchQuery({ query: GET_PURCHASES }).valueChanges.subscribe((res: any) => {
-      this.purchases = res.data.allProductPurchases;
+    this.apollo.watchQuery<{ allProductPurchases: any[] }>({
+      query: GET_PURCHASES,
+      variables: { staffId }
+    }).valueChanges.subscribe({
+      next: result => {
+        this.purchases = result.data?.allProductPurchases ?? [];
+      },
+      error: err => {
+        console.error('Failed to load purchases', err);
+        this.purchases = [];
+      }
     });
   }
 
@@ -139,8 +162,47 @@ private formatDateTime(): string {
       }
     `;
 
-    this.apollo.watchQuery({ query: GET_STAFF }).valueChanges.subscribe((res: any) => {
-      this.staff = res.data.allStaff;
+    this.apollo.watchQuery({ query: GET_STAFF }).valueChanges.subscribe({
+      next: (res: any) => {
+        this.staff = res.data?.allStaff ?? [];
+      },
+      error: err => {
+        console.error('Failed to load staff', err);
+        this.staff = [];
+      }
+    });
+  }
+
+  private loadTotals() {
+    const staffId = this.getLoggedInStaffId();
+    if (!staffId) return;
+
+    const GET_TOTAL_LAST_WEEK = gql`
+      query GetSumLastWeek($staffId: ID!) {
+        getSumPurchasesLastWeek(staffId: $staffId)
+      }
+    `;
+    const GET_TOTAL_LAST_MONTH = gql`
+      query GetSumLastMonth($staffId: ID!) {
+        getSumPurchasesLastMonth(staffId: $staffId)
+      }
+    `;
+    const GET_TOTAL_LAST_YEAR = gql`
+      query GetSumLastYear($staffId: ID!) {
+        getSumPurchasesLastYear(staffId: $staffId)
+      }
+    `;
+
+    this.apollo.query({ query: GET_TOTAL_LAST_WEEK, variables: { staffId } }).subscribe((res: any) => {
+      this.totalLastWeek = res.data?.getSumPurchasesLastWeek ?? 0;
+    });
+
+    this.apollo.query({ query: GET_TOTAL_LAST_MONTH, variables: { staffId } }).subscribe((res: any) => {
+      this.totalLastMonth = res.data?.getSumPurchasesLastMonth ?? 0;
+    });
+
+    this.apollo.query({ query: GET_TOTAL_LAST_YEAR, variables: { staffId } }).subscribe((res: any) => {
+      this.totalLastYear = res.data?.getSumPurchasesLastYear ?? 0;
     });
   }
 
