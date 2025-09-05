@@ -1,9 +1,7 @@
 package com.joelle.backend.rent;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
-
-import com.joelle.backend.staff.Staff;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "rents", uniqueConstraints = @UniqueConstraint(columnNames = {"staff_id", "month"}))
@@ -13,26 +11,19 @@ public class Rent {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "staff_id")
-    private Staff staff;
+    @Column(name = "staff_id", nullable = false)
+    private Long staffId;
 
     private String month;
     private Double amount;
 
     @Column(name = "paid_date")
-    private LocalDateTime paidDate = LocalDateTime.now();
+    private LocalDate paidDate = LocalDate.now();
 
+    public Rent() {}
 
-
-
-    
-
-    public Rent() {
-    }
-
-    public Rent(Staff staff, String month, Double amount, LocalDateTime paidDate) {
-        this.staff = staff;
+    public Rent(Long staffId, String month, Double amount, LocalDate paidDate) {
+        this.staffId = staffId;
         this.month = month;
         this.amount = amount;
         this.paidDate = paidDate;
@@ -46,12 +37,12 @@ public class Rent {
         this.id = id;
     }
 
-    public Staff getStaff() {
-        return staff;
+    public Long getStaffId() {
+        return staffId;
     }
 
-    public void setStaff(Staff staff) {
-        this.staff = staff;
+    public void setStaffId(Long staffId) {
+        this.staffId = staffId;
     }
 
     public String getMonth() {
@@ -70,13 +61,11 @@ public class Rent {
         this.amount = amount;
     }
 
-    public LocalDateTime getPaidDate() {
+    public LocalDate getPaidDate() {
         return paidDate;
     }
 
-    public void setPaidDate(LocalDateTime paidDate) {
+    public void setPaidDate(LocalDate paidDate) {
         this.paidDate = paidDate;
     }
-
-    
 }

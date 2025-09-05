@@ -1,0 +1,19 @@
+<div *ngIf="loading">Loading rent...</div>
+<div *ngIf="error">{{ error }}</div>
+
+<div *ngIf="!loading">
+  <h2>Rent for: {{ name }} ({{ month }})</h2>
+
+  <p>
+    Current Rent: 
+    <input type="number" [(ngModel)]="newAmount" placeholder="Enter rent amount" />
+  </p>
+
+  <p *ngIf="rent?.paidDate; else notPaid">
+    Paid on: {{ rent.paidDate }}
+  </p>
+  <ng-template #notPaid>
+    <span>Not yet paid this month</span>
+  </ng-template>
+
+</div>

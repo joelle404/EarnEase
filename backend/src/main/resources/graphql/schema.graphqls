@@ -25,13 +25,7 @@ type Service {
   basePrice: Float!
 }
 
-type Rent {
-  id: ID!
-  staff: Staff!
-  month: String!
-  amount: Float!
-  paidDate: String! # consider custom scalar Date
-}
+
 type StaffService {
     staffId: ID!
     serviceId: ID!
@@ -56,7 +50,13 @@ type Transaction {
   date: String!
   time: String!
 }
-
+type Rent {
+  id: ID!
+  staffId: ID!
+  month: String!
+  amount: Float!
+  paidDate: String!
+}
 type Query {
   allStaff: [Staff!]!
   getStaffById(id: ID!): Staff
@@ -67,8 +67,8 @@ type Query {
   allServices: [Service!]!
   getServiceById(id: ID!): Service
 
-  allRents: [Rent!]!
-  getRentById(id: ID!): Rent
+  getRent(staffId: ID!, month: String!): Rent
+
 
   allProductPurchases(staffId: ID): [ProductPurchase]!
      getTotalPurchasesAmount(staffId: ID!): Float
@@ -88,6 +88,8 @@ getSumLastYear(staffId: ID!): Float!
     getKatiaWorkById(id: ID!): KatiaWork
   # getStaffServices: [StaffService!]!
   # getStaffService(staffId: ID!, serviceId: ID!): StaffService
+
+  
 }
 
 type Mutation {
@@ -104,12 +106,8 @@ type Mutation {
 
   createKatiaWork(input: KatiaWorkInput!): KatiaWork!
   
-  createRent(
-    staffId: ID!
-    month: String!
-    amount: Float!
-    paidDate: String!
-  ): Rent
+  addRent(staffId: ID!, month: String!, amount: Float!): Rent
+  updateRent(id: ID!, amount: Float!): Rent
 
   createProductPurchase(
     staffId: ID!

@@ -4,11 +4,12 @@ import gql from 'graphql-tag';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RentComponent } from '../rent/rent.component';
 
 @Component({
   selector: 'app-expesnsses',
   standalone: true,
-  imports: [NavbarComponent, CommonModule, FormsModule],
+  imports: [NavbarComponent, CommonModule, FormsModule,RentComponent],
   templateUrl: './expesnsses.component.html',
   styleUrls: ['./expesnsses.component.css']
 })
@@ -58,6 +59,14 @@ export class ExpesnssesComponent implements OnInit {
       p.productName?.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
+getLoggedInStaffName(): string | null {
+  const staffStr = localStorage.getItem('staff');
+  if (staffStr) {
+    const staff = JSON.parse(staffStr);
+    return staff.name;
+  }
+  return null;
+}
 
   addPurchase() {
     const CREATE_PURCHASE = gql`

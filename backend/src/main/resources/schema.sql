@@ -41,15 +41,18 @@ CREATE TABLE IF NOT EXISTS transactions (
     time VARCHAR(100) NOT NULL
 );
 
+-- DROP TABLE IF EXISTS rents;
+
 
 CREATE TABLE IF NOT EXISTS rents (
     id SERIAL PRIMARY KEY,
-    staff_id INT REFERENCES staff(id),
-    month VARCHAR(7), -- e.g., '2025-07'
-    amount NUMERIC(10,2),
-    paid_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    UNIQUE (staff_id, month) -- prevents duplicate rent for same staff & month
+    staff_id BIGINT NOT NULL REFERENCES staff(id) ON DELETE CASCADE,
+    month VARCHAR(7) NOT NULL,   -- e.g. '2025-09'
+    amount NUMERIC(10,2) NOT NULL,
+    paid_date DATE DEFAULT CURRENT_DATE,
+    UNIQUE (staff_id, month)     -- prevent duplicate rent for same staff & month
 );
+
 
 -- DROP TABLE IF EXISTS product_purchases;
 

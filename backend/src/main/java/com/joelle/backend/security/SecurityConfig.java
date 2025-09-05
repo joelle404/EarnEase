@@ -35,6 +35,7 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                                 .requestMatchers("/graphql").permitAll() // Allow login mutation
+                                 .requestMatchers("/test/**").permitAll()
                                 .anyRequest().authenticated()
                 );
 
