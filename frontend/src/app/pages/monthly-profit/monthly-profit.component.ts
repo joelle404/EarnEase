@@ -10,7 +10,6 @@ standalone: true,
   styleUrls: ['./monthly-profit.component.css']
 })
 export class MonthlyProfitComponent implements OnInit {
-    private envInjector = inject(EnvironmentInjector);
 
   staffId = 5; // Replace with the actual staff ID
   chartData: any[] = [];

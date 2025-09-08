@@ -1,0 +1,26 @@
+<div class="total-spent-card">
+  <div class="chart-container">
+    <ngx-charts-pie-chart
+      [view]="view"
+      [results]="chartData"
+      [gradient]="gradient"
+      [labels]="showLabels"
+      [explodeSlices]="explodeSlices"
+      [doughnut]="doughnut">
+    </ngx-charts-pie-chart>
+
+    <!-- Total income in the center -->
+    <div class="total-center">
+      {{ totalIncome | currency:'ILS':'symbol':'1.0-0':'he-IL' }}
+      <div class="subtitle">Total Income</div>
+    </div>
+  </div>
+
+  <!-- Legend with amounts -->
+  <div class="chart-legend">
+    <div *ngFor="let item of chartData" class="chart-legend-item">
+      <span>{{ item.name }}</span>
+      <span>{{ item.value | currency:'ILS':'symbol':'1.0-0':'he-IL' }}</span>
+    </div>
+  </div>
+</div>

@@ -89,9 +89,11 @@ type Query {
 
   allTransactions(staffId:ID): [Transaction!]!
   getTotalTransactionsAmount: Float!
+  # for income 
 getSumLastWeek(staffId: ID!): Float!
 getSumLastMonth(staffId: ID!): Float! 
 getSumLastYear(staffId: ID!): Float!
+# profit
   getPureProfitLastWeek(staffId: ID!): Float
   getPureProfitLastMonth(staffId: ID!): Float
   getPureProfitLastYear(staffId: ID!): Float
@@ -99,7 +101,7 @@ getSumLastYear(staffId: ID!): Float!
   getMonthlyIncome(staffId: ID!): [MonthlyProfitDTO]
   getTotalIncome(staffId: ID!): Float
 
-  
+
   getServicesByStaffId(staffId: ID!): [Service!]!
 
     getAllKatiaWork: [KatiaWork!]!

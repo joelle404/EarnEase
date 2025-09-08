@@ -4,15 +4,15 @@
       [view]="view"
       [results]="chartData"
       [gradient]="gradient"
-      [labels]="showLabels" 
+      [labels]="showLabels"
       [explodeSlices]="explodeSlices"
       [doughnut]="doughnut">
     </ngx-charts-pie-chart>
 
-    <!-- Total spent in the center -->
+    <!-- Total pure profit in the center -->
     <div class="total-center">
-  {{ totalSpent | currency:'ILS':'symbol':'1.0-0':'he-IL' }}
-      <div class="subtitle">Total Spent</div>
+      {{ totalPureProfit | currency:'ILS':'symbol':'1.0-0':'he-IL' }}
+      <div class="subtitle">Pure Profit</div>
     </div>
   </div>
 
@@ -20,7 +20,7 @@
   <div class="chart-legend">
     <div *ngFor="let item of chartData" class="chart-legend-item">
       <span>{{ item.name }}</span>
-      <span>{{ item.value |  currency:'ILS':'symbol':'1.0-0':'he-IL' }}</span>
+      <span>{{ item.value | currency:'ILS':'symbol':'1.0-0':'he-IL' }}</span>
     </div>
   </div>
 </div>
