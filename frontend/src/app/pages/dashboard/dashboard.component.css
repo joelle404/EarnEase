@@ -1,3 +1,51 @@
-div{
+/* Dashboard wrapper */
+div {
     margin-top: 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Card wrapper for each component */
+app-totalspent,
+app-totalincome,
+app-totalpureprofit,
+app-monthly-profit {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Navbar stays fixed at the top */
+app-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: block;
+  width: 100%;
+  background: #3f526d; /* your unified theme */
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 768px) {
+  div {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+
+  app-totalspent,
+  app-totalincome,
+  app-totalpureprofit,
+  app-monthly-profit {
+    padding: 15px;
+  }
 }
