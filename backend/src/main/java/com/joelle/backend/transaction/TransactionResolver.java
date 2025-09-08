@@ -2,6 +2,7 @@ package com.joelle.backend.transaction;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
@@ -97,6 +98,37 @@ public Double getSumLastMonth(@Argument Long staffId) {
 @QueryMapping
 public Double getSumLastYear(@Argument Long staffId) {
     return transactionService.getSumLastYear(staffId);
+}
+
+@QueryMapping
+public Double getPureProfitLastWeek(@Argument Long staffId) {
+    return transactionService.getPureProfitLastWeek(staffId);
+}
+
+@QueryMapping
+public Double getPureProfitLastMonth(@Argument Long staffId) {
+    return transactionService.getPureProfitLastMonth(staffId);
+}
+
+@QueryMapping
+public Double getPureProfitLastYear(@Argument Long staffId) {
+    return transactionService.getPureProfitLastYear(staffId);
+}
+
+@QueryMapping
+public List<MonthlyProfitDTO> getMonthlyPureProfit(@Argument Long staffId) {
+    Map<String, Double> data = transactionService.getMonthlyPureProfit(staffId);
+
+    return data.entrySet().stream()
+            .map(e -> new MonthlyProfitDTO(e.getKey(), e.getValue()))
+            .toList();
+}
+@QueryMapping
+public List<MonthlyProfitDTO> getMonthlyIncome(@Argument Long staffId) {
+    Map<String, Double> data = transactionService.getMonthlyIncome(staffId);
+    return data.entrySet().stream()
+            .map(e -> new MonthlyProfitDTO(e.getKey(), e.getValue()))
+            .toList();
 }
 
 

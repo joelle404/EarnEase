@@ -50,6 +50,16 @@ type Transaction {
   date: String!
   time: String!
 }
+type MonthlyProfitDTO {
+  month: String
+  profit: Float
+}
+type MonthlyExpensesDTO {
+  month: String!
+  amount: Float!
+}
+
+
 type Rent {
   id: ID!
   staffId: ID!
@@ -75,13 +85,21 @@ type Query {
     getSumPurchasesLastWeek(staffId: ID!): Float
     getSumPurchasesLastMonth(staffId: ID!): Float
     getSumPurchasesLastYear(staffId: ID!): Float
+  getMonthlyExpenses(staffId: ID!): [MonthlyExpensesDTO!]!
 
   allTransactions(staffId:ID): [Transaction!]!
   getTotalTransactionsAmount: Float!
 getSumLastWeek(staffId: ID!): Float!
 getSumLastMonth(staffId: ID!): Float! 
 getSumLastYear(staffId: ID!): Float!
+  getPureProfitLastWeek(staffId: ID!): Float
+  getPureProfitLastMonth(staffId: ID!): Float
+  getPureProfitLastYear(staffId: ID!): Float
+  getMonthlyPureProfit(staffId: ID!): [MonthlyProfitDTO]
+  getMonthlyIncome(staffId: ID!): [MonthlyProfitDTO]
+  getTotalIncome(staffId: ID!): Float
 
+  
   getServicesByStaffId(staffId: ID!): [Service!]!
 
     getAllKatiaWork: [KatiaWork!]!
@@ -89,7 +107,7 @@ getSumLastYear(staffId: ID!): Float!
   # getStaffServices: [StaffService!]!
   # getStaffService(staffId: ID!, serviceId: ID!): StaffService
 
-  
+
 }
 
 type Mutation {

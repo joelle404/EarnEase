@@ -27,7 +27,7 @@ public class KatiaWork {
 
     // Auto calculation method
     public void calculateCuts() {
-        this.dimaCut = this.grossAmount * 0.25; // fixed 20%
+        this.dimaCut = this.grossAmount * 0.25; // fixed 25%
         this.tamerCut = this.grossAmount * (this.tamerPercent / 100.0);
         this.katiaNet = this.grossAmount - this.dimaCut - this.tamerCut;
     }

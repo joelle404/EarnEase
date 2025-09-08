@@ -20,7 +20,7 @@ export class KatiaWorkComponent implements OnInit {
     clientName: '',
     serviceDate: '',
     grossAmount: 0,
-    tamerPercent: 20
+    tamerPercent: 0
   };
 
   constructor(private apollo: Apollo) {}
@@ -72,7 +72,7 @@ export class KatiaWorkComponent implements OnInit {
     }).subscribe(() => {
       this.loadWorks(); // reload table
       // reset form
-      this.newWork = { clientName: '', serviceDate: '', grossAmount: 0, tamerPercent: 20 };
+      this.newWork = { clientName: '', serviceDate: '', grossAmount: 0, tamerPercent: 0 };
     });
   }
 }
