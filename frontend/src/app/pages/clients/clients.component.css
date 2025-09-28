@@ -1,21 +1,48 @@
 .transactions-container {
   max-width: 1200px;
-  margin: 40px auto;
+  margin: 5rem auto 20px; /* pushed below navbar */
   padding: 20px;
-  background-color: #ffffff;
+  background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #002f70;
+  overflow-x: auto; /* allow horizontal scrolling on small screens */
 }
 
+/* Search bar styling */
+.transactions-container .form-control {
+  width: 100%;
+  max-width: 400px;
+  padding: 8px 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.transactions-container .form-control:focus {
+  border-color: #002f70;
+  box-shadow: 0 0 5px rgba(0, 47, 112, 0.3);
+  outline: none;
+}
+
+/* Make search bar stay visible under navbar */
+:host ::ng-deep .page-content {
+  padding-top: 100px; /* push page content below navbar */
+}
+
+/* Table styling remains the same */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
+  min-width: 800px; /* keeps columns from collapsing too much */
+  font-size: 0.9rem;
 }
 
 thead th {
-  background-color: #3f526d;
+  background-color: #002f70;
   color: #fff;
   padding: 12px;
   text-align: left;
@@ -36,26 +63,86 @@ input, select {
   padding: 6px 8px;
   border: 1px solid #ccc;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 0.9rem;
   box-sizing: border-box;
 }
 
 input:focus, select:focus {
-  border-color: #3f526d;
+  border-color: #002f70;
   outline: none;
 }
 
 button.add-btn {
   padding: 10px 20px;
-  background-color: #3f526d;
+  background-color: #002f70;
   color: white;
   font-weight: 600;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  margin-top: 15px;
 }
 
 button.add-btn:hover {
-  background-color: #5a6792;
+  background-color: #034180;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.pagination button {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #002f70;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsive tweaks */
+@media (max-width: 868px) {
+  .transactions-container {
+    padding: 15px;
+    margin: 5rem 10px;
+  }
+
+  table {
+    font-size: 0.85rem;
+  }
+
+  input, select, button.add-btn {
+    font-size: 0.85rem;
+    padding: 5px 6px;
+  }
+
+  .transactions-container .form-control {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  table {
+    font-size: 0.8rem;
+    min-width: 700px; /* scrollable still works */
+  }
+
+  input, select, button.add-btn {
+    font-size: 0.8rem;
+    padding: 4px 5px;
+  }
+
+  .transactions-container .form-control {
+    max-width: 100%;
+  }
 }

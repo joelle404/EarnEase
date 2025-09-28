@@ -44,7 +44,7 @@ public Double getShareInRange(Long staffId, LocalDate from, LocalDate to) {
                 if (staffId == 5L) {
                     return work.getTamerCut() != null ? work.getTamerCut() : 0.0;
                 }
-                if (staffId == 1L) {
+                if (staffId == 6L) {
                     return work.getDimaCut() != null ? work.getDimaCut() : 0.0;
                 }
                 // Katia keeps her net, but if you need her share too:

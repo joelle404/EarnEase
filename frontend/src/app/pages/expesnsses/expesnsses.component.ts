@@ -4,12 +4,12 @@ import gql from 'graphql-tag';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RentComponent } from '../rent/rent.component';
+import i18next from 'i18next';
 
 @Component({
-  selector: 'app-expesnsses',
+  selector: 'app-expenses',
   standalone: true,
-  imports: [NavbarComponent, CommonModule, FormsModule,RentComponent],
+  imports: [NavbarComponent, CommonModule, FormsModule],
   templateUrl: './expesnsses.component.html',
   styleUrls: ['./expesnsses.component.css']
 })
@@ -42,6 +42,9 @@ export class ExpesnssesComponent implements OnInit {
     this.newPurchase.staffId = this.getLoggedInStaffId() || '';
   }
 
+  getTranslation(key: string) {
+    return i18next.t(key);
+  }
   private getLoggedInStaffId(): string | null {
     const staffStr = localStorage.getItem('staff');
     if (staffStr) {
@@ -59,14 +62,15 @@ export class ExpesnssesComponent implements OnInit {
       p.productName?.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
-getLoggedInStaffName(): string | null {
-  const staffStr = localStorage.getItem('staff');
-  if (staffStr) {
-    const staff = JSON.parse(staffStr);
-    return staff.name;
+
+  getLoggedInStaffName(): string | null {
+    const staffStr = localStorage.getItem('staff');
+    if (staffStr) {
+      const staff = JSON.parse(staffStr);
+      return staff.name;
+    }
+    return null;
   }
-  return null;
-}
 
   addPurchase() {
     const CREATE_PURCHASE = gql`
@@ -83,10 +87,7 @@ getLoggedInStaffName(): string | null {
           date: $date
         ) {
           id
-          staff {
-            id
-            name
-          }
+          staff { id name }
           productName
           amountSpent
           date
@@ -109,10 +110,10 @@ getLoggedInStaffName(): string | null {
         const newPurchase = result.data?.createProductPurchase;
         if (newPurchase) {
           this.purchases = [...this.purchases, newPurchase];
-          this.loadTotals(); // refresh totals after adding
+          this.loadTotals();
         }
       },
-      error: err => console.error('Failed to add purchase', err)
+      error: err => console.error(this.getTranslation('errors.addPurchaseFailed'), err)
     });
 
     this.newPurchase = {
@@ -139,10 +140,7 @@ getLoggedInStaffName(): string | null {
           productName
           amountSpent
           date
-          staff {
-            id
-            name
-          }
+          staff { id name }
         }
       }
     `;
@@ -155,7 +153,7 @@ getLoggedInStaffName(): string | null {
         this.purchases = result.data?.allProductPurchases ?? [];
       },
       error: err => {
-        console.error('Failed to load purchases', err);
+        console.error(this.getTranslation('errors.loadPurchasesFailed'), err);
         this.purchases = [];
       }
     });
@@ -163,22 +161,12 @@ getLoggedInStaffName(): string | null {
 
   loadStaff() {
     const GET_STAFF = gql`
-      query {
-        allStaff {
-          id
-          name
-        }
-      }
+      query { allStaff { id name } }
     `;
 
     this.apollo.watchQuery({ query: GET_STAFF }).valueChanges.subscribe({
-      next: (res: any) => {
-        this.staff = res.data?.allStaff ?? [];
-      },
-      error: err => {
-        console.error('Failed to load staff', err);
-        this.staff = [];
-      }
+      next: (res: any) => this.staff = res.data?.allStaff ?? [],
+      error: err => console.error(this.getTranslation('errors.loadStaffFailed'), err)
     });
   }
 
@@ -186,21 +174,9 @@ getLoggedInStaffName(): string | null {
     const staffId = this.getLoggedInStaffId();
     if (!staffId) return;
 
-    const GET_TOTAL_LAST_WEEK = gql`
-      query GetSumLastWeek($staffId: ID!) {
-        getSumPurchasesLastWeek(staffId: $staffId)
-      }
-    `;
-    const GET_TOTAL_LAST_MONTH = gql`
-      query GetSumLastMonth($staffId: ID!) {
-        getSumPurchasesLastMonth(staffId: $staffId)
-      }
-    `;
-    const GET_TOTAL_LAST_YEAR = gql`
-      query GetSumLastYear($staffId: ID!) {
-        getSumPurchasesLastYear(staffId: $staffId)
-      }
-    `;
+    const GET_TOTAL_LAST_WEEK = gql`query GetSumLastWeek($staffId: ID!) { getSumPurchasesLastWeek(staffId: $staffId) }`;
+    const GET_TOTAL_LAST_MONTH = gql`query GetSumLastMonth($staffId: ID!) { getSumPurchasesLastMonth(staffId: $staffId) }`;
+    const GET_TOTAL_LAST_YEAR = gql`query GetSumLastYear($staffId: ID!) { getSumPurchasesLastYear(staffId: $staffId) }`;
 
     this.apollo.query({ query: GET_TOTAL_LAST_WEEK, variables: { staffId } }).subscribe((res: any) => {
       this.totalLastWeek = res.data?.getSumPurchasesLastWeek ?? 0;
@@ -219,4 +195,5 @@ getLoggedInStaffName(): string | null {
     const staff = this.staff.find(s => s.id === id);
     return staff ? staff.name : id;
   }
+  
 }

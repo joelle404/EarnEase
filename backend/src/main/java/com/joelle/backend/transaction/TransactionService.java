@@ -5,12 +5,15 @@ import java.time.YearMonth;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.joelle.backend.katiawork.KatiaWorkService;
 import com.joelle.backend.purchase.ProductPurchaseService;
+import com.joelle.backend.staff.Staff;
+import com.joelle.backend.staff.StaffRepository;
 
 @Service
 public class TransactionService {
@@ -18,15 +21,18 @@ public class TransactionService {
     private final TransactionRepository transactionRepository;
     private final ProductPurchaseService purchaseService;
     private final KatiaWorkService katiaWorkService;
-
+    private final StaffRepository staffRepository; // inject it
 
     @Autowired
-    public TransactionService(TransactionRepository transactionRepository, ProductPurchaseService purchaseService, KatiaWorkService katiaWorkService) {
+    public TransactionService(TransactionRepository transactionRepository,
+                              ProductPurchaseService purchaseService,
+                              KatiaWorkService katiaWorkService,
+                              StaffRepository staffRepository) {
         this.transactionRepository = transactionRepository;
         this.purchaseService = purchaseService;
         this.katiaWorkService = katiaWorkService;
+        this.staffRepository = staffRepository;
     }
-
     // Total of all transactions
     public Double getTotalAmount() {
         return transactionRepository.sumAllTransactions();
@@ -184,5 +190,97 @@ public Map<String, Double> getMonthlyIncome(Long staffId) {
     return monthlyIncome;
 }
 
+
+
+ 
+    public List<StaffPercentageDTO> getGivenPercentsGrouped(Long staffId, LocalDate from, LocalDate to) {
+        List<Transaction> transactions = transactionRepository.findByStaffId(staffId);
+
+        return transactions.stream()
+                .filter(t -> t.getPercentageGiven() != null && t.getPercentageRecipientId() != null)
+                .filter(t -> {
+                    LocalDate d = t.getDateAsLocalDate();
+                    return !d.isBefore(from) && !d.isAfter(to);
+                })
+                .collect(Collectors.groupingBy(
+                        Transaction::getPercentageRecipientId,
+                        Collectors.summingDouble(t -> t.getAmountPaid() * (t.getPercentageGiven() / 100.0))
+                ))
+                .entrySet().stream()
+                .map(e -> {
+                    Staff staff = staffRepository.findById(e.getKey()).orElse(null);
+                    return new StaffPercentageDTO(
+                        staff != null ? staff.getName() : "Unknown", 
+                        e.getValue()
+                    );
+                })
+                .toList();
+    }
+public List<StaffPercentageDTO> getReceivedPercentsGrouped(Long staffId, LocalDate from, LocalDate to) {
+    // 1) Sum received percents coming from regular transactions (grouped by giver staffId)
+    List<Transaction> allTransactions = transactionRepository.findAll();
+
+    Map<Long, Double> receivedByGiver = allTransactions.stream()
+            .filter(t -> t.getPercentageGiven() != null
+                      && t.getPercentageRecipientId() != null
+                      && t.getPercentageRecipientId().equals(staffId))
+            .filter(t -> {
+                LocalDate d = t.getDateAsLocalDate();
+                return !d.isBefore(from) && !d.isAfter(to);
+            })
+            .collect(Collectors.groupingBy(
+                    Transaction::getStaffId,
+                    Collectors.summingDouble(t -> t.getAmountPaid() * (t.getPercentageGiven() / 100.0))
+            ));
+
+    // 2) Convert transaction-based entries to DTOs
+    List<StaffPercentageDTO> result = receivedByGiver.entrySet().stream()
+            .map(e -> {
+                Staff staff = staffRepository.findById(e.getKey()).orElse(null);
+                String name = staff != null ? staff.getName() : "Unknown";
+                return new StaffPercentageDTO(name, e.getValue());
+            })
+            .collect(Collectors.toList());
+
+    // 3) Add Katia (special-case) — sum her contribution to this recipient from katia_work table
+    //    We use your KatiaWorkService which already sums dima/tamer cuts by staffId mapping.
+    Double katiaContribution = katiaWorkService.getShareInRange(staffId, from, to);
+    if (katiaContribution != null && katiaContribution != 0.0) {
+        // Append Katia entry (name is literal since Katia is not a Staff row)
+        result.add(new StaffPercentageDTO("Katia", katiaContribution));
+    }
+
+    // optional: sort descending by value so biggest givers come first
+    result.sort((a, b) -> Double.compare(b.getValue(), a.getValue()));
+
+    return result;
+}
+
+    // Wrappers for last week / month / year
+    public List<StaffPercentageDTO> getGivenLastWeek(Long staffId) {
+        LocalDate now = LocalDate.now();
+        return getGivenPercentsGrouped(staffId, now.minusWeeks(1), now);
+    }
+    public List<StaffPercentageDTO> getGivenLastMonth(Long staffId) {
+        LocalDate now = LocalDate.now();
+        return getGivenPercentsGrouped(staffId, now.minusMonths(1), now);
+    }
+    public List<StaffPercentageDTO> getGivenLastYear(Long staffId) {
+        LocalDate now = LocalDate.now();
+        return getGivenPercentsGrouped(staffId, now.minusYears(1), now);
+    }
+
+    public List<StaffPercentageDTO> getReceivedLastWeek(Long staffId) {
+        LocalDate now = LocalDate.now();
+        return getReceivedPercentsGrouped(staffId, now.minusWeeks(1), now);
+    }
+    public List<StaffPercentageDTO> getReceivedLastMonth(Long staffId) {
+        LocalDate now = LocalDate.now();
+        return getReceivedPercentsGrouped(staffId, now.minusMonths(1), now);
+    }
+    public List<StaffPercentageDTO> getReceivedLastYear(Long staffId) {
+        LocalDate now = LocalDate.now();
+        return getReceivedPercentsGrouped(staffId, now.minusYears(1), now);
+    }
 
 }

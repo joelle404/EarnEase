@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import i18next from 'i18next';
 
 const GET_RENT = gql`
   query GetRent($staffId: ID!, $month: String!) {
@@ -45,6 +46,9 @@ export class RentComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchRent();
+  }
+      getTranslation(key: string) {
+    return i18next.t(key);
   }
   private getLoggedInStaffId(): string | null {
     const staffStr = localStorage.getItem('staff');
@@ -112,4 +116,5 @@ export class RentComponent implements OnInit {
       alert(`Default rent is ${this.newAmount}. Save button can create a new rent record.`);
     }
   }
+
 }

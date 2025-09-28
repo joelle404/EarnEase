@@ -1,0 +1,55 @@
+.chart-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 700px;
+  box-sizing: border-box;
+
+  /* Font and color */
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #002f70;
+}
+
+
+
+/* Make the chart responsive */
+ngx-charts-line-chart {
+  width: 100% !important;
+  height: 400px; /* default height */
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+  ngx-charts-line-chart {
+    height: 350px;
+  }
+}
+
+/* Small tablets / large phones */
+@media (max-width: 768px) {
+  .chart-card {
+    padding: 18px;
+  }
+  ngx-charts-line-chart {
+    height: 300px;
+  }
+}
+
+/* Phones */
+@media (max-width: 500px) {
+  .chart-card {
+    padding: 15px;
+    width: 95%;
+    max-width: 100%;
+  }
+
+  ngx-charts-line-chart {
+    height: 250px;
+  }
+}

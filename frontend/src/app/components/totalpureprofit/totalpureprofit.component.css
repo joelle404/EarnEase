@@ -1,71 +1,101 @@
-.total-spent-card {
+.total-income-card {
   background-color: #fff;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 450px;
-  margin: 20px auto;
+  max-width: 350px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .chart-container {
   position: relative;
-  display: inline-block;
-  width: 400px;
-  height: 400px;
+  width: 100%;
+  max-width: 350px;
+  aspect-ratio: 1 / 1; /* keeps chart square and responsive */
 }
 
 .total-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 1.5rem;
-  font-weight: bold;
+font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   text-align: center;
-}
-
-.total-center .subtitle {
-  font-size: 0.85rem;
-  font-weight: normal;
-  margin-top: 2px;
-  color: #555;
+  font-weight: 500;
 }
 
 .chart-legend {
-  margin-top: 1.5rem;
   width: 100%;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .chart-legend-item {
   display: flex;
   justify-content: space-between;
-  padding: 6px 12px;
-  border-radius: 8px;
-  margin-bottom: 8px;
-  background-color: #f7f7f7;
-  font-size: 0.95rem;
-  transition: background-color 0.2s ease;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background-color: #f0f2f5;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  cursor: default;
 }
 
 .chart-legend-item:hover {
-  background-color: #e0e0e0;
+  background-color: #e3e6f0;
+  transform: translateX(2px);
 }
 
-@media (max-width: 500px) {
-  .total-spent-card {
+.legend-name {
+  color: #002f70;
+  font-size: 0.9rem;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+.legend-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .total-income-card {
+    max-width: 300px;
     padding: 15px;
-    max-width: 350px;
   }
 
   .chart-container {
-    width: 300px;
-    height: 300px;
+    max-width: 300px;
   }
 
   .total-center {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .total-income-card {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .chart-container {
+    max-width: 100%;
+  }
+
+  .total-center {
+    font-size: 1rem;
+  }
+
+  .chart-legend-item {
+    padding: 6px 10px;
+  }
+
+  .legend-name, .legend-value {
+    font-size: 0.85rem;
   }
 }

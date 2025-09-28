@@ -4,22 +4,22 @@
       [view]="view"
       [results]="chartData"
       [gradient]="gradient"
-      [labels]="showLabels" 
+      [labels]="showLabels"
       [explodeSlices]="explodeSlices"
       [doughnut]="doughnut">
     </ngx-charts-pie-chart>
 
     <!-- Total spent in the center -->
     <div class="total-center">
-      <div class="subtitle">Spent</div>
+      <div>{{ getTranslation('charts.spent') }}</div>
     </div>
-  </div>
 
-  <!-- Legend with amounts -->
-  <div class="chart-legend">
-    <div *ngFor="let item of chartData" class="chart-legend-item">
-      <span>{{ item.name }}</span>
-      <span>{{ item.value |  currency:'ILS':'symbol':'1.0-0':'he-IL' }}</span>
+    <!-- Legend -->
+    <div class="chart-legend">
+      <div *ngFor="let item of chartData" class="chart-legend-item">
+        <div class="legend-name">{{ item.name }}</div>
+        <div class="legend-value">{{ item.value | currency:'ILS':'symbol':'1.0-0':'he-IL' }}</div>
+      </div>
     </div>
   </div>
 </div>

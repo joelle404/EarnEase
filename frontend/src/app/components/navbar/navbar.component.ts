@@ -12,8 +12,11 @@ import i18next from 'i18next';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
+    menuOpen = false;
   constructor() {}
-
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
   getTranslation(key: string): string {
     return i18next.t(key);
   }

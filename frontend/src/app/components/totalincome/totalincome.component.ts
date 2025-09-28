@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { Apollo, gql } from 'apollo-angular';
 import { CommonModule } from '@angular/common';
+import i18next from 'i18next';
 
 @Component({
   selector: 'app-totalincome',
@@ -11,7 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./totalincome.component.css']
 })
 export class TotalincomeComponent implements OnInit {
-  staffId = this.getLoggedInStaffId(); // Replace with dynamic staff ID
+  staffId = this.getLoggedInStaffId();
   chartData: any[] = [];
   totalIncome: number = 0;
 
@@ -27,6 +28,7 @@ export class TotalincomeComponent implements OnInit {
   ngOnInit(): void {
     this.loadChartData();
   }
+
   private getLoggedInStaffId(): string | null {
     const staffStr = localStorage.getItem('staff');
     if (staffStr) {
@@ -35,6 +37,11 @@ export class TotalincomeComponent implements OnInit {
     }
     return null;
   }
+
+  getTranslation(key: string): string {
+    return i18next.t(key);
+  }
+
   async loadChartData() {
     const LAST_WEEK_QUERY = gql`
       query GetSumLastWeek($staffId: ID!) {
@@ -77,9 +84,9 @@ export class TotalincomeComponent implements OnInit {
       this.totalIncome = weekIncome + monthIncome + yearIncome;
 
       this.chartData = [
-        { name: 'Last Week', value: weekIncome },
-        { name: 'Last Month', value: monthIncome },
-        { name: 'Last Year', value: yearIncome }
+        { name: this.getTranslation('charts.lastWeek'), value: weekIncome },
+        { name: this.getTranslation('charts.lastMonth'), value: monthIncome },
+        { name: this.getTranslation('charts.lastYear'), value: yearIncome }
       ];
     } catch (error) {
       console.error('Error loading chart data:', error);

@@ -131,5 +131,31 @@ public List<MonthlyProfitDTO> getMonthlyIncome(@Argument Long staffId) {
             .toList();
 }
 
+@QueryMapping
+public List<StaffPercentageDTO> getGivenLastWeek(@Argument Long staffId) {
+    return transactionService.getGivenLastWeek(staffId);
+}
+@QueryMapping
+public List<StaffPercentageDTO> getGivenLastMonth(@Argument Long staffId) {
+    return transactionService.getGivenLastMonth(staffId);
+}
+@QueryMapping
+public List<StaffPercentageDTO> getGivenLastYear(@Argument Long staffId) {
+    return transactionService.getGivenLastYear(staffId);
+}
+
+@QueryMapping
+public List<StaffPercentageDTO> getReceivedLastWeek(@Argument Long staffId) {
+    return transactionService.getReceivedLastWeek(staffId);
+}
+@QueryMapping
+public List<StaffPercentageDTO> getReceivedLastMonth(@Argument Long staffId) {
+    return transactionService.getReceivedLastMonth(staffId);
+}
+@QueryMapping
+public List<StaffPercentageDTO> getReceivedLastYear(@Argument Long staffId) {
+    return transactionService.getReceivedLastYear(staffId);
+}
+
 
 }

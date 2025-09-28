@@ -1,35 +1,39 @@
-import { Component, OnInit, EnvironmentInjector, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { Apollo, gql } from 'apollo-angular';
+import i18next from 'i18next';
 
 @Component({
   selector: 'app-monthly-profit',
-standalone: true,
+  standalone: true,
   imports: [NgxChartsModule],
   templateUrl: './monthly-profit.component.html',
   styleUrls: ['./monthly-profit.component.css']
 })
 export class MonthlyProfitComponent implements OnInit {
-
-  staffId = 5; // Replace with the actual staff ID
+  staffId = 5; // Replace with dynamic staff ID
   chartData: any[] = [];
 
   // Chart options
-  view: [number, number] = [700, 400];
+  view: [number, number] = [600, 400];
   showXAxis = true;
   showYAxis = true;
   gradient = false;
   showLegend = true;
   showXAxisLabel = true;
   showYAxisLabel = true;
-  xAxisLabel = 'Month';
-  yAxisLabel = 'Amount';
+  xAxisLabel = this.getTranslation('charts.month');
+  yAxisLabel = this.getTranslation('charts.amount');
   autoScale = true;
 
   constructor(private apollo: Apollo) {}
 
   ngOnInit(): void {
     this.loadChartData();
+  }
+
+  getTranslation(key: string): string {
+    return i18next.t(key);
   }
 
   async loadChartData() {
@@ -75,20 +79,20 @@ export class MonthlyProfitComponent implements OnInit {
 
       this.chartData = [
         {
-          name: 'Income',
+          name: this.getTranslation('charts.income'),
           series: incomeData.map(i => ({ name: i.month, value: i.profit }))
         },
         {
-          name: 'Expenses',
+          name: this.getTranslation('charts.expenses'),
           series: expensesData.map(e => ({ name: e.month, value: e.amount }))
         },
         {
-          name: 'Profit',
+          name: this.getTranslation('charts.profit'),
           series: profitData.map(p => ({ name: p.month, value: p.profit }))
         }
       ];
     } catch (error) {
-      console.error('Error loading chart data:', error);
+      console.error('Error loading monthly profit data:', error);
     }
   }
 }

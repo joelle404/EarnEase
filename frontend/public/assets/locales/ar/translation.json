@@ -1,14 +1,98 @@
 {
+  "charts": {
+    "income": "الدخل",
+    "expenses": "المصروفات",
+    "profit": "الربح",
+    "month": "الشهر",
+    "amount": "المبلغ",
+        "spent": "المصروف",
+    "pureProfit": "الربح الصافي",
+    "lastWeek": "الأسبوع الماضي",
+    "lastMonth": "الشهر الماضي",
+    "lastYear": "السنة الماضية",
+      "given": "تم إعطاؤه للآخرين",
+  "received": "تم استلامه من الآخرين"
+  },
   "navbar": {
     "dashboard": "لوحة التحكم",
     "clients": "العملاء",
     "expenses": "المصروفات",
     "reports": "التقارير",
-    "settings": "الإعدادات"
+    "settings": "الإعدادات",
+      "staff": "الموظف"
+
   },
   "settings": {
     "title": "الإعدادات",
     "language": "اللغة",
     "logout": "تسجيل الخروج"
+  },  "transactions": {
+    "searchClient": "ابحث باسم العميل",
+    "clientName": "اسم العميل",
+    "date": "التاريخ",
+    "time": "الوقت",
+    "serviceType": "نوع الخدمة",
+    "price": "السعر",
+    "percentageFor": "النسبة لـ",
+    "percentageValue": "قيمة النسبة",
+    "selectService": "اختر الخدمة",
+    "selectStaff": "اختر الموظف",
+    "amountPaid": "المبلغ المدفوع",
+    "addTransaction": "إضافة عملية"
+  },
+  "pagination": {
+    "prev": "السابق",
+    "next": "التالي",
+    "page": "الصفحة   "
+  },
+    "placeholders": {
+    "searchByProduct": "ابحث عن المنتج",
+    "productName": "اسم المنتج",
+    "amountSpent": "المبلغ"
+  },
+  "tableHeaders": {
+    "productName": "اسم المنتج",
+    "amountSpent": "المبلغ المصروف",
+    "date": "التاريخ"
+  },
+  "buttons": {
+    "prev": "السابق",
+    "next": "التالي",
+    "addPurchase": "إضافة مصروف"
+  },
+  "labels": {
+    "page": "صفحة",
+    "of": "من",
+      "loading": "جار التحميل..."
+  },
+  
+    "katiaWork": {
+    "title": "عمل كاتيا",
+    "clientName": "اسم العميل",
+    "clientNamePlaceholder": "أدخل الاسم الكامل للعميل",
+    "serviceDate": "تاريخ الخدمة",
+    "grossAmount": "المبلغ الإجمالي",
+    "grossAmountPlaceholder": "إجمالي المبلغ المحصل",
+    "tamerPercent": "نسبة تامر %",
+    "tamerPercentPlaceholder": "النسبة لتامر",
+    "addWork": "إضافة عمل",
+    "table": {
+      "date": "التاريخ",
+      "client": "العميل",
+      "gross": "الإجمالي",
+      "dimaCut": "ديما 25%",
+      "tamerPercent": "نسبة تامر %",
+      "tamerCut": "حصة تامر",
+      "katiaNet": "صافي كاتيا"
+    }
+  },
+    "rent": {
+    "loading": "جارٍ تحميل الإيجار...",
+    "error": "حدث خطأ",
+    "title": "الإيجار لـ",
+    "currentRent": "الإيجار الحالي",
+    "enterAmount": "أدخل مبلغ الإيجار",
+    "paidOn": "تم الدفع في",
+    "notPaid": "لم يتم الدفع لهذا الشهر بعد"
   }
 }

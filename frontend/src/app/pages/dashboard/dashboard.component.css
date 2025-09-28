@@ -1,51 +1,69 @@
-/* Dashboard wrapper */
-div {
-    margin-top: 80px;
+/* Dashboard grid layout */
+.dashboard-grid {
+  margin-top: 80px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   padding: 20px;
-  max-width: 1400px;
-  margin: 0 auto;
 }
 
-/* Card wrapper for each component */
-app-totalspent,
-app-totalincome,
-app-totalpureprofit,
-app-monthly-profit {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+/* Card styling */
+.dashboard-card {
+  background-color: #fff;
+  border-radius: 12px;
   padding: 20px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-/* Navbar stays fixed at the top */
-app-navbar {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  display: block;
-  width: 100%;
-  background: #3f526d; /* your unified theme */
-  color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Adjust for smaller screens */
+/* Monthly card spans 2 columns on large screens */
+.monthly-card {
+  grid-column: span 2;
+}
+
+/* Responsive adjustments */
+
+/* Tablets (medium screens) */
 @media (max-width: 768px) {
-  div {
-    grid-template-columns: 1fr;
-    padding: 10px;
+  .dashboard-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
   }
 
-  app-totalspent,
-  app-totalincome,
-  app-totalpureprofit,
-  app-monthly-profit {
+  .monthly-card {
+    grid-column: span 1; /* single column on small tablets */
+  }
+
+  .dashboard-card {
+    padding: 18px;
+  }
+}
+
+/* Phones (small screens) */
+@media (max-width: 500px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr; /* stack cards vertically */
+    margin-top: 30px;
+    padding: 10px;
+    gap: 12px;
+    justify-items: center; /* center cards horizontally */
+  }
+
+  .dashboard-card {
+    width: 100%; /* take full width */
+    max-width: 350px; /* optional max width for better look */
     padding: 15px;
+  }
+
+  .monthly-card {
+    grid-column: span 1; /* single column */
   }
 }

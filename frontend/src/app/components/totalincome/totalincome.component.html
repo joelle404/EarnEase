@@ -11,15 +11,14 @@
 
     <!-- Total income in the center -->
     <div class="total-center">
-      <div class="subtitle">Income</div>
+      <div>{{ getTranslation('charts.income') }}</div>
     </div>
-  </div>
 
-  <!-- Legend with amounts -->
-  <div class="chart-legend">
-    <div *ngFor="let item of chartData" class="chart-legend-item">
-      <span>{{ item.name }}</span>
-      <span>{{ item.value | currency:'ILS':'symbol':'1.0-0':'he-IL' }}</span>
+    <div class="chart-legend">
+      <div *ngFor="let item of chartData" class="chart-legend-item">
+        <div class="legend-name">{{ item.name }}</div>
+        <div class="legend-value">{{ item.value | currency:'ILS':'symbol':'1.0-0':'he-IL' }}</div>
+      </div>
     </div>
   </div>
 </div>

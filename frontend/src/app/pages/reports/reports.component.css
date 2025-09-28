@@ -1,0 +1,203 @@
+/* Container */
+.reports-container {
+  max-width: 1200px;
+  margin: 5rem auto 20px; /* pushed below navbar */
+  padding: 0 20px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #002f70;
+}
+
+/* Page title */
+.reports-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #002f70;
+}
+
+/* Filters / buttons */
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.filters button {
+  padding: 8px 16px;
+  border: 1px solid #002f70;
+  background-color: #fff;
+  color: #002f70;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filters button:hover {
+  background-color: #002f70;
+  color: #fff;
+}
+
+.filters button.active {
+  background-color: #002f70;
+  color: #fff;
+}
+
+/* Loading text */
+.loading {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  margin: 20px 0;
+}
+
+/* Summary cards */
+.summary {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.summary-card {
+  flex: 1 1 200px;
+  background-color: #f5f7fa;
+  border: 1px solid #d1d9e0;
+  border-radius: 12px;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+
+.summary-card:hover {
+  transform: translateY(-5px);
+}
+
+.summary-card h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #002f70;
+}
+
+.summary-card p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #002f70;
+}
+
+/* Tables */
+.tables {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
+}
+
+.table-card {
+  flex: 1 1 500px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  padding: 20px;
+  overflow-x: auto; /* horizontal scroll for small screens */
+}
+
+.table-card h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #002f70;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 500px; /* prevents too narrow columns */
+  font-size: 0.9rem;
+}
+
+table th, table td {
+  padding: 10px;
+  text-align: left;
+}
+
+table thead {
+  background-color: #002f70;
+  color: #fff;
+  font-weight: 600;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f5f7fa;
+}
+
+table tbody tr:hover {
+  background-color: #e1e6f0;
+}
+
+/* Responsive tweaks */
+@media (max-width: 1024px) {
+  .summary {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .tables {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  table {
+    min-width: 400px;
+  }
+}
+
+@media (max-width: 868px) {
+  .summary {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tables {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  table {
+    min-width: 300px;
+    font-size: 0.85rem;
+  }
+
+  .filters button {
+    font-size: 0.85rem;
+    padding: 6px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .reports-container {
+    margin: 5rem 10px;
+    padding: 10px;
+  }
+
+  table {
+    min-width: 280px; /* scrollable still works */
+    font-size: 0.8rem;
+  }
+
+  .filters button {
+    font-size: 0.8rem;
+    padding: 5px 6px;
+  }
+
+  .summary-card {
+    width: 90%;
+  }
+
+  .table-card {
+    width: 100%;
+  }
+}

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { Apollo, gql } from 'apollo-angular';
 import { CommonModule } from '@angular/common';
+import i18next from 'i18next';
 
 @Component({
   selector: 'app-totalpureprofit',
@@ -11,7 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./totalpureprofit.component.css']
 })
 export class TotalpureprofitComponent implements OnInit {
-  staffId = this.getLoggedInStaffId(); // Replace with dynamic staff ID
+  staffId = this.getLoggedInStaffId();
   chartData: any[] = [];
   totalPureProfit: number = 0;
 
@@ -27,13 +28,18 @@ export class TotalpureprofitComponent implements OnInit {
   ngOnInit(): void {
     this.loadChartData();
   }
-    private getLoggedInStaffId(): string | null {
+
+  private getLoggedInStaffId(): string | null {
     const staffStr = localStorage.getItem('staff');
     if (staffStr) {
       const staff = JSON.parse(staffStr);
       return staff.id;
     }
     return null;
+  }
+
+  getTranslation(key: string): string {
+    return i18next.t(key);
   }
 
   async loadChartData() {
@@ -78,9 +84,9 @@ export class TotalpureprofitComponent implements OnInit {
       this.totalPureProfit = weekProfit + monthProfit + yearProfit;
 
       this.chartData = [
-        { name: 'Last Week', value: weekProfit },
-        { name: 'Last Month', value: monthProfit },
-        { name: 'Last Year', value: yearProfit }
+        { name: this.getTranslation('charts.lastWeek'), value: weekProfit },
+        { name: this.getTranslation('charts.lastMonth'), value: monthProfit },
+        { name: this.getTranslation('charts.lastYear'), value: yearProfit }
       ];
     } catch (error) {
       console.error('Error loading pure profit data:', error);

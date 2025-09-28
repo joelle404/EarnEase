@@ -1,14 +1,100 @@
 {
-    "navbar": {
+  "charts": {
+        "income": "Income",
+    "expenses": "Expenses",
+    "profit": "Profit",
+    "month": "Month",
+    "amount": "Amount",
+    "spent": "Spent",
+    "pureProfit": "Pure Profit",
+    "lastWeek": "Last Week",
+    "lastMonth": "Last Month",
+    "lastYear": "Last Year"
+  },
+  "navbar": {
     "dashboard": "Dashboard",
     "clients": "Clients",
     "expenses": "Expenses",
     "reports": "Reports",
-    "settings": "Settings"
+    "settings": "Settings",
+        "staff": "Staff"
+
   },
-    "settings": {
+  "settings": {
     "title": "Settings",
     "language": "Language",
     "logout": "Logout"
+  },
+    "transactions": {
+    "searchClient": "Search by client name",
+    "clientName": "Client Name",
+    "date": "Date",
+    "time": "Time",
+    "serviceType": "Service Type",
+    "price": "Price",
+    "percentageFor": "Percentage For",
+    "percentageValue": "Percentage Value",
+    "selectService": "Select service",
+    "selectStaff": "Select staff",
+    "amountPaid": "Amount Paid",
+    "addTransaction": "Add Transaction",
+        "given": "Given to Others",
+    "received": "Received from Others"
+  },
+  "pagination": {
+    "prev": "Prev",
+    "next": "Next",
+    "page": "Page "
+  },
+    "placeholders": {
+    "searchByProduct": "Search by product name",
+    "productName": "Product Name",
+    "amountSpent": "Amount"
+  },
+  "tableHeaders": {
+    "productName": "Product Name",
+    "amountSpent": "Amount Spent",
+    "date": "Date"
+  },
+  "buttons": {
+    "prev": "Prev",
+    "next": "Next",
+    "addPurchase": "Add Purchase"
+  },
+  "labels": {
+    "page": "Page",
+    "of": "of",
+        "loading": "Loading..."
+
+  },
+
+  "katiaWork": {
+    "title": "Katia's Work",
+    "clientName": "Client Name",
+    "clientNamePlaceholder": "Enter client full name",
+    "serviceDate": "Service Date",
+    "grossAmount": "Gross Amount",
+    "grossAmountPlaceholder": "Total amount charged",
+    "tamerPercent": "Tamer %",
+    "tamerPercentPlaceholder": "Percentage for Tamer",
+    "addWork": "Add Work",
+    "table": {
+      "date": "Date",
+      "client": "Client",
+      "gross": "Gross",
+      "dimaCut": "Dima 25%",
+      "tamerPercent": "Tamer %",
+      "tamerCut": "Tamer Cut",
+      "katiaNet": "Katia Net"
+    }
+  },
+    "rent": {
+    "loading": "Loading rent...",
+    "error": "Error",
+    "title": "Rent for",
+    "currentRent": "Current Rent",
+    "enterAmount": "Enter rent amount",
+    "paidOn": "Paid on",
+    "notPaid": "Not yet paid this month"
   }
 }

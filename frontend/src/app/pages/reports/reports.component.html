@@ -1,2 +1,75 @@
 <app-navbar></app-navbar>
 
+<div class="reports-container">
+
+  <div class="filters">
+    <button (click)="changePeriod('week')" [class.active]="period==='week'">
+      {{ getTranslation('charts.lastWeek') }}
+    </button>
+    <button (click)="changePeriod('month')" [class.active]="period==='month'">
+      {{ getTranslation('charts.lastMonth') }}
+    </button>
+    <button (click)="changePeriod('year')" [class.active]="period==='year'">
+      {{ getTranslation('charts.lastYear') }}
+    </button>
+  </div>
+
+  <div *ngIf="loading" class="loading">{{ getTranslation('labels.loading') }}</div>
+
+  <!-- Summary -->
+  <div class="summary" *ngIf="!loading">
+    <div class="summary-card">
+      <h3>{{ getTranslation('charts.profit') }}</h3>
+      <p>{{ profit | number:'1.2-2' }}</p>
+    </div>
+    <div class="summary-card">
+      <h3>{{ getTranslation('charts.income') }}</h3>
+      <p>{{ income | number:'1.2-2' }}</p>
+    </div>
+    <div class="summary-card">
+      <h3>{{ getTranslation('charts.expenses') }}</h3>
+      <p>{{ expenses | number:'1.2-2' }}</p>
+    </div>
+  </div>
+
+  <!-- Reports tables -->
+  <div class="tables">
+    <div class="table-card">
+      <h3>{{ getTranslation('charts.given') }}</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>{{ getTranslation('navbar.staff') }}</th>
+            <th>{{ getTranslation('charts.amount') }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of givenData">
+            <td>{{ row.staffName }}</td>
+            <td>{{ row.value | number:'1.2-2' | currency:'ILS':'symbol':'1.0-0':'he-IL' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-card">
+      <h3>{{ getTranslation('charts.received') }}</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>{{ getTranslation('navbar.staff') }}</th>
+            <th>{{ getTranslation('charts.amount') }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of receivedData">
+            <td>{{ row.staffName }}</td>
+            <td>{{ row.value | number:'1.2-2' | currency:'ILS':'symbol':'1.0-0':'he-IL' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<app-rent  *ngIf="getLoggedInStaffName() === 'tamer'"></app-rent>

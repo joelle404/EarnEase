@@ -9,17 +9,17 @@
       [doughnut]="doughnut">
     </ngx-charts-pie-chart>
 
-    <!-- Total pure profit in the center -->
+    <!-- Pure Profit in the center -->
     <div class="total-center">
-      <div class="subtitle">Pure Profit</div>
+      <div>{{ getTranslation('charts.pureProfit') }}</div>
     </div>
-  </div>
 
-  <!-- Legend with amounts -->
-  <div class="chart-legend">
-    <div *ngFor="let item of chartData" class="chart-legend-item">
-      <span>{{ item.name }}</span>
-      <span>{{ item.value | currency:'ILS':'symbol':'1.0-0':'he-IL' }}</span>
+    <!-- Legend -->
+    <div class="chart-legend">
+      <div *ngFor="let item of chartData" class="chart-legend-item">
+        <div class="legend-name">{{ item.name }}</div>
+        <div class="legend-value">{{ item.value | currency:'ILS':'symbol':'1.0-0':'he-IL' }}</div>
+      </div>
     </div>
   </div>
 </div>

@@ -1,34 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { Apollo, gql } from 'apollo-angular';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import localeHe from '@angular/common/locales/he';
-import { registerLocaleData } from '@angular/common';
+import i18next from 'i18next';
 
 registerLocaleData(localeHe, 'he-IL');
+
 @Component({
   selector: 'app-totalspent',
   standalone: true,
-  imports: [NgxChartsModule],
+  imports: [NgxChartsModule, CommonModule],
   templateUrl: './totalspent.component.html',
   styleUrls: ['./totalspent.component.css']
 })
 export class TotalspentComponent implements OnInit {
-  staffId = this.getLoggedInStaffId(); // Replace with actual staff ID
+  staffId = this.getLoggedInStaffId();
   chartData: any[] = [];
   totalSpent: number = 0;
 
   view: [number, number] = [400, 400];
   gradient = false;
   showLegend = true;
-showLabels = true;
+  showLabels = true;
   explodeSlices = false;
-  doughnut = true; // This makes it a donut chart
+  doughnut = true;
 
   constructor(private apollo: Apollo) {}
 
   ngOnInit(): void {
     this.loadChartData();
   }
+
   private getLoggedInStaffId(): string | null {
     const staffStr = localStorage.getItem('staff');
     if (staffStr) {
@@ -37,6 +40,11 @@ showLabels = true;
     }
     return null;
   }
+
+  getTranslation(key: string): string {
+    return i18next.t(key);
+  }
+
   async loadChartData() {
     const LAST_WEEK_QUERY = gql`
       query GetSumPurchasesLastWeek($staffId: ID!) {
@@ -79,12 +87,12 @@ showLabels = true;
       this.totalSpent = weekSpent + monthSpent + yearSpent;
 
       this.chartData = [
-        { name: 'Last Week', value: weekSpent },
-        { name: 'Last Month', value: monthSpent },
-        { name: 'Last Year', value: yearSpent }
+        { name: this.getTranslation('charts.lastWeek'), value: weekSpent },
+        { name: this.getTranslation('charts.lastMonth'), value: monthSpent },
+        { name: this.getTranslation('charts.lastYear'), value: yearSpent }
       ];
     } catch (error) {
-      console.error('Error loading chart data:', error);
+      console.error('Error loading spent data:', error);
     }
   }
 }

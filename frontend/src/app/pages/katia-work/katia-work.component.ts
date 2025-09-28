@@ -3,6 +3,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Apollo, gql } from 'apollo-angular';
+import i18next from 'i18next';
 
 @Component({
   selector: 'app-katia-work',
@@ -74,5 +75,8 @@ export class KatiaWorkComponent implements OnInit {
       // reset form
       this.newWork = { clientName: '', serviceDate: '', grossAmount: 0, tamerPercent: 0 };
     });
+  }
+   getTranslation(key: string) {
+    return i18next.t(key);
   }
 }

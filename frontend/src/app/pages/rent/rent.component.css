@@ -1,13 +1,74 @@
-input {
-  padding: 5px;
-  width: 150px;
-  margin-right: 10px;
+/* Container styling */
+.rent-container {
+  background-color: #ffffff; /* card white background */
+  border: 1px solid #e0e0e0; /* subtle border */
+  border-radius: 12px; /* rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* soft shadow */
+  padding: 1.5rem;
+  margin: 1rem 0;
+  max-width: 600px;
 }
 
-button {
-  padding: 5px 10px;
+/* Loading text */
+.rent-container .loading {
+  font-size: 1rem;
+  color: #3f526d; /* primary theme color */
 }
 
-h2 {
-  margin-bottom: 10px;
+/* Error text */
+.rent-container .error {
+  font-size: 0.95rem;
+  color: #d9534f; /* red for errors */
+  margin-bottom: 1rem;
+}
+
+/* Title */
+.rent-container h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #3f526d; /* primary theme color */
+  margin-bottom: 1rem;
+}
+
+/* Form group */
+.rent-container .form-group {
+  margin-bottom: 1rem;
+}
+
+.rent-container label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #3f526d; /* label color */
+}
+
+/* Input styling */
+.rent-container input[type="number"] {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #cfd3db;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.rent-container input[type="number"]:focus {
+  border-color: #3f526d;
+  box-shadow: 0 0 0 2px rgba(63, 82, 109, 0.2);
+}
+
+/* Paid / Not Paid text */
+.rent-container p {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.rent-container p span {
+  font-weight: 600;
+}
+
+.rent-container .not-paid {
+  color: #6c757d; /* gray italic */
+  font-style: italic;
 }

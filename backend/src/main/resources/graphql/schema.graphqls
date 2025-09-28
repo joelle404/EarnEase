@@ -101,7 +101,15 @@ getSumLastYear(staffId: ID!): Float!
   getMonthlyIncome(staffId: ID!): [MonthlyProfitDTO]
   getTotalIncome(staffId: ID!): Float
 
+  # === Given percentages ===
+  getGivenLastWeek(staffId: ID!): [StaffPercentageDTO!]!
+  getGivenLastMonth(staffId: ID!): [StaffPercentageDTO!]!
+  getGivenLastYear(staffId: ID!): [StaffPercentageDTO!]!
 
+  # === Received percentages ===
+  getReceivedLastWeek(staffId: ID!): [StaffPercentageDTO!]!
+  getReceivedLastMonth(staffId: ID!): [StaffPercentageDTO!]!
+  getReceivedLastYear(staffId: ID!): [StaffPercentageDTO!]!
   getServicesByStaffId(staffId: ID!): [Service!]!
 
     getAllKatiaWork: [KatiaWork!]!
@@ -171,4 +179,9 @@ input KatiaWorkInput {
     serviceDate: String!
     grossAmount: Float!
     tamerPercent: Float!
+}
+
+type StaffPercentageDTO {
+  staffName: String!
+  value: Float!
 }

@@ -5,6 +5,8 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { KatiaWorkComponent } from '../katia-work/katia-work.component';
+import i18next from 'i18next';
+
 @Component({
   selector: 'app-clients',
   standalone: true,
@@ -12,26 +14,28 @@ import { KatiaWorkComponent } from '../katia-work/katia-work.component';
     NavbarComponent,
     CommonModule,
     FormsModule,
-    KatiaWorkComponent,
+    KatiaWorkComponent
   ],
   templateUrl: './clients.component.html',
   styleUrls: ['./clients.component.css']
 })
 export class ClientsComponent implements OnInit {
   lastWeekTotal: number = 0;
-lastMonthTotal: number = 0;
-lastYearTotal: number = 0;
+  lastMonthTotal: number = 0;
+  lastYearTotal: number = 0;
 
   searchTerm: string = '';
   page = 1;
-pageSize = 10; // rows per page
+  pageSize = 10;
   Math = Math;
+
   transactions: any[] = [];
-  services: any[] = []; // services for the logged-in staff
+  services: any[] = [];
   staff: any[] = [];
+
   newTransaction = {
     clientName: '',
-    staffId: '',   // auto-filled from localStorage
+    staffId: '',
     serviceId: '',
     amountPaid: 0,
     percentageGiven: 0,
@@ -47,7 +51,10 @@ pageSize = 10; // rows per page
     this.loadStaffServices();
     this.loadStaff();
     this.loadTransactionSums();
+  }
 
+  getTranslation(key: string) {
+    return i18next.t(key);
   }
 
   private getLoggedInStaffId(): string | null {
@@ -58,18 +65,18 @@ pageSize = 10; // rows per page
     }
     return null;
   }
-get filteredTransactions() {
-  if (!this.searchTerm) {
-    return this.transactions;
+
+  get filteredTransactions() {
+    if (!this.searchTerm) return this.transactions;
+    return this.transactions.filter(tx =>
+      tx.clientName?.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
   }
-  return this.transactions.filter(tx =>
-    tx.clientName?.toLowerCase().includes(this.searchTerm.toLowerCase())
-  );
-}
-private formatDateTime(): string {
-  const date = new Date(this.newTransaction.date);
-  return date.toISOString().split("T")[0];
-}
+
+  private formatDateTime(): string {
+    const date = new Date(this.newTransaction.date);
+    return date.toISOString().split("T")[0];
+  }
 
   addTransaction() {
     const CREATE_TRANSACTION = gql`
@@ -106,30 +113,28 @@ private formatDateTime(): string {
       }
     `;
 
-    // Attach staffId automatically
     this.newTransaction.staffId = this.getLoggedInStaffId() || '';
-const recipientId = this.newTransaction.percentageRecipientId || null;
+    const recipientId = this.newTransaction.percentageRecipientId || null;
 
-this.apollo.mutate({
-  mutation: CREATE_TRANSACTION,
-  variables: {
-    clientName: this.newTransaction.clientName,
-    staffId: this.newTransaction.staffId,
-    serviceId: this.newTransaction.serviceId,
-    amountPaid: this.newTransaction.amountPaid,
-    percentageGiven: this.newTransaction.percentageGiven,
-    percentageRecipientId: recipientId,
-    date: this.formatDateTime(),
-    time: this.newTransaction.time
-  }
-}).subscribe((result: any) => {
-  // Make a **copy** before pushing, because Apollo objects are sometimes frozen
-  this.transactions = [...this.transactions, { ...result.data.createTransaction }];
-});
+    this.apollo.mutate({
+      mutation: CREATE_TRANSACTION,
+      variables: {
+        clientName: this.newTransaction.clientName,
+        staffId: this.newTransaction.staffId,
+        serviceId: this.newTransaction.serviceId,
+        amountPaid: this.newTransaction.amountPaid,
+        percentageGiven: this.newTransaction.percentageGiven,
+        percentageRecipientId: recipientId,
+        date: this.formatDateTime(),
+        time: this.newTransaction.time
+      }
+    }).subscribe((result: any) => {
+      this.transactions = [...this.transactions, { ...result.data.createTransaction }];
+    });
 
     this.newTransaction = {
       clientName: '',
-      staffId: this.getLoggedInStaffId() || '', // keep logged-in staff
+      staffId: this.getLoggedInStaffId() || '',
       serviceId: '',
       amountPaid: 0,
       percentageGiven: 0,
@@ -137,67 +142,66 @@ this.apollo.mutate({
       date: '',
       time: ''
     };
-
   }
-loadTransactionSums() {
-  const staffId = this.getLoggedInStaffId();
-  if (!staffId) return;
 
-  const GET_SUMS = gql`
-    query GetTransactionSums($staffId: ID!) {
-      getSumLastWeek(staffId: $staffId)
-      getSumLastMonth(staffId: $staffId)
-      getSumLastYear(staffId: $staffId)
-    }
-  `;
+  loadTransactionSums() {
+    const staffId = this.getLoggedInStaffId();
+    if (!staffId) return;
 
-  this.apollo.watchQuery({
-    query: GET_SUMS,
-    variables: { staffId }
-  }).valueChanges.subscribe((res: any) => {
-    this.lastWeekTotal = res.data.getSumLastWeek;
-    this.lastMonthTotal = res.data.getSumLastMonth;
-    this.lastYearTotal = res.data.getSumLastYear;
-  });
-}
-
-loadTransactions() {
-  const staffId = this.getLoggedInStaffId();
-  console.log(staffId);
-  if (!staffId) return;
-
-  const GET_ALL = gql`
-    query AllTransactions($staffId: ID!) {
-      allTransactions(staffId: $staffId) {
-        id
-        clientName
-        staffId
-        serviceId
-        amountPaid
-        percentageGiven
-        percentageRecipientId
-        date
-        time
+    const GET_SUMS = gql`
+      query GetTransactionSums($staffId: ID!) {
+        getSumLastWeek(staffId: $staffId)
+        getSumLastMonth(staffId: $staffId)
+        getSumLastYear(staffId: $staffId)
       }
-    }
-  `;
+    `;
 
-  this.apollo.watchQuery({
-    query: GET_ALL,
-    variables: { staffId }
-  }).valueChanges.subscribe((res: any) => {
-    this.transactions = res.data.allTransactions;
-  });
-}
-
-getLoggedInStaffName(): string | null {
-  const staffStr = localStorage.getItem('staff');
-  if (staffStr) {
-    const staff = JSON.parse(staffStr);
-    return staff.name;
+    this.apollo.watchQuery({
+      query: GET_SUMS,
+      variables: { staffId }
+    }).valueChanges.subscribe((res: any) => {
+      this.lastWeekTotal = res.data.getSumLastWeek;
+      this.lastMonthTotal = res.data.getSumLastMonth;
+      this.lastYearTotal = res.data.getSumLastYear;
+    });
   }
-  return null;
-}
+
+  loadTransactions() {
+    const staffId = this.getLoggedInStaffId();
+    if (!staffId) return;
+
+    const GET_ALL = gql`
+      query AllTransactions($staffId: ID!) {
+        allTransactions(staffId: $staffId) {
+          id
+          clientName
+          staffId
+          serviceId
+          amountPaid
+          percentageGiven
+          percentageRecipientId
+          date
+          time
+        }
+      }
+    `;
+
+    this.apollo.watchQuery({
+      query: GET_ALL,
+      variables: { staffId }
+    }).valueChanges.subscribe((res: any) => {
+      this.transactions = res.data.allTransactions;
+    });
+  }
+
+  getLoggedInStaffName(): string | null {
+    const staffStr = localStorage.getItem('staff');
+    if (staffStr) {
+      const staff = JSON.parse(staffStr);
+      return staff.name;
+    }
+    return null;
+  }
 
   loadStaffServices() {
     const staffId = this.getLoggedInStaffId();
@@ -237,15 +241,12 @@ getLoggedInStaffName(): string | null {
   }
 
   onServiceChange() {
-    const selectedService = this.services.find(
-      s => s.id === this.newTransaction.serviceId
-    );
+    const selectedService = this.services.find(s => s.id === this.newTransaction.serviceId);
     if (selectedService) {
       this.newTransaction.amountPaid = selectedService.basePrice;
     }
   }
 
-  // Optional: helper to display names instead of IDs
   getStaffNameById(id: string) {
     const staff = this.staff.find(s => s.id === id);
     return staff ? staff.name : id;
