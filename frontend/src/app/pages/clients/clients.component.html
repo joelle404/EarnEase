@@ -22,15 +22,20 @@
     </thead>
 
     <tbody>
-      <tr *ngFor="let transaction of filteredTransactions | slice:(page-1)*pageSize:(page*pageSize)">
-        <td [attr.data-label]="getTranslation('transactions.clientName')">{{ transaction.clientName }}</td>
-        <td [attr.data-label]="getTranslation('transactions.date')">{{ transaction.date | date:'yyyy-MM-dd' }}</td>
-        <td [attr.data-label]="getTranslation('transactions.time')">{{ transaction.time }}</td>
-        <td [attr.data-label]="getTranslation('transactions.serviceType')">{{ getServiceNameById(transaction.serviceId) }}</td>
-        <td [attr.data-label]="getTranslation('transactions.price')">{{ transaction.amountPaid | currency:'ILS':'symbol':'1.0-0':'he-IL' }}</td>
-        <td [attr.data-label]="getTranslation('transactions.percentageFor')">{{ getStaffNameById(transaction.percentageRecipientId) || '-' }}</td>
-        <td [attr.data-label]="getTranslation('transactions.percentageValue')">{{ transaction.percentageGiven }}%</td>
-      </tr>
+<tr *ngFor="let transaction of filteredTransactions | slice:(page-1)*pageSize:(page*pageSize)"[class.shake]="deleteMode"[class.shake-row]="deleteMode">
+  <td [attr.data-label]="getTranslation('transactions.clientName')">{{ transaction.clientName }}</td>
+  <td [attr.data-label]="getTranslation('transactions.date')">{{ transaction.date | date:'yyyy-MM-dd' }}</td>
+  <td [attr.data-label]="getTranslation('transactions.time')">{{ transaction.time }}</td>
+  <td [attr.data-label]="getTranslation('transactions.serviceType')">{{ getServiceNameById(transaction.serviceId) }}</td>
+  <td [attr.data-label]="getTranslation('transactions.price')">{{ transaction.amountPaid | currency:'ILS':'symbol':'1.0-0':'he-IL' }}</td>
+  <td [attr.data-label]="getTranslation('transactions.percentageFor')">{{ getStaffNameById(transaction.percentageRecipientId) || '-' }}</td>
+  <td [attr.data-label]="getTranslation('transactions.percentageValue')">{{ transaction.percentageGiven }}%</td>
+  
+  <!-- Delete icon shown only in delete mode and on hover -->
+  <td class="delete-cell" *ngIf="deleteMode">
+    <span class="delete-x" (click)="deleteTransaction(transaction.id)">❌</span>
+  </td>
+</tr>
 
       <tr>
         <td [attr.data-label]="getTranslation('transactions.clientName')">
@@ -72,7 +77,15 @@
     <button (click)="page = page + 1" [disabled]="page >= Math.ceil(transactions.length / pageSize)">{{ getTranslation('pagination.next') }}</button>
   </div>
 
-  <button class="add-btn" (click)="addTransaction()">{{ getTranslation('transactions.addTransaction') }}</button>
+<div class="actions">
+  <button class="add-btn" (click)="addTransaction()">
+    {{ getTranslation('transactions.addTransaction') }}
+  </button>
+
+  <button class="delete-btn" (click)="toggleDeleteMode()">
+    {{ deleteMode ? getTranslation('transactions.exitDeleteMode') : getTranslation('transactions.deleteTransaction') }}
+  </button>
+</div>
 </div>
 
 <div *ngIf="getLoggedInStaffName() === 'dima'" class="katia-work-section p-4 border rounded shadow mt-6">

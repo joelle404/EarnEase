@@ -11,7 +11,7 @@ import i18next from 'i18next';
   styleUrls: ['./monthly-profit.component.css']
 })
 export class MonthlyProfitComponent implements OnInit {
-  staffId = 5; // Replace with dynamic staff ID
+  staffId = this. getLoggedInStaffId(); // Replace with dynamic staff ID
   chartData: any[] = [];
 
   // Chart options
@@ -34,6 +34,14 @@ export class MonthlyProfitComponent implements OnInit {
 
   getTranslation(key: string): string {
     return i18next.t(key);
+  }
+  private getLoggedInStaffId(): string | null {
+    const staffStr = localStorage.getItem('staff');
+    if (staffStr) {
+      const staff = JSON.parse(staffStr);
+      return staff.id;
+    }
+    return null;
   }
 
   async loadChartData() {

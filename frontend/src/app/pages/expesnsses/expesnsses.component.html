@@ -18,11 +18,17 @@
     </thead>
     <tbody>
       <!-- Existing Purchases -->
-      <tr *ngFor="let purchase of filteredPurchases | slice:(page-1)*pageSize:(page*pageSize)">
-        <td>{{ purchase.productName }}</td>
-        <td>{{ purchase.amountSpent | currency:'ILS':'symbol':'1.0-0':'he-IL' }}</td>
-        <td>{{ purchase.date | date:'yyyy-MM-dd' }}</td>
-      </tr>
+<tr *ngFor="let purchase of filteredPurchases | slice:(page-1)*pageSize:(page*pageSize)" 
+    [class.shake-row]="deleteMode">
+  <td>{{ purchase.productName }}</td>
+  <td>{{ purchase.amountSpent | currency:'ILS':'symbol':'1.0-0':'he-IL' }}</td>
+  <td>{{ purchase.date | date:'yyyy-MM-dd' }}</td>
+
+  <td class="delete-cell">
+    <span class="delete-x" *ngIf="deleteMode" (click)="deletePurchase(purchase.id)">❌</span>
+  </td>
+</tr>
+
 
       <!-- Input Row -->
       <tr>
@@ -52,7 +58,13 @@
     </button>
   </div>
 
+<div class="buttons-row">
   <button class="add-btn" (click)="addPurchase()">
     {{ getTranslation('buttons.addPurchase') }}
   </button>
+  <button class="delete-btn" (click)="toggleDeleteMode()">
+    {{ deleteMode ? getTranslation('transactions.exitDeleteMode') : getTranslation('transactions.deleteTransaction') }}
+  </button>
+</div>
+
 </div>

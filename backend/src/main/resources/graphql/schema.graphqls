@@ -78,7 +78,7 @@ type Query {
   getServiceById(id: ID!): Service
 
   getRent(staffId: ID!, month: String!): Rent
-
+  getAllRents(staffId: ID!): [Rent!]!
 
   allProductPurchases(staffId: ID): [ProductPurchase]!
      getTotalPurchasesAmount(staffId: ID!): Float
@@ -123,7 +123,8 @@ getSumLastYear(staffId: ID!): Float!
 type Mutation {
   deleteStaff(id: ID!): Boolean!
   login(email: String!, password: String!): LoginResponse!
-
+  deleteTransaction(id: ID!): Boolean
+  deleteProductPurchase(id: ID!): Boolean 
   createStaff(name: String!, role: Role!, email: String!, password: String!): Staff
 
   createClient(name: String!, phone: String!): Client

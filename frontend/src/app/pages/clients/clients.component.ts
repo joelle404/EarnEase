@@ -23,6 +23,9 @@ export class ClientsComponent implements OnInit {
   lastWeekTotal: number = 0;
   lastMonthTotal: number = 0;
   lastYearTotal: number = 0;
+deletingRowId: string | null = null;
+confirmDeleteRowId: string | null = null;
+deleteMode = false;
 
   searchTerm: string = '';
   page = 1;
@@ -52,6 +55,52 @@ export class ClientsComponent implements OnInit {
     this.loadStaff();
     this.loadTransactionSums();
   }
+
+toggleDeleteMode() {
+  this.deleteMode = !this.deleteMode;
+}
+  startDeleteTransaction(id: string) {
+  // start shaking animation
+  this.deletingRowId = id;
+
+  // after animation ends, show X icon for confirmation
+  setTimeout(() => {
+    this.confirmDeleteRowId = id;
+    this.deletingRowId = null;
+  }, 500); // 0.5s shaking animation
+}
+
+confirmDeleteTransaction(id: string) {
+  const DELETE_TRANSACTION = gql`
+    mutation DeleteTransaction($id: ID!) {
+      deleteTransaction(id: $id)
+    }
+  `;
+
+  this.apollo.mutate({
+    mutation: DELETE_TRANSACTION,
+    variables: { id }
+  }).subscribe({
+    next: (res: any) => {
+      if (res.data.deleteTransaction) {
+        this.transactions = this.transactions.filter(tx => tx.id !== id);
+        this.confirmDeleteRowId = null;
+      }
+    },
+    error: (err) => {
+      console.error("Error deleting transaction:", err);
+    }
+  });
+}
+
+get maxPage() {
+  return Math.max(1, Math.ceil(this.filteredTransactions.length / this.pageSize));
+}
+get paginatedTransactions() {
+  const start = (this.page - 1) * this.pageSize;
+  const end = start + this.pageSize;
+  return this.filteredTransactions.slice(start, end);
+}
 
   getTranslation(key: string) {
     return i18next.t(key);
@@ -202,6 +251,13 @@ export class ClientsComponent implements OnInit {
     }
     return null;
   }
+prevPage() {
+  if (this.page > 1) this.page--;
+}
+
+nextPage() {
+  if (this.page < this.maxPage) this.page++;
+}
 
   loadStaffServices() {
     const staffId = this.getLoggedInStaffId();
@@ -239,6 +295,28 @@ export class ClientsComponent implements OnInit {
       this.staff = res.data.allStaff;
     });
   }
+deleteTransaction(id: string) {
+  const DELETE_TRANSACTION = gql`
+    mutation DeleteTransaction($id: ID!) {
+      deleteTransaction(id: $id)
+    }
+  `;
+
+  this.apollo.mutate({
+    mutation: DELETE_TRANSACTION,
+    variables: { id }
+  }).subscribe({
+    next: (res: any) => {
+      if (res.data.deleteTransaction) {
+        // remove transaction from local list
+        this.transactions = this.transactions.filter(tx => tx.id !== id);
+      }
+    },
+    error: (err) => {
+      console.error("Error deleting transaction:", err);
+    }
+  });
+}
 
   onServiceChange() {
     const selectedService = this.services.find(s => s.id === this.newTransaction.serviceId);

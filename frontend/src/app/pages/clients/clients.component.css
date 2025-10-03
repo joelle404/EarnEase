@@ -146,3 +146,35 @@ button.add-btn:hover {
     max-width: 100%;
   }
 }
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+/* Shake only in delete mode and on hover */
+.shake-row:hover {
+  background-color: #ff00001f !important;
+  animation: shake 0.5s infinite;
+}
+
+
+/* Delete mode toggle button (beside Add) */
+.delete-btn {
+  background-color: #d82b17f3;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+  margin-left: 10px;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+}

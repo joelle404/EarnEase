@@ -2,6 +2,7 @@ package com.joelle.backend.transaction;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,9 @@ import org.springframework.stereotype.Service;
 
 import com.joelle.backend.katiawork.KatiaWorkService;
 import com.joelle.backend.purchase.ProductPurchaseService;
+import com.joelle.backend.rent.Rent;
+import com.joelle.backend.rent.RentRepository;
+import com.joelle.backend.rent.RentService;
 import com.joelle.backend.staff.Staff;
 import com.joelle.backend.staff.StaffRepository;
 
@@ -22,17 +26,22 @@ public class TransactionService {
     private final ProductPurchaseService purchaseService;
     private final KatiaWorkService katiaWorkService;
     private final StaffRepository staffRepository; // inject it
+        private final RentRepository rentRepository; // inject it
 
-    @Autowired
-    public TransactionService(TransactionRepository transactionRepository,
-                              ProductPurchaseService purchaseService,
-                              KatiaWorkService katiaWorkService,
-                              StaffRepository staffRepository) {
-        this.transactionRepository = transactionRepository;
-        this.purchaseService = purchaseService;
-        this.katiaWorkService = katiaWorkService;
-        this.staffRepository = staffRepository;
-    }
+
+@Autowired
+public TransactionService(TransactionRepository transactionRepository,
+                          ProductPurchaseService purchaseService,
+                          KatiaWorkService katiaWorkService,
+                          StaffRepository staffRepository,
+                          RentRepository rentRepository) {
+    this.transactionRepository = transactionRepository;
+    this.purchaseService = purchaseService;
+    this.katiaWorkService = katiaWorkService;
+    this.staffRepository = staffRepository;
+    this.rentRepository = rentRepository;
+}
+
     // Total of all transactions
     public Double getTotalAmount() {
         return transactionRepository.sumAllTransactions();
@@ -106,20 +115,30 @@ private Double getReceivedPercentsInRange(Long staffId, LocalDate from, LocalDat
 
 public Double calculatePureProfit(Long staffId, LocalDate from, LocalDate to) {
     Double income = filterAndSum(staffId, from, to);
-
     Double expenses = purchaseService.filterAndSum(staffId, from, to);
-
     Double givenPercents = getGivenPercentsInRange(staffId, from, to);
     Double receivedPercents = getReceivedPercentsInRange(staffId, from, to);
-
     Double katiaShare = katiaWorkService.getShareInRange(staffId, from, to);
+
+    // // Fixed deduction of 3000 on the first of each month ONLY for staffId = 5
+    // Double fixedDeduction = 0.0;
+    // if (staffId == 5L) {
+    //     LocalDate temp = from.withDayOfMonth(1);
+    //     while (!temp.isAfter(to)) {
+    //         fixedDeduction += 3000.0;
+    //         temp = temp.plusMonths(1);
+    //     }
+    // }
 
     return (income != null ? income : 0.0)
          - (expenses != null ? expenses : 0.0)
          - (givenPercents != null ? givenPercents : 0.0)
          + (receivedPercents != null ? receivedPercents : 0.0)
          + (katiaShare != null ? katiaShare : 0.0);
+        //  - fixedDeduction;
 }
+
+
 public Double getPureProfitLastWeek(Long staffId) {
     LocalDate now = LocalDate.now();
     LocalDate weekAgo = now.minusWeeks(1);
@@ -191,6 +210,12 @@ public Map<String, Double> getMonthlyIncome(Long staffId) {
 }
 
 
+public void deleteTransaction(Long transactionId) {
+    if (!transactionRepository.existsById(transactionId)) {
+        throw new IllegalArgumentException("Transaction with ID " + transactionId + " not found");
+    }
+    transactionRepository.deleteById(transactionId);
+}
 
  
     public List<StaffPercentageDTO> getGivenPercentsGrouped(Long staffId, LocalDate from, LocalDate to) {

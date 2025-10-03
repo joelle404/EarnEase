@@ -12,4 +12,7 @@ public interface RentRepository extends JpaRepository<Rent, Long> {
 
     @Query("SELECT s.id FROM Staff s")
     List<Long> findAllStaffIds();
+
+
+    List<Rent> findByStaffId(Long staffId);
 }

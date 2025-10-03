@@ -27,6 +27,10 @@
     "language": "اللغة",
     "logout": "تسجيل الخروج"
   },  "transactions": {
+      "deleteTransaction": "حذف",
+          "exitDeleteMode": "إلغاء الحذف"
+,
+
     "searchClient": "ابحث باسم العميل",
     "clientName": "اسم العميل",
     "date": "التاريخ",
@@ -43,7 +47,8 @@
   "pagination": {
     "prev": "السابق",
     "next": "التالي",
-    "page": "الصفحة   "
+    "page": "الصفحة",
+      "of": "من"
   },
     "placeholders": {
     "searchByProduct": "ابحث عن المنتج",

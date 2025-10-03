@@ -89,4 +89,21 @@ public List<MonthlyExpensesDTO> getMonthlyExpenses(@Argument Long staffId) {
                .toList();
 }
 
+@MutationMapping
+public Boolean deleteProductPurchase(@Argument Long id) {
+    try {
+        if (purchaseRepository.existsById(id)) {
+            purchaseRepository.deleteById(id);
+            return true;
+        } else {
+            System.out.println("Purchase not found with id: " + id);
+            return false;
+        }
+    } catch (Exception e) {
+        System.out.println("Error deleting purchase: " + e.getMessage());
+        e.printStackTrace();
+        return false;
+    }
+}
+
 }

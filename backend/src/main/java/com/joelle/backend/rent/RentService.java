@@ -76,6 +76,18 @@ purchase.setDate(LocalDate.now().withDayOfMonth(1).toString());
     }
 }
 
+public Double getRentInRange(Long staffId, LocalDate from, LocalDate to) {
+    return rentRepository.findAll().stream()
+        .filter(r -> r.getStaffId().equals(staffId))
+        .filter(r -> {
+            LocalDate rentMonth = LocalDate.parse(r.getMonth() + "-01");
+            return !rentMonth.isBefore(from) && !rentMonth.isAfter(to);
+        })
+        .map(Rent::getAmount)
+        .reduce(0.0, Double::sum);
+}
+
+
    // Extracted reusable method
     @Transactional
     public void createRentForStaff(Long staffId, Double amount) {

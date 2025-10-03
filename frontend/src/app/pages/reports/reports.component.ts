@@ -13,7 +13,7 @@ import i18next from 'i18next';
   styleUrls: ['./reports.component.css']
 })
 export class ReportsComponent implements OnInit {
-  staffId = 5; // testing
+  staffId =  this.getLoggedInStaffId(); // testing
   period: 'week' | 'month' | 'year' = 'month';
 
   givenData: any[] = [];
@@ -30,6 +30,15 @@ export class ReportsComponent implements OnInit {
   ngOnInit(): void {
     this.loadReports();
   }
+    private getLoggedInStaffId(): string | null {
+    const staffStr = localStorage.getItem('staff');
+    if (staffStr) {
+      const staff = JSON.parse(staffStr);
+      return staff.id;
+    }
+    return null;
+  }
+
   getLoggedInStaffName(): string | null {
     const staffStr = localStorage.getItem('staff');
     if (staffStr) {

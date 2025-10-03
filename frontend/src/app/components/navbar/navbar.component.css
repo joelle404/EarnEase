@@ -80,3 +80,8 @@
     margin: 5px 0;
   }
 }
+.nav-links a.active-link {
+  background-color: #3f526d; /* highlight background */
+  color: white;             /* text turns white */
+  font-weight: bold;
+}

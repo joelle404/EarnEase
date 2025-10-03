@@ -7,13 +7,20 @@ import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.graphql.data.method.annotation.Argument;
 
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 
 @Component
 public class RentResolver {
 
-    @Autowired
     private RentService rentService;
-
+    private RentRepository rentRepository;
+        @Autowired
+    public RentResolver(RentService rentService, RentRepository rentRepository) {
+        this.rentService = rentService;
+        this.rentRepository = rentRepository;
+    }
     @MutationMapping
     public Rent addRent(
             @Argument Long staffId,
@@ -41,5 +48,11 @@ public class RentResolver {
 public Rent updateRent(@Argument Long id, @Argument Double amount) {
     return rentService.updateRent(id, amount);
 }
+    @QueryMapping
+    public List<Rent> getAllRents(@Argument Long staffId) {
+        List<Rent> rents = rentRepository.findByStaffId(staffId);
+        return rents != null ? rents : List.of(); // never return null
+    }
+
 
 }

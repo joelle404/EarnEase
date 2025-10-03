@@ -1,34 +1,23 @@
-<div class="rent-container p-4 border rounded shadow">
+<div *ngIf="loading">Loading rent history...</div>
+<div *ngIf="error">{{ error }}</div>
 
-  <div *ngIf="loading" class="loading text-center py-4">
-    {{ getTranslation('rent.loading') }}
-  </div>
+<table *ngIf="rents.length > 0">
+  <thead>
+    <tr>
+      <th>Month</th>
+      <th>Amount</th>
+      <th>Paid Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let rent of rents">
+      <td>{{ rent.month }}</td>
+      <td>{{ rent.amount | currency:'ILS':'symbol':'1.0-0' }}</td>
+      <td>{{ rent.paidDate | date:'mediumDate' }}</td>
+    </tr>
+  </tbody>
+</table>
 
-  <div *ngIf="error" class="error text-red-600 font-bold py-2">
-    {{ getTranslation('rent.error') }}: {{ error }}
-  </div>
-
-  <div *ngIf="!loading">
-    <h2 class="text-xl font-semibold mb-4">
-      {{ getTranslation('rent.title') }}: {{ name }} ({{ month }})
-    </h2>
-
-    <div class="form-group mb-4">
-      <label class="block mb-1">{{ getTranslation('rent.currentRent') }}</label>
-      <input
-        type="number"
-        [(ngModel)]="newAmount"
-        [placeholder]="getTranslation('rent.enterAmount')"
-        class="form-control border rounded p-2 w-full"
-      />
-    </div>
-
-    <p *ngIf="rent?.paidDate; else notPaid" class="mb-2">
-      <span class="font-semibold">{{ getTranslation('rent.paidOn') }}:</span> {{ rent.paidDate }}
-    </p>
-    <ng-template #notPaid>
-      <p class="text-gray-500 italic">{{ getTranslation('rent.notPaid') }}</p>
-    </ng-template>
-  </div>
-
+<div *ngIf="!loading && rents.length === 0">
+  No rent records found
 </div>

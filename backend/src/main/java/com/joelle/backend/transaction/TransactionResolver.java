@@ -156,6 +156,15 @@ public List<StaffPercentageDTO> getReceivedLastMonth(@Argument Long staffId) {
 public List<StaffPercentageDTO> getReceivedLastYear(@Argument Long staffId) {
     return transactionService.getReceivedLastYear(staffId);
 }
+@MutationMapping
+public Boolean deleteTransaction(@Argument Long id) {
+    if (transactionRepository.existsById(id)) {
+        transactionRepository.deleteById(id);
+        return true; // important!
+    } else {
+        return false; // or throw an exception
+    }
+}
 
 
 }

@@ -25,6 +25,11 @@ export class ExpesnssesComponent implements OnInit {
   totalLastWeek: number = 0;
   totalLastMonth: number = 0;
   totalLastYear: number = 0;
+deleteMode: boolean = false;
+
+toggleDeleteMode() {
+  this.deleteMode = !this.deleteMode;
+}
 
   newPurchase = {
     staffId: '',
@@ -62,6 +67,23 @@ export class ExpesnssesComponent implements OnInit {
       p.productName?.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
+deletePurchase(id: string) {
+  const DELETE_PURCHASE = gql`
+    mutation DeleteProductPurchase($id: ID!) {
+      deleteProductPurchase(id: $id)
+    }
+  `;
+
+  this.apollo.mutate({
+    mutation: DELETE_PURCHASE,
+    variables: { id }
+  }).subscribe({
+    next: () => {
+      this.purchases = this.purchases.filter(p => p.id !== id);
+    },
+    error: (err) => console.error("Error deleting purchase:", err)
+  });
+}
 
   getLoggedInStaffName(): string | null {
     const staffStr = localStorage.getItem('staff');

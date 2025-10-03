@@ -9,7 +9,9 @@
     "pureProfit": "Pure Profit",
     "lastWeek": "Last Week",
     "lastMonth": "Last Month",
-    "lastYear": "Last Year"
+    "lastYear": "Last Year",
+    "given": "Given to Others",
+    "received": "Received from Others"
   },
   "navbar": {
     "dashboard": "Dashboard",
@@ -26,6 +28,10 @@
     "logout": "Logout"
   },
     "transactions": {
+        "deleteTransaction": "Delete",
+            "exitDeleteMode": "Cancel Delete"
+,
+
     "searchClient": "Search by client name",
     "clientName": "Client Name",
     "date": "Date",
@@ -37,14 +43,15 @@
     "selectService": "Select service",
     "selectStaff": "Select staff",
     "amountPaid": "Amount Paid",
-    "addTransaction": "Add Transaction",
-        "given": "Given to Others",
-    "received": "Received from Others"
+    "addTransaction": "Add Transaction"
+
   },
+  
   "pagination": {
     "prev": "Prev",
     "next": "Next",
-    "page": "Page "
+    "page": "Page",
+    "of": "of"
   },
     "placeholders": {
     "searchByProduct": "Search by product name",
