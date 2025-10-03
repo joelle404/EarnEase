@@ -25,7 +25,16 @@
   "settings": {
     "title": "الإعدادات",
     "language": "اللغة",
-    "logout": "تسجيل الخروج"
+    "logout": "تسجيل الخروج",
+      "changePassword": "تغيير كلمة المرور",
+  "currentPassword": "كلمة المرور الحالية",
+  "newPassword": "كلمة المرور الجديدة",
+  "confirmPassword": "تأكيد كلمة المرور",
+  "savePassword": "حفظ",
+  "passwordMismatch": "كلمة المرور الجديدة وتأكيدها غير متطابقين.",
+  "passwordChanged": "تم تغيير كلمة المرور بنجاح!",
+  "wrongCurrentPassword": "كلمة المرور الحالية غير صحيحة.",
+  "errorChangingPassword": "حدث خطأ أثناء تغيير كلمة المرور."
   },  "transactions": {
       "deleteTransaction": "حذف",
           "exitDeleteMode": "إلغاء الحذف"

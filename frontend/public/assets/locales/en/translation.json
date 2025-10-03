@@ -25,7 +25,17 @@
   "settings": {
     "title": "Settings",
     "language": "Language",
-    "logout": "Logout"
+    "logout": "Logout",
+    
+    "changePassword": "Change Password",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "savePassword": "Save",
+    "passwordMismatch": "New password and confirmation do not match.",
+    "passwordChanged": "Password changed successfully!",
+    "wrongCurrentPassword": "Current password is incorrect.",
+    "errorChangingPassword": "Error while changing password."
   },
     "transactions": {
         "deleteTransaction": "Delete",

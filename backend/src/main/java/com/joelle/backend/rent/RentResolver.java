@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.graphql.data.method.annotation.Argument;
 
 import java.time.LocalDate;
@@ -21,6 +22,7 @@ public class RentResolver {
         this.rentService = rentService;
         this.rentRepository = rentRepository;
     }
+    @PreAuthorize("isAuthenticated()")
     @MutationMapping
     public Rent addRent(
             @Argument Long staffId,
@@ -34,7 +36,7 @@ public class RentResolver {
         rent.setPaidDate(LocalDate.now());
         return rentService.saveRent(rent);
     }
-
+@PreAuthorize("isAuthenticated()")
     @QueryMapping
     public Rent getRent(
             @Argument Long staffId,
@@ -42,12 +44,13 @@ public class RentResolver {
     ) {
         return rentService.getRent(staffId, month).orElse(null);
     }
-
-    // RentResolver.java
+    
+@PreAuthorize("isAuthenticated()")
 @MutationMapping
 public Rent updateRent(@Argument Long id, @Argument Double amount) {
     return rentService.updateRent(id, amount);
 }
+@PreAuthorize("isAuthenticated()")
     @QueryMapping
     public List<Rent> getAllRents(@Argument Long staffId) {
         List<Rent> rents = rentRepository.findByStaffId(staffId);

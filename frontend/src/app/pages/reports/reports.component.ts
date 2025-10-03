@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { CommonModule } from '@angular/common';
-import { RentComponent } from '../rent/rent.component';
 import i18next from 'i18next';
 
 @Component({
   selector: 'app-reports',
   standalone: true,
-  imports: [NavbarComponent, CommonModule, RentComponent],
+  imports: [NavbarComponent, CommonModule],
   templateUrl: './reports.component.html',
   styleUrls: ['./reports.component.css']
 })

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.data.domain.Sort;
 
@@ -51,6 +52,7 @@ public List<Transaction> allTransactions(@Argument Long staffId) {
     // public Transaction getTransactionById(@Argument Long id) {
     //     return transactionRepository.findById(id).orElse(null);
     // }
+    @PreAuthorize("isAuthenticated()")
 @MutationMapping
 public Transaction createTransaction(
         @Argument String clientName,
@@ -81,40 +83,43 @@ public Transaction createTransaction(
         return null;
     }
 }
+@PreAuthorize("isAuthenticated()")
     @QueryMapping
     public Double getTotalTransactionsAmount() {
         return transactionService.getTotalAmount();
     }
+    @PreAuthorize("isAuthenticated()")
 @QueryMapping
 public Double getSumLastWeek(@Argument Long staffId) {
     return transactionService.getSumLastWeek(staffId);
 }
 
+@PreAuthorize("isAuthenticated()")
 @QueryMapping
 public Double getSumLastMonth(@Argument Long staffId) {
     return transactionService.getSumLastMonth(staffId);
 }
-
+@PreAuthorize("isAuthenticated()")
 @QueryMapping
 public Double getSumLastYear(@Argument Long staffId) {
     return transactionService.getSumLastYear(staffId);
 }
-
+@PreAuthorize("isAuthenticated()")
 @QueryMapping
 public Double getPureProfitLastWeek(@Argument Long staffId) {
     return transactionService.getPureProfitLastWeek(staffId);
 }
-
+@PreAuthorize("isAuthenticated()")
 @QueryMapping
 public Double getPureProfitLastMonth(@Argument Long staffId) {
     return transactionService.getPureProfitLastMonth(staffId);
 }
-
+@PreAuthorize("isAuthenticated()")
 @QueryMapping
 public Double getPureProfitLastYear(@Argument Long staffId) {
     return transactionService.getPureProfitLastYear(staffId);
 }
-
+@PreAuthorize("isAuthenticated()")
 @QueryMapping
 public List<MonthlyProfitDTO> getMonthlyPureProfit(@Argument Long staffId) {
     Map<String, Double> data = transactionService.getMonthlyPureProfit(staffId);
@@ -123,6 +128,7 @@ public List<MonthlyProfitDTO> getMonthlyPureProfit(@Argument Long staffId) {
             .map(e -> new MonthlyProfitDTO(e.getKey(), e.getValue()))
             .toList();
 }
+@PreAuthorize("isAuthenticated()")
 @QueryMapping
 public List<MonthlyProfitDTO> getMonthlyIncome(@Argument Long staffId) {
     Map<String, Double> data = transactionService.getMonthlyIncome(staffId);
@@ -130,32 +136,37 @@ public List<MonthlyProfitDTO> getMonthlyIncome(@Argument Long staffId) {
             .map(e -> new MonthlyProfitDTO(e.getKey(), e.getValue()))
             .toList();
 }
-
+@PreAuthorize("isAuthenticated()")
 @QueryMapping
 public List<StaffPercentageDTO> getGivenLastWeek(@Argument Long staffId) {
     return transactionService.getGivenLastWeek(staffId);
 }
+@PreAuthorize("isAuthenticated()")
 @QueryMapping
 public List<StaffPercentageDTO> getGivenLastMonth(@Argument Long staffId) {
     return transactionService.getGivenLastMonth(staffId);
 }
+@PreAuthorize("isAuthenticated()")
 @QueryMapping
 public List<StaffPercentageDTO> getGivenLastYear(@Argument Long staffId) {
     return transactionService.getGivenLastYear(staffId);
 }
-
+@PreAuthorize("isAuthenticated()")
 @QueryMapping
 public List<StaffPercentageDTO> getReceivedLastWeek(@Argument Long staffId) {
     return transactionService.getReceivedLastWeek(staffId);
 }
+@PreAuthorize("isAuthenticated()")
 @QueryMapping
 public List<StaffPercentageDTO> getReceivedLastMonth(@Argument Long staffId) {
     return transactionService.getReceivedLastMonth(staffId);
 }
+@PreAuthorize("isAuthenticated()")
 @QueryMapping
 public List<StaffPercentageDTO> getReceivedLastYear(@Argument Long staffId) {
     return transactionService.getReceivedLastYear(staffId);
 }
+@PreAuthorize("isAuthenticated()")
 @MutationMapping
 public Boolean deleteTransaction(@Argument Long id) {
     if (transactionRepository.existsById(id)) {

@@ -31,8 +31,6 @@
 
     <button type="submit">{{ getTranslation('katiaWork.addWork') }}</button>
   </form>
-
-  <!-- Work Table -->
   <table>
     <thead>
       <tr>
@@ -43,19 +41,33 @@
         <th>{{ getTranslation('katiaWork.table.tamerPercent') }}</th>
         <th>{{ getTranslation('katiaWork.table.tamerCut') }}</th>
         <th>{{ getTranslation('katiaWork.table.katiaNet') }}</th>
+        <th *ngIf="deleteMode">{{ getTranslation('actions') }}</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let w of works">
-        <td>{{ w.serviceDate }}</td>
-        <td>{{ w.clientName }}</td>
-        <td>{{ w.grossAmount }}</td>
-        <td>{{ w.dimaCut }}</td>
-        <td>{{ w.tamerPercent }}%</td>
-        <td>{{ w.tamerCut }}</td>
-        <td class="font-bold">{{ w.katiaNet }}</td>
-      </tr>
+     <tr *ngFor="let w of works" [class.delete-mode-row]="deleteMode">
+  <td>{{ w.serviceDate }}</td>
+  <td>{{ w.clientName }}</td>
+  <td>{{ w.grossAmount }}</td>
+  <td>{{ w.dimaCut }}</td>
+  <td>{{ w.tamerPercent }}%</td>
+  <td>{{ w.tamerCut }}</td>
+  <td class="font-bold">{{ w.katiaNet }}</td>
+  <td *ngIf="deleteMode" class="delete-cell">
+    <span class="delete-x" (click)="deleteWork(w.id)">❌</span>
+  </td>
+</tr>
+
     </tbody>
   </table>
+
+  <!-- Action buttons -->
+  <div class="actions">
+
+    <button class="delete-btn" (click)="toggleDeleteMode()">
+      {{ deleteMode ? getTranslation('transactions.exitDeleteMode') : getTranslation('transactions.deleteTransaction') }}
+    </button>
+  </div>
+
 
 </div>

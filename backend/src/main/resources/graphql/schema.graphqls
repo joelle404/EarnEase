@@ -126,8 +126,9 @@ type Mutation {
   deleteTransaction(id: ID!): Boolean
   deleteProductPurchase(id: ID!): Boolean 
   createStaff(name: String!, role: Role!, email: String!, password: String!): Staff
-
+ deleteKatiaWork(id: ID!): Boolean
   createClient(name: String!, phone: String!): Client
+  changePassword(staffId: ID!, currentPassword: String!, newPassword: String!): Boolean
 
   createService(name: String!, basePrice: Float!): Service
 

@@ -98,3 +98,88 @@
     padding: 5px 8px;
   }
 }
+/* Password change form container */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 0 auto;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #002f70;
+}
+
+/* Form groups */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Labels */
+.form-group label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #002f70;
+}
+
+/* Inputs */
+.form-group input {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus {
+  border-color: #002f70;
+  box-shadow: 0 0 5px rgba(0, 47, 112, 0.3);
+  outline: none;
+}
+
+/* Save button */
+.btn-save {
+  padding: 10px 20px;
+  background-color: #002f70;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-save:hover {
+  background-color: #034180;
+  transform: translateY(-2px);
+}
+
+/* Password message */
+.password-message {
+  font-size: 0.85rem;
+  color: #d82b17;
+  font-weight: 500;
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+  form {
+    padding: 15px;
+  }
+
+  .form-group input {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+  }
+
+  .btn-save {
+    font-size: 0.85rem;
+    padding: 8px 16px;
+  }
+}

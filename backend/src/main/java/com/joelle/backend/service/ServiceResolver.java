@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 
 @Controller
@@ -17,17 +18,17 @@ public class ServiceResolver {
     public ServiceResolver(ServiceRepository serviceRepository) {
         this.serviceRepository = serviceRepository;
     }
-
+@PreAuthorize("isAuthenticated()")
     @QueryMapping
     public List<Service> allServices() {
         return serviceRepository.findAll();
     }
-
+@PreAuthorize("isAuthenticated()")
     @QueryMapping
     public Service getServiceById(@Argument Long id) {
         return serviceRepository.findById(id).orElse(null);
     }
-
+@PreAuthorize("isAuthenticated()")
     @MutationMapping
     public Service createService(@Argument String name,
                                  @Argument Double basePrice) {

@@ -28,6 +28,13 @@ public class KatiaWorkService {
         return repository.findById(id).orElse(null);
     }
 
+public boolean deleteWork(Long id) {
+    if (repository.existsById(id)) {
+        repository.deleteById(id);
+        return true;
+    }
+    return false;
+}
 
 
     
